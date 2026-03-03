@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bagus Dwi Cahya Putra | Portfolio</title>
+        <meta name="description" content="Portofolio Bagus Dwi Cahya Putra: pengembangan web, desain UI/UX, dan proyek teknologi.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html { scroll-behavior: smooth; }
+        :root {
+            --primary: #B22222;
+            --primary-dark: #8B0000;
+            --primary-light: #FF4D4D;
+            --secondary: #2D3436;
+            --text: #2D3436;
+            --text-light: #636E72;
+            --white: #FFFFFF;
+            --bg: #FDF2F2;
+            --transition: all 0.3s ease;
+        }
+         #about, #skills, #projects, #contact { scroll-margin-top: 100px; }
+        .reveal { opacity: 0; transform: translateY(24px); transition: 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 4rem;
+            color: var(--primary-dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: none;
+            display: none;
+        }
+
+        /* Navbar */
+        nav {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--primary);
+            padding: 0.5rem 0.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .menu-toggle:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero */
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(135deg, #fff 0%, #fdecec 100%);
+        }
+
+        .hero-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 400px;
+            height: 520px;
+            object-fit: cover;
+            object-position: center 17%; /* Sesuai permintaan: 17% */
+            border-radius: 30px;
+            box-shadow: 20px 20px 0 var(--primary);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        #hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        #hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(178, 34, 34, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--white);
+            padding: 2.5rem 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            border-bottom: 4px solid transparent;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--primary);
+        }
+        .project-card { transition: var(--transition); }
+        .project-card:hover { transform: translateY(-8px); }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-img {
+            height: 220px;
+            background: #eee;
+            position: relative;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .project-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact */
+        #contact {
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        #contact .section-title { color: var(--white); }
+        #contact .section-title::after { background: var(--white); }
+
+        .contact-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .contact-item i {
+            font-size: 2.4rem;
+            margin-bottom: 1rem;
+            color: var(--white) !important;
+        }
+        #contact .contact-item p,
+        #contact .contact-item a {
+            color: var(--white) !important;
+        }
+
+        .social-links {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .social-links a {
+            color: var(--white) !important;
+            font-size: 1.8rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            width: 36px;
+            height: 36px;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-light);
+            transform: scale(1.2);
+        }
+        .social-links a.location-small {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #888;
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            .hero-wrapper { text-align: center; justify-content: center; }
+            .hero-image img { width: 280px; height: 280px; }
+            .btn-group { justify-content: center; }
+            .menu-toggle { display: inline-block; }
+            nav ul { display: none; }
+            nav ul.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                right: 5%;
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(10px);
+                padding: 1rem 1.5rem;
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">BAGUS DWI.</a>
+            <button class="menu-toggle" aria-label="Buka menu">Menu</button>
+            <ul>
+                <li><a href="#hero">Beranda</a></li>
+                <li><a href="#about">Tentang</a></li>
+                <li><a href="#skills">Keahlian</a></li>
+                <li><a href="data diri.html">Data Diri</a></li>
+                <li><a href="#projects">Proyek</a></li>
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <span class="hero-subtitle">IT Education • UNESA 2024</span>
+                    <h1>Bagus Dwi Cahya Putra</h1>
+                    <p>
+<strong>Mahasiswa Pendidikan Teknologi Informasi Universitas Negeri Surabaya</strong> yang berfokus pada 
+pengembangan <strong>solusi digital inovatif</strong> dan berorientasi pada kebermanfaatan.
+</p>
+
+<p>
+Aktif dalam <strong>organisasi kemahasiswaan dan penelitian</strong>, dengan pengalaman dalam 
+<strong>kepemimpinan, manajemen kelembagaan</strong>, serta pengembangan sistem berbasis teknologi. 
+Berkomitmen mengintegrasikan <strong>kompetensi teknis dan integritas kepemimpinan</strong> 
+untuk menciptakan dampak yang berkelanjutan.
+</p>
+                    <div class="btn-group">
+                        <a href="#projects" class="btn btn-primary">Lihat Karya</a>
+                        <a href="#contact" class="btn btn-outline">Hubungi Saya</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="24050974004.jpg" alt="Bagus Dwi Cahya Putra">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="reveal" style="background: #fff;">
+        <div class="container">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p>Halo! Saya <strong>Bagus</strong>, mahasiswa <strong>Pendidikan Teknologi Informasi</strong> di <strong>Universitas Negeri Surabaya</strong>. Saya memiliki semangat tinggi dalam mempelajari bagaimana teknologi dapat mempermudah kehidupan manusia.</p>
+                <p style="margin-top: 1.5rem; color: var(--text-light);">Fokus saya mencakup pengembangan web, desain antarmuka pengguna (UI/UX), dan pemecahan masalah melalui logika pemrograman. Saya senang berkolaborasi dalam proyek-proyek inovatif yang menantang kreativitas.</p>
+                <p>
+Saya adalah <strong>mahasiswa Pendidikan Teknologi Informasi</strong> yang memandang teknologi sebagai 
+<strong>sarana transformasi sosial</strong>. Bagi saya, penguasaan informatika bukan sekadar kemampuan teknis, 
+melainkan <strong>tanggung jawab untuk menghadirkan solusi yang berdampak bagi masyarakat</strong>.
+</p>
+
+<p>
+Aktif dalam <strong>organisasi kemahasiswaan</strong>, saya tumbuh dalam nilai 
+<strong>kepemimpinan, integritas, dan kolaborasi</strong>. 
+<i>Scientia potentia est</i> — pengetahuan adalah kekuatan — dan kekuatan tersebut harus dimaknai sebagai tanggung jawab. 
+<i>Non scholae sed vitae discimus</i> — kita belajar bukan untuk sekolah, tetapi untuk kehidupan — 
+menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nyata.
+</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Keahlian</h2>
+            <div class="skills-grid">
+                <div class="skill-card reveal" style="transition-delay: 0s;">
+                    <i class="fa-brands fa-python"></i>
+                    <h3>Python</h3>
+                </div>
+                <div class="skill-card reveal" style="transition-delay: 0.05s;">
+                    <i class="fa-solid fa-code"></i>
+                    <h3>C++</h3>
+                </div>
+                <div class="skill-card reveal" style="transition-delay: 0.1s;">
+                    <i class="fa-brands fa-java"></i>
+                    <h3>Java</h3>
+                </div>
+                <div class="skill-card reveal" style="transition-delay: 0.15s;">
+                    <i class="fa-solid fa-pen-nib"></i>
+                    <h3>UI/UX Design</h3>
+                </div>
+                <div class="skill-card reveal" style="transition-delay: 0.2s;">
+                    <i class="fa-solid fa-camera"></i>
+                    <h3>Photography</h3>
+                </div>
+                <div class="skill-card reveal" style="transition-delay: 0.25s;">
+                    <i class="fa-solid fa-lightbulb"></i>
+                    <h3>Problem Solving</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="reveal" style="background: #fff;"></section>
+        <div class="container">
+            <h2 class="section-title">Proyek Unggulan</h2>
+            <div class="project-grid">
+                <!-- Project 1 -->
+                <div class="project-card reveal" style="transition-delay: 0s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="bam teknik bg.png" alt="Grafik 3 Dimensi" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Pembuatan Grafik 3 Dimensi menggunakan C++</h3>
+                        <p>Eksplorasi grafika komputer dengan pembuatan objek 3D menggunakan bahasa pemrograman C++ dan pustaka grafis modern.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card reveal" style="transition-delay: 0.08s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="manajemen.png" alt="Class Management System" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Class Management System</h3>
+                        <p>Sistem informasi berbasis Java untuk mengelola data siswa, jadwal pelajaran, dan administrasi kelas secara digital.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card reveal" style="transition-delay: 0.16s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="mobile.png" alt="Android Mobile Solution" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Android Mobile Solution</h3>
+                        <p>Pengembangan aplikasi mobile menggunakan Kotlin dan Java dengan desain antarmuka berbasis XML yang responsif.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 4 -->
+                <div class="project-card reveal" style="transition-delay: 0.24s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="web.png" alt="Personal Branding Web" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Personal Branding Web</h3>
+                        <p>Website portofolio profesional yang Anda lihat saat ini, dirancang untuk menunjukkan identitas dan keahlian di bidang IT.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 5 -->
+                <div class="project-card reveal" style="transition-delay: 0.32s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="rektorat.png" alt="Rektorat UNESA" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Proyek Rektorat</h3>
+                        <p>Deskripsi singkat tentang proyek inovatif lainnya yang sedang atau telah Anda kembangkan.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 6 -->
+                <div class="project-card reveal" style="transition-delay: 0.40s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="hki.png" alt="HKI" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Hak Kekayaan Intelektual</h3>
+                        <p>HKI Tendang sebuah penelitian bagaimana pengaruh motivasi belajar terhadap prestasi mahasiswa Pendidikan Ekonomi Unesa 2024.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div class="container">
+            <h2 class="section-title">Mari Terkoneksi</h2>
+            <div class="contact-wrapper">
+                <div class="contact-item">
+                    <a href="https://www.linkedin.com/in/bagus-dwi-cahya-putra-304114377" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                        <i class="fa-brands fa-linkedin"></i>
+                        <p style="font-weight: bold;">LinkedIn</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=bagusdwijunior@gmail.com&su=Tanya%20Tentang%20Portofolio&body=Halo%20Bagus,%20saya%20ingin%20bertanya%20mengenai..." target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>bagusdwijunior@gmail.com</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://github.com/bagusputra122334" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block;">
+                        <i class="fa-brands fa-github"></i>
+                        <p>GitHub</p>
+                    </a>
+                </div>
+                <div class="contact-item">
+                    <a href="https://wa.me/6283149045901?text=Halo%20Bagus,%20saya%20tertarik%20untuk%20berkolaborasi!" target="_blank" rel="noopener noreferrer" style="text-decoration: none; color: inherit; display: block;">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <p>+62 831-4904-5901</p>
+                    </a>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="https://maps.app.goo.gl/gJiv3KFKU5nbncKR6?g_st=ic" target="_blank" rel="noopener noreferrer" class="location-small" title="Lokasi Saya"><i class="fa-solid fa-location-dot"></i></a>
+                <a href="https://www.tiktok.com/@gus_bagusdwi?is_from_webapp=1&sender_device=pc" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1NomRkSZK9/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://x.com/bagussuciptoo?s=21" target="_blank" rel="noopener noreferrer" title="X"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.instagram.com/bagus_suciptoo" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Bagus Dwi Cahya Putra. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('nav ul');
+    if (toggle && navList) {
+        toggle.addEventListener('click', function () {
+            navList.classList.toggle('open');
+        });
+        navList.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                navList.classList.remove('open');
+            });
+        });
+    }
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+            if (e.isIntersecting) e.target.classList.add('visible');
+        });
+    }, { threshold: 0.12 });
+    reveals.forEach(function(el) { io.observe(el); });
+    const heroImageWrap = document.querySelector('.hero-image');
+    window.addEventListener('scroll', function () {
+        const y = window.scrollY * 0.05;
+        if (heroImageWrap) heroImageWrap.style.transform = `translateY(${y}px)`;
+    });
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    const navHeight = 80;
+    anchorLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            const id = link.getAttribute('href').substring(1);
+            const target = document.getElementById(id);
+            if (target) {
+                e.preventDefault();
+                const y = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+                if (navList) navList.classList.remove('open');
+            }
+        });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Diri | Bagus</title>
+
+<style>
+:root{
+  --primary:#8B0000;
+  --gray:#666;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI', sans-serif;
+}
+
+body{
+  background:#fff;
+  color:#222;
+}
+
+/* ===== PROFILE ===== */
+
+.profile{
+  display:flex;
+  gap:40px;
+  padding:60px 10%;
+  border-bottom:1px solid #eee;
+  align-items:center;
+  position:relative;
+}
+
+.profile img{
+  width:230px;
+  border-radius:15px;
+  box-shadow:0 15px 30px rgba(139,0,0,0.3);
+}
+
+.profile::before{
+  content:'';
+  position:absolute;
+  left:8%;
+  right:8%;
+  top:58px;
+  height:230px;
+  background:linear-gradient(90deg, rgba(139,0,0,0.10), rgba(139,0,0,0.06), rgba(139,0,0,0.10));
+  border-radius:20px;
+  box-shadow:0 12px 28px rgba(139,0,0,0.15);
+  z-index:0;
+}
+
+.profile > *{
+  position:relative;
+  z-index:1;
+}
+.profile-info h1{
+  color:var(--primary);
+  margin-bottom:15px;
+}
+
+/* ===== SECTION ===== */
+
+.section{
+  padding:70px 10%;
+}
+
+.section h2{
+  margin-bottom:50px;
+  color:var(--primary);
+  border-left:5px solid var(--primary);
+  padding-left:12px;
+}
+
+/* ===== ZIGZAG EDUCATION ===== */
+
+.education-item{
+  display:flex;
+  align-items:center;
+  gap:40px;
+  margin-bottom:80px;
+  position:relative;
+}
+
+.education-item:nth-child(even){
+  flex-direction:row-reverse;
+}
+
+.education-photo img{
+  width:180px;
+  border-radius:15px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.education-photo img:hover{
+  transform:scale(1.05);
+  box-shadow:0 15px 30px rgba(139,0,0,0.35);
+}
+
+.education-content{
+  flex:1;
+}
+
+/* ALIGNMENT FOLLOW POSITION */
+
+.education-item:nth-child(odd) .education-content{
+  text-align:left;
+}
+
+.education-item:nth-child(even) .education-content{
+  text-align:right;
+}
+
+/* BAND BEHIND EACH EDUCATION ITEM */
+.education-item::before{
+  content:'';
+  position:absolute;
+  left:-2%;
+  right:-2%;
+  top:-20px;
+  bottom:-20px;
+  background:linear-gradient(90deg, rgba(139,0,0,0.10), rgba(139,0,0,0.06), rgba(139,0,0,0.10));
+  border-radius:18px;
+  box-shadow:0 10px 24px rgba(139,0,0,0.12);
+  z-index:0;
+}
+.education-item:nth-child(even)::before{
+  background:linear-gradient(90deg, rgba(139,0,0,0.10), rgba(139,0,0,0.06), rgba(139,0,0,0.10));
+}
+.education-item > *{
+  position:relative;
+  z-index:1;
+}
+
+.education-content h3{
+  color:var(--primary);
+  margin-bottom:8px;
+}
+
+.education-content span{
+  display:block;
+  font-weight:600;
+  margin-bottom:10px;
+}
+
+.education-content p{
+  color:var(--gray);
+  line-height:1.6;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:900px){
+
+  .profile{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .education-item{
+    flex-direction:column !important;
+    text-align:center !important;
+  }
+
+  .education-content{
+    text-align:center !important;
+  }
+}
+</style>
+</head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Diri | Bagus</title>
+
+<style>
+
+.profile-info {
+  margin-left: 20px;
+}
+
+.profile-info h1{
+  color:#8B0000;
+  margin-bottom:20px;
+}
+
+.info-row{
+  display:grid;
+  grid-template-columns: 220px 20px 1fr;
+  margin-bottom:10px;
+}
+
+.label{
+  font-weight:600;
+}
+
+.separator{
+  text-align:center;
+}
+
+.value{
+  flex:1;
+}
+
+</style>
+</head>
+<body>
+
+<!-- PROFILE -->
+<div class="profile">
+  <img src="datadiri.png" alt="Foto Profil Bagus">
+
+  <div class="profile-info">
+    <h1>Bagus Dwi Cahya Putra</h1>
+
+    <div class="info-row">
+  <span class="label">Tempat Tanggal Lahir</span>
+  <span class="separator">:</span>
+  <span class="value">Bojonegoro, 30 Oktober 2006</span>
+</div>
+
+    <div class="info-row">
+  <span class="label">Alamat</span>
+  <span class="separator">:</span>
+  <span class="value">Dsn. Beron RT/04 RW/05, Ds Punggulrejo, Kec. Rengel, Kab. Tuban</span>
+</div>
+
+<div class="info-row">
+  <span class="label">Status</span>
+  <span class="separator">:</span>
+  <span class="value">Mahasiswa</span>
+</div>
+
+<div class="info-row">
+  <span class="label">Hobi</span>
+  <span class="separator">:</span>
+  <span class="value">Berenang dan Joging</span>
+</div>
+
+<div class="info-row">
+  <span class="label">Fun Fact</span>
+  <span class="separator">:</span>
+  <span class="value">Ketua kelas dari SD hingga bangku perkuliahan</span>
+</div>
+
+  </div>
+</div>
+
+<!-- TRAINING & EXPERIENCE -->
+<section class="section">
+  <h2>Pelatihan & Pengalaman</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Penelitian SMARTPEST-LANGKAP</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2026 • Penelitian</div>
+      <div style="color:#444;">Inovasi pengendalian hama padi berbasis energi surya, mendukung SDGs 2 Zero Hunger di Desa Langkap, Madura.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Aplikasi Marketplace (Java)</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Proyek</div>
+      <div style="color:#444;">Pengembangan marketplace berbasis Java dengan fitur transaksi dan manajemen produk.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Class Management System</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Proyek</div>
+      <div style="color:#444;">Sistem informasi berbasis VB dan C++ untuk data siswa, jadwal, dan administrasi kelas.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Aplikasi Mobile Kotlin/Java</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Proyek</div>
+      <div style="color:#444;">Aplikasi mobile dengan antarmuka XML responsif menggunakan Kotlin dan Java.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">HKI Poster Penelitian</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • HKI</div>
+      <div style="color:#444;">Pengaruh lingkungan belajar fisik akademik dan digital terhadap motivasi mahasiswa.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Ketua Pelaksana PKKMB FT Unesa</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Organisasi</div>
+      <div style="color:#444;">Memimpin pelaksanaan PKKMB Fakultaa Teknik Unesa.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">LKMM-TD HMP Ekonomi x Ekis</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Pelatihan</div>
+      <div style="color:#444;">Kegiatan LKMM-TD bersama HMP Ekonomi x Ekis Unesa.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">LKMM-TM BEM Fisipol</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Pelatihan</div>
+      <div style="color:#444;">Pelatihan manajemen dan kepemimpinan bersama BEM Fisipol Unesa.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Pelatihan Legislatif MPM Unesa</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Pelatihan</div>
+      <div style="color:#444;">Pembekalan legislatif dan tata kelola organisasi mahasiswa di MPM Unesa.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">LKMM Pra-TD HMP Informatika</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2024 • Pelatihan</div>
+      <div style="color:#444;">Pelatihan dasar manajemen organisasi bersama HMP Informatika Unesa.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ORGANIZATION -->
+<section class="section">
+  <h2>Riwayat Organisasi</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;">
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Sekretaris Umum</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2026 • Dewan Perwakilan Mahasiswa Fakultas Teknik, Unesa</div>
+      <div style="color:#444;">Mengelola administrasi, korespondensi, dan koordinasi agenda kelembagaan DPM FT.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Departemen Dalam Negeri</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025 • Badan Eksekutif Mahasiswa Fakultas Teknik, Unesa</div>
+      <div style="color:#444;">Penguatan internal, sinergi program, dan koordinasi antar-unit di lingkungan FT.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Departemen Agama</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025–2026 • Forum Mahasiswa Tuban Ronggolawe</div>
+      <div style="color:#444;">Program pembinaan rohani, kajian keagamaan, dan kegiatan sosial kemasyarakatan.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Bendahara Umum</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2025–2026 • PAC IPNU Rengel</div>
+      <div style="color:#444;">Pengelolaan keuangan, pencatatan, dan akuntabilitas kegiatan organisasi.</div>
+    </div>
+    <div style="background:#fff;border:1px solid #eee;border-radius:12px;box-shadow:0 8px 18px rgba(0,0,0,0.06);padding:16px;transition:0.3s;">
+      <div style="font-weight:700;color:#222;margin-bottom:6px;">Departemen Jaringan Sekolah & Pesantren</div>
+      <div style="color:#666;font-size:0.9rem;margin-bottom:6px;">2023–2024 • PAC IPNU Rengel</div>
+      <div style="color:#444;">Penguatan jejaring dan kolaborasi dengan sekolah serta pesantren wilayah Rengel.</div>
+    </div>
+  </div>
+  </section>
+
+<!-- EDUCATION -->
+<section class="section">
+  <h2>Riwayat Pendidikan</h2>
+
+  <div class="education-item">
+    <div class="education-photo">
+      <img src="unesa.png" alt="Universitas Negeri Surabaya">
+    </div>
+    <div class="education-content">
+      <h3>Universitas Negeri Surabaya</h3>
+      <span>2024 - Sekarang</span>
+      <p>Menempuh studi Pendidikan Teknologi Informasi dengan fokus pada pengembangan sistem digital serta integrasi teknologi dalam praktik pendidikan. Fase ini menjadi ruang pendalaman intelektual sekaligus penguatan kepemimpinan melalui keterlibatan dalam organisasi dan penelitian yang berorientasi pada kebermanfaatan.</p>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-photo">
+      <img src="sma.png" alt="SMAN 1 Rengel">
+    </div>
+    <div class="education-content">
+      <h3>SMAN 1 Rengel</h3>
+      <span>2021 - 2024</span>
+      <p>Memperkuat landasan akademik serta membangun kedewasaan berpikir melalui partisipasi aktif dalam kegiatan sekolah. Periode ini menjadi tahap transisi penting dalam membentuk disiplin, tanggung jawab, dan kesiapan menuju pendidikan tinggi.</p>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-photo">
+      <img src="smp.png" alt="SMPN 2 Rengel">
+    </div>
+    <div class="education-content">
+      <h3>SMPN 2 Rengel</h3>
+      <span>2018 - 2021</span>
+      <p>Mengembangkan fondasi akademik dan karakter melalui proses pembelajaran yang menekankan kedisiplinan, kerja sama, serta adaptasi dalam lingkungan pendidikan yang dinamis.</p>
+    </div>
+  </div>
+
+  <div class="education-item">
+    <div class="education-photo">
+      <img src="sd.png" alt="SDN Punggulrejo">
+    </div>
+    <div class="education-content">
+      <h3>SDN Punggulrejo</h3>
+      <span>2012 - 2018</span>
+      <p>Tahap pembentukan dasar literasi, numerasi, dan karakter sebagai fondasi awal perjalanan intelektual.</p>
+    </div>
+  </div>
+
+   <div class="education-item">
+    <div class="education-photo">
+      <img src="tk.png" alt="TK PGRI Punggulrejo">
+    </div>
+    <div class="education-content">
+      <h3>TK PGRI Punggulrejo</h3>
+      <span>2010 - 2012</span>
+      <p>Fase pengenalan terhadap lingkungan pendidikan formal yang menumbuhkan rasa ingin tahu dan kesiapan belajar sebagai bagian dari proses perkembangan awal.</p>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
