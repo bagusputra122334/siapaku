@@ -268,7 +268,7 @@
         /* Projects */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2.5rem;
         }
 
@@ -370,11 +370,26 @@
         }
 
         /* Responsive */
+        @media (max-width: 992px) {
+            #hero h1 { font-size: 3rem; }
+            .hero-wrapper { gap: 2.5rem; }
+            section { padding: 80px 0; }
+        }
+
         @media (max-width: 768px) {
-            #hero h1 { font-size: 2.5rem; }
+            #hero h1 { font-size: 2.2rem; }
+            #hero p { font-size: 1rem; }
             .hero-wrapper { text-align: center; justify-content: center; }
-            .hero-image img { width: 280px; height: 280px; }
-            .btn-group { justify-content: center; }
+            .hero-image img {
+                width: 260px;
+                height: 260px;
+                box-shadow: 10px 10px 0 var(--primary);
+            }
+            .btn-group { justify-content: center; flex-wrap: wrap; }
+            .section-title { font-size: 2rem; margin-bottom: 2.5rem; }
+            section { padding: 70px 0; }
+            .container { padding: 0 1.25rem; }
+
             .menu-toggle { display: inline-block; }
             nav ul { display: none; }
             nav ul.open {
@@ -391,6 +406,13 @@
                 gap: 1rem;
             }
         }
+
+        @media (max-width: 480px) {
+            #hero h1 { font-size: 1.9rem; }
+            .hero-subtitle { font-size: 0.8rem; }
+            .btn { width: 100%; text-align: center; }
+            .project-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -403,7 +425,7 @@
                 <li><a href="#hero">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#skills">Keahlian</a></li>
-                <li><a href="data diri.html">Data Diri</a></li>
+                <li><a href="datadiri.html">Data Diri</a></li>
                 <li><a href="#projects">Proyek</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
@@ -494,7 +516,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         </div>
     </section>
 
-    <section id="projects" class="reveal" style="background: #fff;"></section>
+    <section id="projects" class="reveal" style="background: #fff;">
         <div class="container">
             <h2 class="section-title">Proyek Unggulan</h2>
             <div class="project-grid">
