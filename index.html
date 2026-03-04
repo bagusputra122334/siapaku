@@ -844,5 +844,39 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         });
     });
     </script>
+    <script>
+    (function () {
+        const heroWrapper = document.querySelector('.hero-wrapper');
+        const heroContent = document.querySelector('.hero-content');
+        const heroImage = document.querySelector('.hero-image');
+        const btnGroup = heroContent ? heroContent.querySelector('.btn-group') : null;
+        const heroTitle = heroContent ? heroContent.querySelector('h1') : null;
+        function layoutHero() {
+            const mobile = window.innerWidth <= 768;
+            if (!heroWrapper || !heroContent || !heroImage || !btnGroup || !heroTitle) return;
+            if (mobile) {
+                if (heroImage.parentElement !== heroContent) {
+                    heroTitle.insertAdjacentElement('afterend', heroImage);
+                }
+                heroImage.insertAdjacentElement('afterend', btnGroup);
+                const ps = heroContent.querySelectorAll('p');
+                ps.forEach(function (p) {
+                    btnGroup.insertAdjacentElement('afterend', p);
+                });
+            } else {
+                if (heroImage.parentElement !== heroWrapper) {
+                    heroWrapper.appendChild(heroImage);
+                }
+                const ps = heroContent.querySelectorAll('p');
+                const lastP = ps[ps.length - 1];
+                if (lastP) {
+                    lastP.insertAdjacentElement('afterend', btnGroup);
+                }
+            }
+        }
+        layoutHero();
+        window.addEventListener('resize', layoutHero);
+    })();
+    </script>
 </body>
 </html>
