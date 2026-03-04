@@ -19,8 +19,16 @@
 }
 
 body{
-  background:#fff;
+  background:transparent;
   color:#222;
+  overflow-x:hidden;
+}
+
+#bg3d-profile{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
 }
 
 /* ===== PROFILE ===== */
@@ -170,7 +178,7 @@ body{
     text-align:center !important;
   }
 }
-</style>
+}</style>
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -208,10 +216,11 @@ body{
 </style>
 </head>
 <body>
+<div id="bg3d-profile"></div>
 
 <!-- PROFILE -->
 <div class="profile">
-  <img src="datadiri.png" alt="Foto Profil Bagus">
+  <img src="img/datadiri.png" alt="Foto Profil Bagus">
 
   <div class="profile-info">
     <h1>Bagus Dwi Cahya Putra</h1>
@@ -344,7 +353,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="unesa.png" alt="Universitas Negeri Surabaya">
+      <img src="img/unesa.png" alt="Universitas Negeri Surabaya">
     </div>
     <div class="education-content">
       <h3>Universitas Negeri Surabaya</h3>
@@ -355,7 +364,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="sma.png" alt="SMAN 1 Rengel">
+      <img src="img/sma.png" alt="SMAN 1 Rengel">
     </div>
     <div class="education-content">
       <h3>SMAN 1 Rengel</h3>
@@ -366,7 +375,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="smp.png" alt="SMPN 2 Rengel">
+      <img src="img/smp.png" alt="SMPN 2 Rengel">
     </div>
     <div class="education-content">
       <h3>SMPN 2 Rengel</h3>
@@ -377,7 +386,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="sd.png" alt="SDN Punggulrejo">
+      <img src="img/sd.png" alt="SDN Punggulrejo">
     </div>
     <div class="education-content">
       <h3>SDN Punggulrejo</h3>
@@ -388,7 +397,7 @@ body{
 
    <div class="education-item">
     <div class="education-photo">
-      <img src="tk.png" alt="TK PGRI Punggulrejo">
+      <img src="img/tk.png" alt="TK PGRI Punggulrejo">
     </div>
     <div class="education-content">
       <h3>TK PGRI Punggulrejo</h3>
@@ -397,6 +406,144 @@ body{
     </div>
   </div>
 </section>
+
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function () {
+  const container = document.getElementById('bg3d-profile');
+  if (!container || !window.THREE) return;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(
+    55,
+    window.innerWidth / window.innerHeight,
+    1,
+    2000
+  );
+  camera.position.z = 650;
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio || 1);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setClearColor(0x020816, 0);
+  container.appendChild(renderer.domElement);
+
+  const PARTICLE_COUNT = 220;
+  const MAX_DISTANCE = 140;
+  const space = 900;
+  const half = space / 2;
+
+  const geometry = new THREE.BufferGeometry();
+  const positions = new Float32Array(PARTICLE_COUNT * 3);
+  const velocities = new Float32Array(PARTICLE_COUNT * 3);
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    const i3 = i * 3;
+    positions[i3] = (Math.random() - 0.5) * space;
+    positions[i3 + 1] = (Math.random() - 0.5) * space * 0.6;
+    positions[i3 + 2] = (Math.random() - 0.5) * space;
+
+    velocities[i3] = (Math.random() - 0.5) * 0.3;
+    velocities[i3 + 1] = (Math.random() - 0.5) * 0.25;
+    velocities[i3 + 2] = (Math.random() - 0.5) * 0.3;
+  }
+
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+  const points = new THREE.Points(
+    geometry,
+    new THREE.PointsMaterial({
+      color: 0x1E88E5,
+      size: 4,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending
+    })
+  );
+  scene.add(points);
+
+  const MAX_LINES = PARTICLE_COUNT * 4;
+  const linePositions = new Float32Array(MAX_LINES * 6);
+  const lineGeometry = new THREE.BufferGeometry();
+  lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+  const lines = new THREE.LineSegments(
+    lineGeometry,
+    new THREE.LineBasicMaterial({
+      color: 0x80DEEA,
+      transparent: true,
+      opacity: 0.4
+    })
+  );
+  scene.add(lines);
+
+  function animate() {
+    requestAnimationFrame(animate);
+
+    const pos = geometry.attributes.position.array;
+
+    for (let i = 0; i < pos.length; i += 3) {
+      pos[i] += velocities[i];
+      pos[i + 1] += velocities[i + 1];
+      pos[i + 2] += velocities[i + 2];
+
+      for (let axis = 0; axis < 3; axis++) {
+        const idx = i + axis;
+        if (pos[idx] < -half || pos[idx] > half) velocities[idx] = -velocities[idx];
+      }
+    }
+    geometry.attributes.position.needsUpdate = true;
+
+    let lineIndex = 0;
+    const lp = lineGeometry.attributes.position.array;
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      const i3 = i * 3;
+      const xi = pos[i3];
+      const yi = pos[i3 + 1];
+      const zi = pos[i3 + 2];
+
+      for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+        const j3 = j * 3;
+        const dx = xi - pos[j3];
+        const dy = yi - pos[j3 + 1];
+        const dz = zi - pos[j3 + 2];
+        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+        if (dist < MAX_DISTANCE && lineIndex < MAX_LINES) {
+          const li = lineIndex * 6;
+          lp[li] = xi;
+          lp[li + 1] = yi;
+          lp[li + 2] = zi;
+          lp[li + 3] = pos[j3];
+          lp[li + 4] = pos[j3 + 1];
+          lp[li + 5] = pos[j3 + 2];
+          lineIndex++;
+        }
+      }
+    }
+
+    lineGeometry.setDrawRange(0, lineIndex * 2);
+    lineGeometry.attributes.position.needsUpdate = true;
+
+    scene.rotation.y += 0.0007;
+    scene.rotation.x += 0.00025;
+
+    renderer.render(scene, camera);
+  }
+
+  function onResize() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+  }
+
+  window.addEventListener('resize', onResize);
+  animate();
+})();
+</script>
 
 </body>
 </html>

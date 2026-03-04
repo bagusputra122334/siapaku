@@ -36,7 +36,7 @@
         }
 
         body {
-            background-color: var(--bg);
+            background-color: transparent;
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
@@ -47,6 +47,13 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 5%;
+        }
+
+        #bg3d {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
         }
 
         section {
@@ -68,7 +75,7 @@
 
         /* Navbar */
         nav {
-            background-color: rgba(255, 255, 255, 0.8);
+            background-color: rgba(255, 255, 255, 0.6);
             backdrop-filter: blur(15px);
             height: 80px;
             display: flex;
@@ -137,7 +144,7 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(135deg, #fff 0%, #fdecec 100%);
+            background: transparent;
         }
 
         .hero-wrapper {
@@ -243,7 +250,7 @@
         }
 
         .skill-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.65);
             padding: 2.5rem 1.5rem;
             border-radius: 15px;
             text-align: center;
@@ -273,7 +280,7 @@
         }
 
         .project-card {
-            background: var(--white);
+            background: rgba(255, 255, 255, 0.68);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
@@ -307,12 +314,13 @@
 
         /* Contact */
         #contact {
-            background-color: var(--primary-dark);
-            color: var(--white);
+            background-color: rgba(178, 34, 34, 0.06); /* merah nyaris transparan */
+            color: var(--primary);
+            backdrop-filter: blur(6px);
         }
 
-        #contact .section-title { color: var(--white); }
-        #contact .section-title::after { background: var(--white); }
+        #contact .section-title { color: var(--primary); }
+        #contact .section-title::after { background: var(--primary); }
 
         .contact-wrapper {
             display: flex;
@@ -325,11 +333,11 @@
         .contact-item i {
             font-size: 2.4rem;
             margin-bottom: 1rem;
-            color: var(--white) !important;
+            color: var(--primary) !important;
         }
         #contact .contact-item p,
         #contact .contact-item a {
-            color: var(--white) !important;
+            color: var(--primary) !important;
         }
 
         .social-links {
@@ -340,7 +348,7 @@
         }
 
         .social-links a {
-            color: var(--white) !important;
+            color: var(--primary) !important;
             font-size: 1.8rem;
             transition: var(--transition);
             display: flex;
@@ -362,11 +370,12 @@
         }
 
         footer {
-            background: #1a1a1a;
-            color: #888;
+            background: rgba(10, 10, 10, 0.7);
+            color: #f0f0f0;
             padding: 2rem 0;
             text-align: center;
             font-size: 0.9rem;
+            backdrop-filter: blur(10px);
         }
 
         /* Responsive */
@@ -425,7 +434,7 @@
                 <li><a href="#hero">Beranda</a></li>
                 <li><a href="#about">Tentang</a></li>
                 <li><a href="#skills">Keahlian</a></li>
-                <li><a href="datadiri.html">Data Diri</a></li>
+                <li><a href="data diri.html">Data Diri</a></li>
                 <li><a href="#projects">Proyek</a></li>
                 <li><a href="#contact">Kontak</a></li>
             </ul>
@@ -455,13 +464,13 @@ untuk menciptakan dampak yang berkelanjutan.
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="24050974004.jpg" alt="Bagus Dwi Cahya Putra">
+                    <img src="img/24050974004.jpg" alt="Bagus Dwi Cahya Putra">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="reveal" style="background: #fff;">
+    <section id="about" class="reveal">
         <div class="container">
             <h2 class="section-title">Tentang Saya</h2>
             <div style="max-width: 800px; margin: 0 auto; text-align: center;">
@@ -516,14 +525,14 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         </div>
     </section>
 
-    <section id="projects" class="reveal" style="background: #fff;">
+    <section id="projects" class="reveal">
         <div class="container">
             <h2 class="section-title">Proyek Unggulan</h2>
             <div class="project-grid">
                 <!-- Project 1 -->
                 <div class="project-card reveal" style="transition-delay: 0s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="bam teknik bg.png" alt="Grafik 3 Dimensi" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                        <img src="img/bam teknik bg.png" alt="Grafik 3 Dimensi" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
                         <h3>Pembuatan Grafik 3 Dimensi menggunakan C++</h3>
@@ -534,7 +543,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 <!-- Project 2 -->
                 <div class="project-card reveal" style="transition-delay: 0.08s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="manajemen.png" alt="Class Management System" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                        <img src="img/manajemen.png" alt="Class Management System" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
                         <h3>Class Management System</h3>
@@ -545,7 +554,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 <!-- Project 3 -->
                 <div class="project-card reveal" style="transition-delay: 0.16s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="mobile.png" alt="Android Mobile Solution" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                        <img src="img/mobile.png" alt="Android Mobile Solution" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
                         <h3>Android Mobile Solution</h3>
@@ -556,7 +565,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 <!-- Project 4 -->
                 <div class="project-card reveal" style="transition-delay: 0.24s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="web.png" alt="Personal Branding Web" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%;">
+                        <img src="img/web.png" alt="Personal Branding Web" style="width: 100%; height: 100%; object-fit: cover; object-position: center 45%;">
                     </div>
                     <div class="project-info">
                         <h3>Personal Branding Web</h3>
@@ -567,7 +576,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 <!-- Project 5 -->
                 <div class="project-card reveal" style="transition-delay: 0.32s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="rektorat.png" alt="Rektorat UNESA" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                        <img src="img/rektorat.png" alt="Rektorat UNESA" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
                         <h3>Proyek Rektorat</h3>
@@ -578,7 +587,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 <!-- Project 6 -->
                 <div class="project-card reveal" style="transition-delay: 0.40s;">
                     <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
-                        <img src="hki.png" alt="HKI" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                        <img src="img/hki.png" alt="HKI" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
                         <h3>Hak Kekayaan Intelektual</h3>
@@ -635,6 +644,143 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         </div>
     </footer>
 
+    <div id="bg3d"></div>
+
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+    <script>
+    (function () {
+        const container = document.getElementById('bg3d');
+        if (!container || !window.THREE) return;
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+            60,
+            window.innerWidth / window.innerHeight,
+            1,
+            2000
+        );
+        camera.position.z = 600;
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0);
+        container.appendChild(renderer.domElement);
+
+        const PARTICLE_COUNT = 260;
+        const MAX_DISTANCE = 150;
+        const space = 800;
+        const half = space / 2;
+
+        const particleGeometry = new THREE.BufferGeometry();
+        const positions = new Float32Array(PARTICLE_COUNT * 3);
+        const velocities = new Float32Array(PARTICLE_COUNT * 3);
+
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            const i3 = i * 3;
+            positions[i3] = (Math.random() - 0.5) * space;
+            positions[i3 + 1] = (Math.random() - 0.5) * space;
+            positions[i3 + 2] = (Math.random() - 0.5) * space;
+
+            velocities[i3] = (Math.random() - 0.5) * 0.4;
+            velocities[i3 + 1] = (Math.random() - 0.5) * 0.4;
+            velocities[i3 + 2] = (Math.random() - 0.5) * 0.4;
+        }
+
+        particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const particles = new THREE.Points(
+            particleGeometry,
+            new THREE.PointsMaterial({
+                color: 0xB22222,
+                size: 4,
+                transparent: true,
+                opacity: 0.9,
+                blending: THREE.AdditiveBlending
+            })
+        );
+        scene.add(particles);
+
+        const MAX_LINES = PARTICLE_COUNT * 6;
+        const linePositions = new Float32Array(MAX_LINES * 6);
+        const lineGeometry = new THREE.BufferGeometry();
+        lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+
+        const network = new THREE.LineSegments(
+            lineGeometry,
+            new THREE.LineBasicMaterial({
+                color: 0xFF4D4D,
+                transparent: true,
+                opacity: 0.35
+            })
+        );
+        scene.add(network);
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const pos = particleGeometry.attributes.position.array;
+
+            for (let i = 0; i < pos.length; i += 3) {
+                pos[i] += velocities[i];
+                pos[i + 1] += velocities[i + 1];
+                pos[i + 2] += velocities[i + 2];
+
+                for (let axis = 0; axis < 3; axis++) {
+                    const idx = i + axis;
+                    if (pos[idx] < -half || pos[idx] > half) velocities[idx] = -velocities[idx];
+                }
+            }
+            particleGeometry.attributes.position.needsUpdate = true;
+
+            let lineIndex = 0;
+            const lp = lineGeometry.attributes.position.array;
+
+            for (let i = 0; i < PARTICLE_COUNT; i++) {
+                const i3 = i * 3;
+                const xi = pos[i3];
+                const yi = pos[i3 + 1];
+                const zi = pos[i3 + 2];
+
+                for (let j = i + 1; j < PARTICLE_COUNT; j++) {
+                    const j3 = j * 3;
+                    const dx = xi - pos[j3];
+                    const dy = yi - pos[j3 + 1];
+                    const dz = zi - pos[j3 + 2];
+                    const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+                    if (dist < MAX_DISTANCE && lineIndex < MAX_LINES) {
+                        const li = lineIndex * 6;
+                        lp[li] = xi;
+                        lp[li + 1] = yi;
+                        lp[li + 2] = zi;
+                        lp[li + 3] = pos[j3];
+                        lp[li + 4] = pos[j3 + 1];
+                        lp[li + 5] = pos[j3 + 2];
+                        lineIndex++;
+                    }
+                }
+            }
+
+            lineGeometry.setDrawRange(0, lineIndex * 2);
+            lineGeometry.attributes.position.needsUpdate = true;
+
+            scene.rotation.y += 0.0008;
+            renderer.render(scene, camera);
+        }
+
+        function onResize() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            camera.aspect = w / h;
+            camera.updateProjectionMatrix();
+            renderer.setSize(w, h);
+        }
+
+        window.addEventListener('resize', onResize);
+        animate();
+    })();
+    </script>
     <script>
     const toggle = document.querySelector('.menu-toggle');
     const navList = document.querySelector('nav ul');
