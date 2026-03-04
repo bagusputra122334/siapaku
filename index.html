@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bagus Dwi Cahya Putra | Portfolio</title>
+    <link rel="icon" type="image/png" href="img/br.png">
         <meta name="description" content="Portofolio Bagus Dwi Cahya Putra: pengembangan web, desain UI/UX, dan proyek teknologi.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,10 +98,19 @@
 
         .logo {
             font-weight: 700;
-            font-size: 1.4rem;
+            font-size: 0.75rem;
             color: var(--primary-dark);
             text-decoration: none;
             letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo img {
+            height: 1em;
+            width: 1em;
+            display: inline-block;
+            object-fit: contain;
         }
 
         .menu-toggle {
@@ -274,12 +284,14 @@
 
         /* Projects */
         .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
             gap: 2.5rem;
         }
 
         .project-card {
+            width: 330px;
             background: rgba(255, 255, 255, 0.68);
             border-radius: 15px;
             overflow: hidden;
@@ -420,7 +432,7 @@
             #hero h1 { font-size: 1.9rem; }
             .hero-subtitle { font-size: 0.8rem; }
             .btn { width: 100%; text-align: center; }
-            .project-grid { grid-template-columns: 1fr; }
+            .project-card { width: 100%; }
         }
     </style>
 </head>
@@ -428,7 +440,7 @@
 
     <nav>
         <div class="container">
-            <a href="#" class="logo">BAGUS DWI.</a>
+            <a href="#" class="logo"><img src="img/br.png" alt="Logo BR">By Blackrose.</a>
             <button class="menu-toggle" aria-label="Buka menu">Menu</button>
             <ul>
                 <li><a href="#hero">Beranda</a></li>
@@ -535,8 +547,8 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                         <img src="img/bam teknik bg.png" alt="Grafik 3 Dimensi" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
-                        <h3>Pembuatan Grafik 3 Dimensi menggunakan C++</h3>
-                        <p>Eksplorasi grafika komputer dengan pembuatan objek 3D menggunakan bahasa pemrograman C++ dan pustaka grafis modern.</p>
+                        <h3>Pembuatan aplikasi marketplace berbasis java</h3>
+                        <p>Objeck Oriented programming yang berfokus pada pembuatan aplikasi marketplace untuk munti user lengkap dengan device netbeans25 dann database mySQL.</p>
                         <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
@@ -547,7 +559,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                     </div>
                     <div class="project-info">
                         <h3>Class Management System</h3>
-                        <p>Sistem informasi berbasis Java untuk mengelola data siswa, jadwal pelajaran, dan administrasi kelas secara digital.</p>
+                        <p>Sistem informasi berbasis Java untuk mengelola data siswa, jadwal pelajaran, dan administrasi kelas secara digital berbasis VB.</p>
                         <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
@@ -579,8 +591,8 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                         <img src="img/rektorat.png" alt="Rektorat UNESA" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
                     </div>
                     <div class="project-info">
-                        <h3>Proyek Rektorat</h3>
-                        <p>Deskripsi singkat tentang proyek inovatif lainnya yang sedang atau telah Anda kembangkan.</p>
+                        <h3>Visualisasi 2D Rektorat</h3>
+                        <p>Visualisasi Gedung rektorat sebagai bentuk implementasi Grafika komputer yang berbasis C++.</p>
                         <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
@@ -592,6 +604,17 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                     <div class="project-info">
                         <h3>Hak Kekayaan Intelektual</h3>
                         <p>HKI Tendang sebuah penelitian bagaimana pengaruh motivasi belajar terhadap prestasi mahasiswa Pendidikan Ekonomi Unesa 2024.</p>
+                        <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
+                    </div>
+                </div>
+                <!-- Project 7 -->
+                <div class="project-card reveal" style="transition-delay: 0.48s;">
+                    <div class="project-img" style="display: flex; align-items: center; justify-content: center; background: #fdecec;">
+                        <img src="img/Smartpest.png" alt="Smart Farming" style="width: 100%; height: 100%; object-fit: cover; object-position: center 50%;">
+                    </div>
+                    <div class="project-info">
+                        <h3>Inovasi Smart Farming</h3>
+                        <p>SMARTPEST-LANGKAP: Inovasi Pengendalian Hama Padi (Burung, Wereng, dan tikus) Berbasis Energi Surya untuk Mendukung Zero Hunger di Desa Langkap.</p>
                         <a href="#" style="color: var(--primary); text-decoration: none; font-weight: 600;">Lihat Detail &rarr;</a>
                     </div>
                 </div>
