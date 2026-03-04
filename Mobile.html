@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Laporan Aplikasi Mobile Obatin</title>
+  <style>
+    html{scroll-behavior:smooth}
+    body{
+      font-family: "Times New Roman", Times, serif;
+      margin: 0;
+      line-height: 1.7;
+      color: #111;
+      background: transparent;
+      overflow-x: hidden;
+    }
+    #bg3d-mobile{
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .container{
+      max-width: 980px;
+      margin: 40px auto;
+      padding: 28px;
+      background: rgba(255,255,255,0.55);
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.10);
+      backdrop-filter: blur(12px) saturate(1.15);
+      border: 1px solid rgba(255,255,255,0.25);
+    }
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+      align-items:start;
+    }
+    .gallery figure{
+      margin:0;
+      background:transparent;
+      border-radius:0;
+      box-shadow:none;
+      overflow:visible;
+      border:none;
+    }
+    .gallery img{
+      width:100%;
+      height:auto;
+      object-fit:contain;
+      display:block;
+    }
+    .gallery figcaption{display:none}
+    h1{
+      text-align:center;
+      margin: 0 0 18px 0;
+      letter-spacing: .5px;
+    }
+    h2{
+      margin-top: 34px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+    }
+    h3{
+      margin-top: 18px;
+    }
+    p{ text-align: justify; margin: 10px 0; }
+    ol, ul{ margin: 8px 0 12px 22px; }
+    li{ margin: 6px 0; }
+    .meta{
+      margin: 10px 0 18px;
+      padding: 12px 14px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+      border-radius: 8px;
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0 16px;
+      font-size: 15px;
+    }
+    th, td{
+      border: 1px solid #333;
+      padding: 8px 10px;
+      vertical-align: top;
+    }
+    th{
+      text-align: left;
+      background: #f3f3f3;
+    }
+    .small{ font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div id="bg3d-mobile"></div>
+  <div class="container">
+
+    <h1>LAPORAN APLIKASI MOBILE OBATIN</h1>
+
+    <h2>BAB I PENDAHULUAN</h2>
+
+    <h3>1.1 Latar Belakang</h3>
+    <p>
+      Kesehatan merupakan kebutuhan dasar manusia yang harus dijaga sepanjang hidup. Salah satu faktor penting dalam menjaga kesehatan adalah kepatuhan terhadap konsumsi obat sesuai dengan dosis dan jadwal yang dianjurkan oleh tenaga medis. Namun dalam kenyataannya, banyak pasien yang sering lupa meminum obat tepat waktu karena kesibukan sehingga lupa akan kondisi tubuh yang memerlukan mengonsumsi obat tepat waktu. Kondisi ini menyebabkan efektivitas pengobatan menurun dan memperlambat proses penyembuhan. Dengan berkembangnya teknologi informasi, terutama pada platform mobile, muncul peluang besar untuk membantu masyarakat mengelola jadwal konsumsi obat secara lebih efisien. Aplikasi mobile kini dapat digunakan sebagai asisten pribadi yang membantu pengguna mengatur jadwal minum obat, mencatat riwayat penggunaan, dan memberikan pengingat otomatis sesuai waktu yang diatur.
+    </p>
+    <p>
+      Berdasarkan kebutuhan tersebut, dikembangkanlah aplikasi “Obatin”, yaitu aplikasi pencatat dan pengingat konsumsi obat yang dirancang untuk membantu pengguna agar tidak lupa minum obat sesuai waktu dan dosis yang benar. Aplikasi ini juga menyimpan data riwayat konsumsi obat, sehingga pengguna dapat memantau keteraturan pengobatannya secara mandiri. Melalui aplikasi ini, diharapkan pengguna dapat lebih disiplin dalam menjalani terapi, meningkatkan efektivitas pengobatan, dan mendukung gerakan digitalisasi kesehatan masyarakat di era modern.
+    </p>
+
+    <h3>1.2 Tujuan</h3>
+    <p>
+      Aplikasi mobile kini dapat digunakan sebagai asisten pribadi yang membantu pengguna mengatur jadwal minum obat, mencatat riwayat penggunaan, dan memberikan pengingat otomatis sesuai waktu yang diatur. Berdasarkan kebutuhan tersebut, dikembangkanlah aplikasi “Obatin”, yaitu aplikasi pencatat dan pengingat konsumsi obat yang dirancang dengan tujuan untuk membantu pengguna agar tidak lupa minum obat sesuai waktu dan dosis yang benar. Aplikasi ini juga menyimpan data riwayat konsumsi obat, sehingga pengguna dapat memantau keteraturan pengobatannya secara mandiri. Melalui aplikasi ini, diharapkan pengguna dapat lebih disiplin dalam menjalani terapi, meningkatkan efektivitas pengobatan, dan mendukung gerakan digitalisasi kesehatan masyarakat di era modern
+    </p>
+
+    <h3>1.3 Pentingnya Pengembangan Aplikasi</h3>
+    <p>
+      Pengembangan aplikasi pencatat dan pengingat konsumsi obat, Obatin, menjadi penting karena beberapa alasan mendasar, terutama dalam mengatasi tantangan kepatuhan dan manajemen data kesehatan pribadi:
+    </p>
+    <ol>
+      <li>
+        <b>Mengatasi Risiko Ketidakpatuhan (Non-Adherence):</b> Aplikasi ini berfungsi sebagai solusi digital untuk masalah utama ketidakpatuhan obat (lupa waktu atau dosis), yang umum terjadi karena kesibukan atau kelalaian. Dengan adanya Pengingat Otomatis sesuai jadwal yang telah diatur, aplikasi ini secara langsung meningkatkan kedisiplinan dan efektivitas pengobatan pengguna.
+      </li>
+      <li>
+        <b>Meningkatkan Akurasi dan Keamanan Data:</b> Berbeda dengan metode manual (misalnya menggunakan buku catatan atau lembar kertas yang mudah hilang atau rusak), Obatin menyimpan semua data riwayat konsumsi obat secara digital dan terstruktur. Data yang tersimpan aman dan mudah dicari kembali, mendukung pemantauan terapi yang lebih akurat.
+      </li>
+      <li>
+        <b>Memberikan Umpan Balik Kepatuhan Mandiri:</b> Aplikasi Obatin tidak hanya mengingatkan, tetapi juga memberikan fitur Statistik Kepatuhan untuk pengguna. Fitur ini memungkinkan pengguna memantau keteraturan pengobatan mereka secara mandiri, memberikan motivasi, dan membantu mereka segera mengidentifikasi hari-hari di mana mereka mengalami penalti (terlambat) atau berhasil patuh.
+      </li>
+      <li>
+        <b>Mendukung Digitalisasi Kesehatan:</b> Pengembangan aplikasi berbasis Android ini sejalan dengan perkembangan teknologi informasi. Aplikasi ini menyediakan kenyamanan bagi pengguna (Masyarakat) untuk mengelola data kesehatan secara sistematis dan modern, mendukung gerakan digitalisasi kesehatan masyarakat di era modern.
+      </li>
+    </ol>
+
+    <h2>BAB II ANALISIS SISTEM APLIKASI</h2>
+
+    <h3>2.1 Nama Aplikasi dan Link GitHub</h3>
+    <div class="meta">
+      <p><b>Nama Aplikasi</b> : Aplikasi Pencatatan Obat</p>
+      <p><b>Link Github</b> : https://github.com/Blackrose1223/Obataja.git</p>
+    </div>
+
+    <h3>2.2 Deskripsi Singkat Aplikasi</h3>
+    <p>
+      Aplikasi Obatin adalah aplikasi mobile berbasis Android yang dirancang untuk membantu pengguna dalam mencatat, mengatur, dan mengingat jadwal konsumsi obat secara lebih teratur. Aplikasi ini dikembangkan sebagai versi perbaikan dan peningkatan dari aplikasi sumber. Tujuan utama proyek ini adalah menyediakan solusi digital yang praktis, yaitu sistem pengingat dan pencatat konsumsi obat berbasis Android, untuk meningkatkan disiplin pengguna dalam menjalani terapi dan mengoptimalkan proses penyembuhan.
+    </p>
+    <p>
+      Aplikasi Obatin bertujuan untuk meningkatkan kepatuhan pengguna terhadap jadwal pengobatan yang telah ditentukan, sehingga proses penyembuhan dapat berjalan lebih efektif dan efisien. Aplikasi ini juga dilengkapi dengan fitur riwayat konsumsi obat dan statistik penggunaan, yang memungkinkan pengguna untuk meninjau kebiasaan minum obat mereka dan memantau perkembangan terapi secara menyeluruh.
+    </p>
+
+    <h3>2.3 Analisis Kebutuhan dan Daftar Perubahan</h3>
+
+    <h3 class="small">2.3.1 Analisis kebutuhan pengguna</h3>
+    <p>
+      Analisis kebutuhan dilakukan untuk memastikan aplikasi Obatin mampu menjadi solusi digital yang praktis dalam membantu masyarakat menjaga keteraturan konsumsi obat sehari-hari. Aplikasi ini memiliki peranan penting bagi berbagai pihak, dengan kebutuhan yang diidentifikasi sebagai berikut:
+    </p>
+    <ol>
+      <li>
+        <b>Bagi Pengguna/Pasien:</b> Pengguna membutuhkan kemudahan dalam mengatur dan mengingat jadwal konsumsi obat, sehingga tidak khawatir lupa atau salah waktu dalam mengonsumsi obat. Mereka juga perlu memantau perkembangan terapi secara menyeluruh melalui riwayat dan statistik.
+      </li>
+      <li>
+        <b>Bagi Tenaga Medis:</b> Tenaga medis membutuhkan media edukasi yang membantu pasien memahami pentingnya kepatuhan terhadap jadwal pengobatan. Fitur-fitur Obatin dapat mendorong pasien untuk lebih disiplin dan bertanggung jawab.
+      </li>
+      <li>
+        <b>Kebutuhan Sistem:</b> Sistem harus menghadirkan aplikasi berbasis Android dengan tampilan antarmuka yang ramah pengguna, sehingga mudah digunakan oleh berbagai kalangan tanpa memerlukan keahlian teknis yang rumit.
+      </li>
+    </ol>
+
+    <h3 class="small">2.3.2 Penambahan fitur</h3>
+    <p>
+      Aplikasi Obatin dikembangkan berdasarkan Obataja dengan sejumlah pembaruan dan peningkatan fitur yang mengatasi kekurangan aplikasi sumber. Kekurangan Obataja meliputi belum adanya fitur riwayat konsumsi obat harian, statistik kepatuhan, dan desain antarmuka yang sederhana.
+    </p>
+    <p>Fitur yang akan ditambahkan dan ditingkatkan dalam Obatin meliputi:</p>
+    <ol>
+      <li>Menambahkan fitur login.</li>
+      <li>Menambahkan fitur riwayat konsumsi obat harian, mingguan, dan bulanan.</li>
+      <li>Menambahkan fitur statistik kepatuhan pengguna dalam minum obat.</li>
+      <li>Menambahkan fitur catatan tambahan (notes) untuk setiap obat.</li>
+      <li>Mendesain ulang UI/UX agar lebih menarik dan interaktif.</li>
+    </ol>
+
+    <h3 class="small">2.3.3 Perbaikan struktur database</h3>
+    <p>
+      Perbaikan struktur database dalam perancangan aplikasi Obatin berfokus pada migrasi ke infrastruktur serverless menggunakan Firebase. Tujuan utama dari perbaikan ini adalah meningkatkan kecepatan, sinkronisasi data real-time, dan menyederhanakan backend aplikasi.
+    </p>
+    <ol>
+      <li>
+        <b>Migrasi Infrastruktur:</b> Aplikasi Obatin menggunakan Firebase Realtime Database untuk penyimpanan data utama dan Firebase Authentication untuk manajemen pengguna. Ini menggantikan kebutuhan akan database MySQL, server PHP, dan library Volley untuk koneksi jaringan lokal (XAMPP/MySQL).
+      </li>
+      <li>
+        <b>Struktur Data NoSQL:</b> Data disimpan dalam struktur JSON NoSQL, dikelompokkan berdasarkan ID pengguna (UID) untuk memastikan keamanan dan isolasi data. Struktur utama meliputi:
+        <ul>
+          <li><b>users/{uid}:</b> Menyimpan profil dasar pengguna,</li>
+          <li><b>medicines/{uid}/{medicineId}:</b> Menyimpan detail lengkap setiap obat, jadwal pengingat (reminders), dan flag status (frequencyType: "DIARSIPKAN"),</li>
+          <li><b>adherence_logs/{uid}/{logId}:</b> Menyimpan catatan kepatuhan dosis yang diminum (timestamp, calculatedAdherenceStatus), yang menjadi sumber data untuk Statistik Kepatuhan.</li>
+        </ul>
+      </li>
+      <li>
+        <b>Keamanan Data:</b> Keamanan data dikelola melalui Firebase Security Rules, memastikan setiap pengguna hanya dapat membaca dan menulis data yang terkait dengan UID mereka sendiri.
+      </li>
+    </ol>
+
+    <h3 class="small">2.3.4 Peningkatan tampilan</h3>
+    <p>
+      Tampilan aplikasi Obatin ditingkatkan dan dirancang untuk menjadi lebih interaktif dan informatif, berfokus pada peningkatan User Experience (UX) agar aplikasi memiliki tampilan antarmuka yang ramah pengguna. Desain UI/UX Obatin diperbarui dan ditingkatkan agar lebih menarik dan interaktif dibandingkan versi sebelumnya. Peningkatan tampilan ini diwujudkan melalui:
+    </p>
+    <ol>
+      <li>
+        <b>Visualisasi Kepatuhan yang Unik:</b> Mengintegrasikan library MPAndroidChart untuk menyajikan Statistik Kepatuhan melalui Grafik Batang Ganda (Dual-Bar). Visualisasi ini secara intuitif memisahkan skor positif (tepat waktu) dari skor negatif (terlambat/penalti), memberikan feedback visual yang jelas kepada pengguna.
+      </li>
+      <li>
+        <b>Antarmuka Pengingat Intuitif:</b> Tampilan Ceklis Obat (CheckListActivity) didesain ulang untuk menampilkan semua detail obat, statistik, dan tombol aksi (EDIT/HAPUS/ARSIP) dalam satu halaman yang mudah diakses.
+      </li>
+      <li>
+        <b>Pencatatan yang Efisien:</b> Desain pada formulir TambahObatActivity memprioritaskan kemudahan input informasi obat, dosis, dan jadwal, didukung oleh DatePicker dan Dialog Fragment untuk input yang tertib.
+      </li>
+    </ol>
+
+    <h2>BAB III DESAIN DAN IMPLEMENTASI SISTEM</h2>
+
+    <h3>3.2 Implementasi Aplikasi</h3>
+    <h3 class="small">3.2.1 Tools dan bahasa pemrograman</h3>
+    <p>
+      Dalam pengembangan aplikasi Obatin, digunakan beberapa perangkat dan bahasa pemrograman yang berfokus pada infrastruktur mobile modern dan real-time.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 22%;">Kategori</th>
+          <th style="width: 28%;">Tools/Bahasa Pemrograman</th>
+          <th>Keterangan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tools Utama</td>
+          <td>Android Studio</td>
+          <td>IDE utama pengembangan aplikasi.</td>
+        </tr>
+        <tr>
+          <td>Tools Utama</td>
+          <td>Firebase (Auth &amp; Realtime DB)</td>
+          <td>Infrastruktur serverless untuk autentikasi dan penyimpanan data real-time, menghilangkan kebutuhan akan server lokal (XAMPP/MySQL).</td>
+        </tr>
+        <tr>
+          <td>Tools Utama</td>
+          <td>MPAndroidChart</td>
+          <td>Pustaka eksternal untuk membuat visualisasi Grafik Kepatuhan Dual-Bar.</td>
+        </tr>
+        <tr>
+          <td>Tools Utama</td>
+          <td>GitHub</td>
+          <td>Repositori proyek untuk pengembangan kolaboratif.</td>
+        </tr>
+        <tr>
+          <td>Bahasa Pemrograman</td>
+          <td>Kotlin</td>
+          <td>Bahasa pemrograman utama untuk logika aplikasi Android (menggantikan Java).</td>
+        </tr>
+        <tr>
+          <td>Bahasa Pemrograman</td>
+          <td>XML</td>
+          <td>Digunakan untuk desain layout tampilan di folder res/layout.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>BAB IV PENGUJIAN APLIKASI</h2>
+
+    <h2>Galeri Aplikasi</h2>
+    <div class="gallery">
+      <figure><img src="img/m1.png" alt=""></figure>
+      <figure><img src="img/m2.png" alt=""></figure>
+      <figure><img src="img/m3.png" alt=""></figure>
+      <figure><img src="img/m4.png" alt=""></figure>
+      <figure><img src="img/m5.png" alt=""></figure>
+      <figure><img src="img/m6.png" alt=""></figure>
+      <figure><img src="img/m7.png" alt=""></figure>
+    </div>
+
+    <h3>3.1 Metode Pengujian</h3>
+
+    <h3 class="small">3.1.1 Jenis Pengujian</h3>
+    <p>
+      Metode pengujian yang digunakan dalam aplikasi Obatin adalah Blackbox Testing. Metode ini berfokus pada pengujian fungsi-fungsi aplikasi tanpa melihat kode sumber program, melainkan dengan memeriksa apakah output yang dihasilkan sudah sesuai dengan input dan kebutuhan pengguna.
+    </p>
+    <p>
+      Tujuan utama dari pengujian ini adalah untuk memastikan bahwa setiap fitur dalam aplikasi Obatin dapat berjalan dengan baik dan memberikan hasil yang sesuai dengan spesifikasi yang telah ditentukan. Pengujian dilakukan langsung pada antarmuka aplikasi untuk mengamati apakah fungsionalitas yang diharapkan dapat bekerja sebagaimana mestinya.
+    </p>
+
+    <h3 class="small">3.1.2 Skenario Uji</h3>
+    <p>Berikut adalah skenario pengujian fitur utama pada aplikasi Obatin:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 6%;">No</th>
+          <th style="width: 22%;">Fitur yang Diuji</th>
+          <th style="width: 42%;">Skenario Pengujian</th>
+          <th>Hasil yang Diharapkan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Login dan Register</td>
+          <td>Pengguna mencoba masuk menggunakan data akun yang benar dan salah</td>
+          <td>Sistem menerima login jika data bena dan menolak jika salah, serta menampilkan pesan error yang sesuai</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Tambah Data Obat</td>
+          <td>Pengguna mengisi form tambah obat (nama obat, dosis, waktu minum, durasi) lalu menyimpan</td>
+          <td>Data tersimpan pada database dan muncul pada daftar obat</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Edit Data Obat</td>
+          <td>Pengguna memilih salah satu obat lalu memperbarui informasinya</td>
+          <td>Data berubah sesuai input terbaru dan tersimpan di database</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Hapus Data Obat</td>
+          <td>Pengguna menghapus salah satu obat dari daftar</td>
+          <td>Data obat terhapus dari database dan tidak tampil di daftar</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Notifikasi Pengingat</td>
+          <td>Aplikasi mengirimkan notifikasi sesuai waktu minum obat yang telah diatur</td>
+          <td>Pengingat muncul tepat waktu sesuai jadwal</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Riwayat Konsumsi Obat</td>
+          <td>Pengguna menandai obat yang telah diminum</td>
+          <td>Status obat berubah menjadi “Sudah diminum” dan tercatat di riwayat</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Statistik Kepatuhan</td>
+          <td>Sistem menghitung tingkat kepatuhan pengguna terhadap jadwal obat</td>
+          <td>Grafik atau data statistik ditampilkan dengan benar</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Navigasi Antar Menu</td>
+          <td>Pengguna berpindah antar halaman (Home, Tambah Obat, Riwayat, Statistik, Akun)</td>
+          <td>Semua tombol navigasi berfungsi dan menampilkan halaman yang sesuai</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3.2 Hasil Pengujian</h3>
+    <h3 class="small">3.2.1 Tabel hasil uji</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 6%;">No</th>
+          <th style="width: 26%;">Fitur yang Diuji</th>
+          <th>Hasil Pengujian</th>
+          <th style="width: 16%;">Kesimpulan</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Login dan Register</td>
+          <td>Login berhasil saat data benar dan muncul pesan “Login gagal” jika data salah</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Tambah Data Obat</td>
+          <td>Data obat berhasil disimpan dan muncul di daftar utama</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Edit Data Obat</td>
+          <td>Informasi obat diperbarui sesuai perubahan pengguna</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Hapus Data Obat</td>
+          <td>Data terhapus dari database dan daftar tampilan</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Notifikasi Pengingat</td>
+          <td>Notifikasi muncul tepat waktu sesuai pengaturan pengguna</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Riwayat Konsumsi Obat</td>
+          <td>Riwayat berhasil mencatat waktu dan status konsumsi</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Statistik Kepatuhan</td>
+          <td>Statistik tampil sesuai data</td>
+          <td>Berhasil</td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Navigasi Antar Menu</td>
+          <td>Semua tombol navigasi berfungsi dengan baik</td>
+          <td>Berhasil</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 class="small">3.2.1 Kesimpulan pengujian</h3>
+    <p>
+      Berdasarkan hasil pengujian dengan metode Blackbox Testing, seluruh fitur utama aplikasi Obatin berjalan dengan baik dan sesuai dengan kebutuhan pengguna. Proses login, registrasi, pencatatan obat, pengingat otomatis, serta tampilan riwayat dan statistik telah berfungsi dengan optimal tanpa ditemukan kesalahan sistem.
+    </p>
+    <p>
+      Aplikasi Obatin dinyatakan layak digunakan sebagai sistem pencatat dan pengingat konsumsi obat digital berbasis Android. Fitur-fiturnya terbukti dapat membantu pengguna menjaga kedisiplinan konsumsi obat, meningkatkan efektivitas pengobatan, serta mendukung digitalisasi layanan kesehatan masyarakat.
+    </p>
+
+    <h2>BAB V KESIMPULAN DAN SARAN</h2>
+
+    <h3>5.1 Kesimpulan</h3>
+    <p>
+      Berdasarkan hasil analisis, perancangan, implementasi, dan pengujian yang telah dilakukan, dapat disimpulkan bahwa aplikasi Obatin berhasil dikembangkan sebagai aplikasi mobile berbasis Android yang berfungsi untuk membantu pengguna dalam mencatat, mengatur, dan mengingat jadwal konsumsi obat secara digital.
+    </p>
+    <p>
+      Aplikasi ini dirancang menggunakan Android Studio dengan bahasa pemrograman Kotlin dan memanfaatkan Firebase sebagai basis data utama. Implementasi teknologi ini memungkinkan aplikasi menyimpan data secara real-time, aman, serta mudah diakses kapan pun pengguna membutuhkan.
+    </p>
+    <p>
+      Hasil pengujian dengan metode Blackbox Testing menunjukkan bahwa seluruh fitur utama aplikasi telah berjalan sesuai dengan yang diharapkan. Fitur seperti registrasi dan login pengguna, pencatatan obat, pengingat otomatis, riwayat konsumsi obat, serta statistik kepatuhan telah berfungsi dengan baik tanpa ditemukan kesalahan sistem (error).
+    </p>
+    <p>Secara keseluruhan, aplikasi Obatin mampu:</p>
+    <ol>
+      <li>Membantu pengguna mengingat jadwal konsumsi obat secara tepat waktu.</li>
+      <li>Menyediakan sistem pencatatan obat yang terstruktur dan mudah diakses.</li>
+      <li>Memantau tingkat kepatuhan pengguna terhadap jadwal terapi obat.</li>
+      <li>Mendukung digitalisasi layanan kesehatan masyarakat melalui teknologi mobile.</li>
+    </ol>
+    <p>
+      Dengan demikian, aplikasi Obatin dapat dikatakan telah memenuhi tujuan pengembangan, yaitu menjadi solusi digital yang praktis, efisien, dan bermanfaat dalam mendukung gaya hidup sehat serta meningkatkan efektivitas pengobatan pengguna.
+    </p>
+
+    <h3>5.2 Saran</h3>
+    <p>
+      Untuk pengembangan lebih lanjut, terdapat beberapa hal yang dapat dijadikan bahan perbaikan dan penyempurnaan aplikasi Obatin, antara lain:
+    </p>
+    <ol>
+      <li>Menambahkan fitur multi-user atau keluarga, agar pengguna dapat memantau jadwal obat anggota keluarga lain dalam satu aplikasi.</li>
+      <li>Integrasi dengan kalender sistem atau wearable device, seperti smartwatch, agar pengingat lebih interaktif dan personal.</li>
+      <li>Menambahkan fitur konsultasi atau reminder berbasis suara, untuk mempermudah pengguna lanjut usia.</li>
+      <li>Mengoptimalkan tampilan antarmuka (UI/UX) agar lebih adaptif dan mendukung mode gelap (dark mode).</li>
+      <li>Meningkatkan keamanan data pengguna dengan sistem enkripsi tambahan dan otentikasi dua langkah.</li>
+    </ol>
+    <p>
+      Dengan pengembangan berkelanjutan, diharapkan aplikasi Obatin dapat menjadi platform kesehatan digital yang tidak hanya berfokus pada pengingat konsumsi obat, tetapi juga berperan sebagai asisten kesehatan pribadi berbasis teknologi mobile yang lebih cerdas, aman, dan mudah diakses oleh masyarakat luas.
+    </p>
+
+  </div>
+</body>
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-mobile');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+</script>
+</html>

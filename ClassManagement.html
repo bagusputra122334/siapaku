@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Manajemen Kelas</title>
+
+<style>
+html{scroll-behavior:smooth}
+body{
+font-family:"Times New Roman", serif;
+margin:0;
+line-height:1.7;
+background:transparent;
+color:#222;
+overflow-x:hidden;
+}
+#bg3d-cm{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+}
+h1{text-align:center;margin:40px 0 20px}
+h2{margin-top:40px}
+h3{margin-top:25px}
+p{text-align:justify}
+.container{
+max-width:900px;
+margin:40px auto;
+padding:28px;
+background:rgba(255,255,255,0.55);
+border-radius:16px;
+box-shadow:0 20px 40px rgba(0,0,0,0.10);
+backdrop-filter:blur(12px) saturate(1.15);
+border:1px solid rgba(255,255,255,0.25);
+}
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:20px;
+align-items:start;
+}
+.gallery figure{
+margin:0;
+background:transparent;
+border-radius:0;
+box-shadow:none;
+overflow:visible;
+border:none;
+}
+.gallery img{
+width:100%;
+height:auto;
+object-fit:contain;
+display:block;
+}
+.gallery figcaption{display:none}
+</style>
+
+</head>
+
+<body>
+<div id="bg3d-cm"></div>
+<div class="container">
+
+<h1>LAPORAN MANAJEMEN KELAS</h1>
+
+<h2>BAB I PENDAHULUAN</h2>
+
+<h3>1.1 Latar Belakang</h3>
+
+<p>
+Perkembangan teknologi informasi dan komunikasi (TIK) pada era digital saat ini telah membawa perubahan besar dalam berbagai aspek, termasuk dalam dunia pendidikan. Teknologi tidak hanya dimanfaatkan sebagai media pembelajaran, tetapi juga sebagai sarana penting dalam mendukung administrasi dan manajemen sekolah.
+</p>
+
+<p>
+Untuk mewujudkan manajemen kelas yang baik, lembaga pendidikan perlu memiliki perencanaan yang terstruktur, terukur, dan terarah. Guru sebagai pengelola kelas dituntut mampu menciptakan lingkungan belajar yang kondusif sehingga aktivitas pembelajaran dapat berlangsung secara efektif. Suasana kelas yang tertata dengan baik terbukti sangat berpengaruh terhadap keberlangsungan dan kualitas belajar siswa.
+</p>
+
+<p>
+Namun pada kenyataannya, beberapa aktivitas manajemen kelas di banyak sekolah masih dilakukan secara manual dengan menggunakan buku catatan, lembar kerja, atau formulir kertas. Cara ini tidak hanya memakan waktu, tetapi juga berisiko menimbulkan kesalahan pencatatan, keterlambatan informasi, hingga hilangnya data penting.
+</p>
+
+<p>
+Selain itu, sebagian sekolah masih menggunakan spreadsheet seperti Excel untuk membuat dan membagikan jadwal pelajaran kepada wali kelas. Kondisi ini menunjukkan bahwa proses manajemen kelas belum berjalan secara efisien dan belum memanfaatkan teknologi secara optimal.
+</p>
+
+<p>
+Padahal, manajemen kelas yang dilakukan secara efektif dan efisien sangat penting untuk mendukung pencapaian tujuan pembelajaran serta meningkatkan produktivitas kerja guru dan siswa.
+</p>
+
+<p>
+Manajemen kelas mencakup berbagai kegiatan yang bertujuan menciptakan dan mempertahankan kondisi optimal bagi terjadinya proses belajar mengajar. Salah satu aspek penting di dalamnya adalah penjadwalan kegiatan belajar, karena penjadwalan yang baik membantu sekolah mengelola sumber daya, waktu, dan aktivitas secara lebih teratur.
+</p>
+
+<p>
+Sistem penjadwalan yang terstruktur juga menjadi faktor penentu kelancaran proses pembelajaran. Oleh sebab itu, sistem manajemen kelas idealnya mampu mengintegrasikan pengelolaan data siswa, jadwal pelajaran, absensi, dan penilaian secara menyeluruh.
+</p>
+
+<p>
+Seiring perkembangan teknologi perangkat lunak, berbagai sekolah mulai beralih menggunakan sistem berbasis komputer untuk meningkatkan efisiensi administrasi. Salah satu solusi yang dapat diterapkan adalah pengembangan aplikasi manajemen kelas berbasis desktop yang bersifat standalone sehingga dapat digunakan tanpa koneksi internet.
+</p>
+
+<p>
+Visual Basic .NET dapat menjadi pilihan bahasa pemrograman yang mudah diimplementasikan, sedangkan MySQL dapat digunakan sebagai sistem manajemen basis data yang cepat dan aman.
+</p>
+
+<p>
+Berdasarkan kondisi tersebut, penelitian ini bertujuan untuk membangun dan mengimplementasikan aplikasi manajemen kelas berbasis desktop dengan menggunakan Visual Studio dan MySQL.
+</p>
+
+<h3>1.2 Rumusan Masalah</h3>
+
+<ol>
+<li>Bagaimana merancang aplikasi manajemen kelas berbasis desktop untuk mengelola data siswa, jadwal, absensi, dan nilai?</li>
+<li>Bagaimana membangun aplikasi menggunakan Visual Studio dan MySQL?</li>
+<li>Bagaimana hasil akhir aplikasi dilihat dari fungsi utama yang dirancang?</li>
+</ol>
+
+<h3>1.3 Batasan Masalah</h3>
+
+<ul>
+
+<li>Aplikasi berbasis desktop pada sistem operasi Windows.</li>
+<li>Menggunakan Visual Studio (VB.NET).</li>
+<li>Menggunakan database MySQL.</li>
+<li>Fitur meliputi:</li>
+
+<ul>
+<li>Data siswa</li>
+<li>Data guru</li>
+<li>Jadwal pelajaran</li>
+<li>Jadwal piket</li>
+<li>Absensi siswa</li>
+<li>Nilai</li>
+<li>Inventaris kelas</li>
+<li>Laporan</li>
+</ul>
+
+<li>Hak akses pengguna:</li>
+
+<ul>
+<li>Siswa</li>
+<li>Guru / wali kelas</li>
+<li>Admin / kepala sekolah</li>
+</ul>
+
+<li>Metode pengujian menggunakan Black Box Testing.</li>
+
+</ul>
+
+<h3>1.4 Tujuan</h3>
+
+<ul>
+<li>Merancang aplikasi manajemen kelas berbasis desktop.</li>
+<li>Mengembangkan aplikasi menggunakan Visual Studio dan MySQL.</li>
+<li>Menguji efektivitas aplikasi dalam manajemen kelas.</li>
+</ul>
+
+<h3>1.5 Manfaat</h3>
+
+<b>Manfaat Teoretis</b>
+
+<p>
+Menambah literatur mengenai penerapan teknologi informasi dalam manajemen kelas serta pengembangan aplikasi berbasis desktop.
+</p>
+
+<b>Manfaat Praktis</b>
+
+<ul>
+<li>Membantu guru mengelola data siswa.</li>
+<li>Membantu pengelolaan jadwal dan absensi.</li>
+<li>Mempermudah kepala sekolah memantau kegiatan kelas.</li>
+</ul>
+
+<h2>BAB II LANDASAN TEORI</h2>
+
+<h3>2.1 Pengertian Aplikasi Manajemen Kelas</h3>
+
+<p>
+Aplikasi manajemen kelas adalah perangkat lunak yang digunakan untuk membantu guru dan sekolah dalam mengelola administrasi kelas seperti data siswa, jadwal pelajaran, absensi, nilai, dan laporan agar lebih terstruktur, cepat, dan efisien.
+</p>
+
+<h3>2.2 Pengertian Aplikasi Desktop</h3>
+
+<p>
+Aplikasi desktop adalah perangkat lunak yang dijalankan secara lokal pada komputer tanpa memerlukan koneksi internet. Aplikasi jenis ini memiliki keunggulan berupa kecepatan akses, stabilitas, dan keamanan data.
+</p>
+
+<h3>2.3 XAMPP</h3>
+
+<p>
+XAMPP adalah paket perangkat lunak yang berisi Apache, MySQL/MariaDB, serta interpreter PHP dan Perl. XAMPP digunakan sebagai lingkungan pengembangan lokal.
+</p>
+
+<h3>2.4 Database MySQL</h3>
+
+<p>
+MySQL adalah sistem manajemen database relasional yang digunakan untuk menyimpan data dalam bentuk tabel yang saling terhubung.
+</p>
+
+<h3>2.5 Visual Studio</h3>
+
+<p>
+Visual Studio adalah IDE yang digunakan untuk mengembangkan aplikasi desktop berbasis Visual Basic .NET.
+</p>
+
+<h3>2.6 ReportViewer</h3>
+
+<p>
+ReportViewer merupakan komponen Visual Studio untuk membuat laporan dalam aplikasi desktop.
+</p>
+
+<h2>BAB III RANCANGAN PROGRAM</h2>
+
+<h3>3.1 Use Case</h3>
+
+<p>
+Admin atau guru dapat mengelola data siswa, mengatur jadwal pelajaran, serta mengelola data kelas. Siswa dapat melihat jadwal kelas dan informasi terkait pembelajaran.
+</p>
+
+<h3>3.2 CDM</h3>
+
+<p>
+Conceptual Data Model menggambarkan struktur data secara konseptual yang meliputi entitas seperti siswa, guru, kelas, mata pelajaran, jadwal piket, inventaris, dan absensi.
+</p>
+
+<h3>3.3 PDM</h3>
+
+<p>
+Physical Data Model adalah model data yang menjelaskan struktur database secara fisik lengkap dengan tipe data dan relasi antar tabel.
+</p>
+
+<h2>BAB IV TAMPILAN DESAIN</h2>
+
+<p>
+Bab ini menampilkan berbagai tampilan aplikasi seperti menu login, jadwal pelajaran guru, jadwal piket, pengelolaan inventaris, struktur kelas, serta daftar guru.
+</p>
+
+<h2>BAB V PENUTUP</h2>
+
+<h3>Kesimpulan</h3>
+
+<p>
+Penelitian ini menghasilkan aplikasi manajemen kelas berbasis desktop yang membantu pengelolaan jadwal pelajaran, absensi, jadwal piket, dan inventaris kelas secara lebih terstruktur dan efisien.
+</p>
+
+<h3>Saran</h3>
+
+<ul>
+<li>Integrasi dengan jaringan sekolah.</li>
+<li>Penambahan laporan otomatis PDF atau Excel.</li>
+<li>Penambahan grafik kehadiran siswa.</li>
+<li>Peningkatan keamanan sistem.</li>
+<li>Pengembangan versi mobile.</li>
+</ul>
+
+<h2>Galeri Tampilan</h2>
+<div class="gallery">
+<figure><img src="img/Cm1.png" alt=""></figure>
+<figure><img src="img/Cm2.png" alt=""></figure>
+<figure><img src="img/Cm3.png" alt=""></figure>
+<figure><img src="img/Cm4.png" alt=""></figure>
+<figure><img src="img/Cm5.png" alt=""></figure>
+<figure><img src="img/Cm6.png" alt=""></figure>
+</div>
+
+<h2>DAFTAR PUSTAKA</h2>
+
+<p>
+Budiman, A., Alhamidi, A., Iswandy, E., & Asmara, R. (2021). Aplikasi manajemen jadwal mengajar guru Sekolah Menengah Atas. Jurnal SIMTIKA.
+</p>
+
+<p>
+Chiandra, E. M., & Laksana, R. P. (2024). Pengembangan aplikasi penjadwalan digital berbasis mobile.
+</p>
+
+</div>
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-cm');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laporan Grafika Komputer – Gedung Rektorat UNESA</title>
+
+<style>
+
+body{
+font-family:"Times New Roman",serif;
+margin:0;
+background:#f5f6fa;
+line-height:1.7;
+color:#222;
+}
+
+.container{
+max-width:950px;
+margin:auto;
+padding:40px;
+background:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+h2{
+margin-top:40px;
+border-bottom:2px solid #ddd;
+padding-bottom:5px;
+}
+
+h3{
+margin-top:25px;
+}
+
+p{
+text-align:justify;
+}
+
+pre{
+background:#111;
+color:#0f0;
+padding:20px;
+overflow:auto;
+border-radius:6px;
+}
+
+code{
+font-family:monospace;
+}
+
+ul,ol{
+margin-left:25px;
+}
+
+/* Background overlay and video embed */
+#bg3d-rektorat{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+background:
+  radial-gradient(ellipse at 20% 10%, rgba(255,235,238,0.9) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.2) 60%),
+  linear-gradient(135deg, rgba(178,34,34,0.12), rgba(255,77,77,0.08) 60%, rgba(178,34,34,0.12));
+}
+.video-embed{
+position:relative;
+width:100%;
+padding-top:56.25%;
+border-radius:14px;
+overflow:hidden;
+box-shadow:0 16px 36px rgba(0,0,0,0.12);
+border:1px solid rgba(139,0,0,0.2);
+background:#000;
+margin-top:16px;
+}
+.video-embed iframe{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+border:0;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="bg3d-rektorat"></div>
+<div class="container">
+
+<h1>PROYEK GRAFIKA KOMPUTER</h1>
+<h1>VISUALISASI GEDUNG REKTORAT UNESA</h1>
+
+<h2>Video Presentasi</h2>
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/NL_r9R0VwYU?rel=0&controls=1&modestbranding=1" allowfullscreen></iframe>
+</div>
+
+<h2>1. Pendahuluan</h2>
+
+<h3>1.1 Latar Belakang</h3>
+
+<p>
+Grafika komputer merupakan cabang ilmu komputer yang mempelajari cara membuat, memanipulasi, dan menampilkan gambar digital menggunakan komputer. Dalam perkuliahan ini, mahasiswa dituntut untuk mampu mengimplementasikan konsep dasar grafika seperti pembentukan objek 2D dan transformasi geometri.
+</p>
+
+<p>
+Melalui proyek UTS ini, penulis membuat representasi visual Gedung Rektorat Universitas Negeri Surabaya (UNESA) dalam bentuk objek 2D menggunakan bahasa pemrograman C++ dengan library OpenGL. Proyek ini juga mengimplementasikan konsep transformasi seperti rotasi, translasi, dan scaling agar tampilan objek lebih proporsional dan realistis.
+</p>
+
+<h3>1.2 Tujuan</h3>
+
+<ol>
+<li>Mengimplementasikan konsep dasar grafika komputer pada objek 2D.</li>
+<li>Menerapkan transformasi geometris seperti translasi, rotasi, dan scaling.</li>
+<li>Mengasah kemampuan dalam penggunaan OpenGL dan GLUT.</li>
+<li>Menghasilkan visualisasi Gedung Rektorat UNESA yang menarik.</li>
+</ol>
+
+<h2>2. Dasar Teori</h2>
+
+<h3>2.1 OpenGL</h3>
+
+<p>
+OpenGL (Open Graphics Library) adalah library lintas platform yang digunakan untuk membuat grafik 2D dan 3D. OpenGL menyediakan fungsi untuk menggambar bentuk dasar, mengatur warna, serta melakukan transformasi pada objek grafis.
+</p>
+
+<h3>2.2 Transformasi Geometris</h3>
+
+<p>
+Transformasi digunakan untuk memanipulasi posisi dan ukuran objek.
+</p>
+
+<ul>
+<li>Translasi → menggeser objek</li>
+<li>Rotasi → memutar objek</li>
+<li>Scaling → mengubah ukuran objek</li>
+</ul>
+
+<p>
+Dalam OpenGL transformasi dilakukan dengan fungsi:
+</p>
+
+<pre><code>
+glTranslatef();
+glRotatef();
+glScalef();
+</code></pre>
+
+<h3>2.3 Pewarnaan dan Bentuk Dasar</h3>
+
+<p>
+Warna pada OpenGL diatur dengan fungsi:
+</p>
+
+<pre><code>
+glColor3f(r,g,b);
+</code></pre>
+
+<p>
+Nilai RGB berada pada rentang <b>0 – 1</b>.
+</p>
+
+<h2>Tampilan Visualisasi</h2>
+<img src="img/visualisasi.png" alt="Visualisasi Rektorat" style="width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12)" onerror="this.src='img/rektorat.png'">
+
+<h2>3. Implementasi Program</h2>
+
+<h3>3.1 Alat dan Bahan</h3>
+
+<ul>
+<li>Bahasa Pemrograman : C++</li>
+<li>Library : OpenGL dan GLUT</li>
+<li>IDE : Code::Blocks</li>
+<li>Sistem Operasi : Windows 10</li>
+</ul>
+
+<h3>3.2 Deskripsi Program</h3>
+
+<p>
+Program ini menggambarkan Gedung Rektorat UNESA dalam bentuk dua dimensi menggunakan kombinasi bentuk dasar seperti persegi dan segitiga. Selain itu ditambahkan elemen awan, burung, dan teks agar tampilan lebih hidup.
+</p>
+
+<p>
+Program juga menyediakan kontrol interaktif menggunakan keyboard untuk melakukan zoom dan panning.
+</p>
+
+<h3>Kontrol Program</h3>
+
+<ul>
+<li>+ dan - → Zoom</li>
+<li>Panah ← → ↑ ↓ → Menggeser tampilan</li>
+<li>0 → Reset kamera</li>
+<li>ESC → Keluar fullscreen</li>
+</ul>
+
+<h2>3.3 Contoh Struktur Program</h2>
+
+<pre><code>
+#include &lt;GL/glut.h&gt;
+
+void render(){
+
+glClear(GL_COLOR_BUFFER_BIT);
+
+glBegin(GL_QUADS);
+
+glColor3f(1,1,1);
+
+glVertex2f(-0.5,-0.5);
+glVertex2f(0.5,-0.5);
+glVertex2f(0.5,0.5);
+glVertex2f(-0.5,0.5);
+
+glEnd();
+
+glFlush();
+
+}
+
+int main(int argc,char** argv){
+
+glutInit(&argc,argv);
+glutCreateWindow("Rektorat UNESA");
+
+glutDisplayFunc(render);
+
+glutMainLoop();
+
+}
+</code></pre>
+
+<h2>4. Hasil dan Pembahasan</h2>
+
+<h3>4.1 Tampilan Program</h3>
+
+<p>
+Hasil visualisasi menunjukkan Gedung Rektorat UNESA dalam bentuk grafika 2D dengan rincian:
+</p>
+
+<ul>
+<li>Gedung utama berwarna putih</li>
+<li>Kaca berwarna biru</li>
+<li>Atap merah bata</li>
+<li>Tangga dan pondasi hitam</li>
+<li>Latar langit biru dengan awan</li>
+<li>Tulisan “State University of Surabaya”</li>
+</ul>
+
+<h3>4.2 Transformasi</h3>
+
+<ol>
+<li>Translasi menggunakan glTranslatef</li>
+<li>Rotasi menggunakan glRotatef</li>
+<li>Scaling menggunakan glScalef</li>
+</ol>
+
+<h3>4.3 Interaksi Program</h3>
+
+<p>
+Program dapat dikontrol menggunakan keyboard sehingga pengguna dapat memperbesar, memperkecil, dan menggeser tampilan untuk melihat detail gambar.
+</p>
+
+<h2>5. Kesimpulan</h2>
+
+<p>
+Proyek ini berhasil menampilkan visualisasi dua dimensi Gedung Rektorat Universitas Negeri Surabaya menggunakan OpenGL. Konsep dasar grafika komputer seperti translasi, rotasi, dan scaling berhasil diterapkan untuk membentuk komposisi bangunan secara proporsional.
+</p>
+
+<p>
+Penambahan elemen awan, burung, dan teks membuat tampilan menjadi lebih hidup dan menyerupai pemandangan nyata. Melalui proyek ini, penulis memperoleh pemahaman praktis tentang pembangunan objek grafis kompleks dari bentuk dasar menggunakan OpenGL.
+</p>
+
+</div>
+
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-rektorat');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+</script>
+</body>
+</html>
