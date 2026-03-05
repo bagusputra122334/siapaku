@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BAM Teknik - Panduan Penggunaan</title>
+
+<style>
+
+html{scroll-behavior:smooth}
+body{
+font-family:"Times New Roman",serif;
+background:transparent;
+margin:0;
+line-height:1.7;
+color:#111;
+overflow-x:hidden;
+}
+
+.bg3d{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+}
+
+.container{
+max-width:980px;
+margin:40px auto;
+background:rgba(255,255,255,0.55);
+padding:28px;
+border-radius:16px;
+box-shadow:0 20px 40px rgba(0,0,0,0.10);
+backdrop-filter:blur(12px) saturate(1.15);
+border:1px solid rgba(255,255,255,0.25);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+h2{
+margin-top:40px;
+border-bottom:2px solid #ddd;
+padding-bottom:5px;
+}
+
+h3{
+margin-top:25px;
+}
+
+ul{
+margin-left:25px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+margin:16px 0 8px;
+}
+.gallery figure{
+margin:0;
+background:#fff;
+border:1px solid #ddd;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+.gallery img{
+width:100%;
+height:auto;
+display:block;
+object-fit:cover;
+}
+@media(max-width:640px){
+  .gallery{grid-template-columns:1fr}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="bg3d" id="bg3d-bam"></div>
+<div class="container">
+
+<h1>PANDUAN PENGGUNAAN</h1>
+<h1>BAM TEKNIK</h1>
+
+<h2>LANGKAH-LANGKAH PENGGUNAAN (USER)</h2>
+
+<div class="gallery">
+  <figure><img src="/Siapaku/img/bam1.png" alt="Langkah pengguna BAM 1" onerror="this.onerror=null;this.src='img/bam1.png'"></figure>
+  <figure><img src="/Siapaku/img/bam2.png" alt="Langkah pengguna BAM 2" onerror="this.onerror=null;this.src='img/bam2.png'"></figure>
+</div>
+
+<h3>1. Halaman Awal Aplikasi</h3>
+
+<ul>
+
+<li>Menampilkan halaman pembuka dengan tombol <b>“Ayo Belanja Sekarang”</b>.</li>
+
+<li>Saat tombol ditekan, pengguna diarahkan ke halaman <b>Katalog Produk</b>.</li>
+
+</ul>
+
+<h3>2. Katalog Produk</h3>
+
+<ul>
+
+<li>Menampilkan daftar produk dari database.</li>
+
+<li>Setiap produk memiliki kotak centang di samping nama item.</li>
+
+<li>Pengguna dapat memilih produk untuk dimasukkan ke keranjang belanja.</li>
+
+<li>Setelah memilih produk, pengguna dapat menekan:</li>
+
+</ul>
+
+<ul>
+
+<li><b>Checkout</b> → menuju halaman keranjang.</li>
+
+<li><b>Kembali</b> → kembali ke halaman awal.</li>
+
+</ul>
+
+<h3>3. Halaman Keranjang</h3>
+
+<ul>
+
+<li>Menampilkan produk yang telah dipilih sebelumnya.</li>
+
+<li>Informasi yang ditampilkan:</li>
+
+<ul>
+
+<li>Nama Produk</li>
+
+<li>Harga Produk</li>
+
+<li>Jumlah Item</li>
+
+<li>Stok Tersedia</li>
+
+</ul>
+
+<li>Sistem otomatis menghitung subtotal setiap produk dan total belanja.</li>
+
+<li>Pengguna dapat memilih:</li>
+
+<ul>
+
+<li><b>Kembali</b> → kembali ke katalog.</li>
+
+<li><b>Bayar</b> → menuju halaman pembayaran.</li>
+
+</ul>
+
+</ul>
+
+<h3>4. Halaman Pembayaran</h3>
+
+<ul>
+
+<li>Menyediakan dua metode pembayaran:</li>
+
+<ul>
+
+<li>Cash</li>
+
+<li>QRIS</li>
+
+</ul>
+
+<li>Pengguna memilih metode pembayaran lalu menekan tombol <b>Bayar</b>.</li>
+
+<li>Sistem akan memvalidasi pembayaran dan menyimpan data transaksi ke database.</li>
+
+<li>Jika pembayaran berhasil, pengguna diarahkan ke halaman <b>Terima Kasih</b>.</li>
+
+</ul>
+
+<h3>5. Halaman Terima Kasih</h3>
+
+<ul>
+
+<li>Menampilkan pesan:</li>
+
+<p><b>“Terima kasih telah berbelanja bersama BAM Teknik”</b></p>
+
+<li>Tersedia dua tombol:</li>
+
+<ul>
+
+<li><b>Kembali</b> → menuju halaman awal.</li>
+
+<li><b>Cetak Struk</b> → melihat atau mencetak bukti transaksi.</li>
+
+</ul>
+
+</ul>
+
+<h3>6. Cetak Struk</h3>
+
+<ul>
+
+<li>Sistem mengambil data transaksi terakhir dari database.</li>
+
+<li>Struk menampilkan informasi:</li>
+
+<ul>
+
+<li>Daftar produk</li>
+
+<li>Jumlah item</li>
+
+<li>Total belanja</li>
+
+<li>Metode pembayaran</li>
+
+<li>Tanggal dan waktu transaksi</li>
+
+</ul>
+
+<li>Struk dapat dicetak atau disimpan sebagai bukti pembelian.</li>
+
+</ul>
+
+<h2>PENGGUNAAN ADMIN</h2>
+
+<div class="gallery">
+  <figure><img src="/Siapaku/img/bam3.png" alt="Langkah admin BAM 3" onerror="this.onerror=null;this.src='img/bam3.png'"></figure>
+  <figure><img src="/Siapaku/img/bam4.png" alt="Langkah admin BAM 4" onerror="this.onerror=null;this.src='img/bam4.png'"></figure>
+</div>
+
+<h3>1. Tampilan Awal</h3>
+
+<ul>
+
+<li>Pada halaman awal terdapat ikon admin di pojok kiri bawah.</li>
+
+<li>Jika ikon diklik, pengguna akan diarahkan ke halaman <b>Login Admin</b>.</li>
+
+</ul>
+
+<h3>2. Halaman Login Admin</h3>
+
+<ul>
+
+<li>Admin harus memasukkan:</li>
+
+<ul>
+
+<li>Username : <b>admin</b></li>
+
+<li>Password : <b>admin123</b></li>
+
+</ul>
+
+<li>Setelah data dimasukkan, tekan tombol <b>Login</b>.</li>
+
+<li>Jika berhasil, muncul notifikasi <b>"Login Berhasil"</b>.</li>
+
+</ul>
+
+<h3>3. Dashboard Admin</h3>
+
+<ul>
+
+<li>Setelah login, admin masuk ke halaman dashboard.</li>
+
+<li>Dashboard menampilkan:</li>
+
+<ul>
+
+<li>Total jumlah produk</li>
+
+<li>Riwayat transaksi</li>
+
+</ul>
+
+<li>Admin dapat melakukan:</li>
+
+<ul>
+
+<li><b>Kelola Produk</b> → menambah produk baru.</li>
+
+<li><b>Riwayat</b> → melihat riwayat transaksi.</li>
+
+</ul>
+
+</ul>
+
+<h3>4. Halaman Manajemen Produk</h3>
+
+<ul>
+
+<li>Admin dapat menambahkan produk baru dengan mengisi:</li>
+
+<ul>
+
+<li>Nama Produk</li>
+
+<li>Harga Produk</li>
+
+<li>Jumlah Stok</li>
+
+<li>Upload Gambar Produk</li>
+
+</ul>
+
+<li>Setelah data lengkap, tekan tombol <b>Tambah Produk</b>.</li>
+
+<li>Produk akan otomatis muncul pada halaman katalog.</li>
+
+</ul>
+
+<h3>5. Halaman Riwayat Transaksi</h3>
+
+<ul>
+
+<li>Menampilkan daftar transaksi pembelian.</li>
+
+<li>Admin dapat:</li>
+
+<ul>
+
+<li><b>Reset</b> → menghapus riwayat transaksi.</li>
+
+<li><b>Kembali</b> → kembali ke dashboard.</li>
+
+</ul>
+
+</ul>
+
+</div>
+
+</body>
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-bam');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+</script>
+</html>
