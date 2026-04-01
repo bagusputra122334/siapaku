@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Solving & Leadership | Bagus Dwi Cahya Putra</title>
+    <link rel="icon" type="image/png" href="img/br.png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        html{scroll-behavior:smooth}
+        body{
+            font-family:'Poppins', sans-serif;
+            background:transparent;
+            margin:0;
+            line-height:1.7;
+            color:#222;
+            overflow-x:hidden;
+        }
+        .bg3d{
+            position:fixed;
+            inset:0;
+            z-index:-1;
+            pointer-events:none;
+        }
+        .container{
+            max-width:980px;
+            margin:40px auto;
+            background:rgba(255,255,255,0.9);
+            padding:40px;
+            border-radius:24px;
+            box-shadow:0 25px 50px rgba(0,0,0,0.15);
+            backdrop-filter:blur(15px);
+            border:1px solid rgba(255,255,255,0.3);
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #B22222;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: 0.3s;
+            background: rgba(178, 34, 34, 0.1);
+            padding: 8px 16px;
+            border-radius: 12px;
+        }
+        .back-btn:hover {
+            transform: translateX(-5px);
+            background: rgba(178, 34, 34, 0.2);
+        }
+        h1{
+            text-align:center;
+            margin-bottom:40px;
+            color: #B22222;
+            font-size: 2.5rem;
+        }
+        .skill-icon {
+            display: block;
+            text-align: center;
+            font-size: 5rem;
+            color: #B22222;
+            margin-bottom: 10px;
+        }
+        .story-section {
+            margin-bottom: 60px;
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        h2 {
+            color: #8B0000;
+            border-left: 5px solid #B22222;
+            padding-left: 15px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+        .narrative-text {
+            font-size: 1.1rem;
+            color: #444;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        .content-card {
+            background: white;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            border: 1px solid #eee;
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .feature-list li {
+            background: #f9f9f9;
+            padding: 12px 18px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        .feature-list li i {
+            color: #B22222;
+        }
+        .badge {
+            display: inline-block;
+            background: #B22222;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .highlight-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .skill-tag {
+            background: #eee;
+            color: #555;
+            padding: 6px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .image-box {
+            width: 100%;
+            margin: 30px 0;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        .image-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: 0.5s;
+        }
+        .image-box img:hover {
+            transform: scale(1.02);
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: #f0f0f0;
+            border-radius: 18px;
+            margin: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            border: 2px dashed #ddd;
+        }
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #FDF2F2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.fade-out { opacity: 0; visibility: hidden; }
+        .preloader-content {
+            text-align: center;
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .preloader-logo-container { position: relative; width: 120px; height: 120px; }
+        .preloader-piece {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('img/br.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0;
+            filter: drop-shadow(0 0 10px rgba(178, 34, 34, 0.1));
+        }
+        .piece-tl { clip-path: inset(0 50% 50% 0); transform: translate(-50px, -50px); animation: assemble 1s forwards ease-out 0.1s; }
+        .piece-tr { clip-path: inset(0 0 50% 50%); transform: translate(50px, -50px); animation: assemble 1s forwards ease-out 0.2s; }
+        .piece-bl { clip-path: inset(50% 50% 0 0); transform: translate(-50px, 50px); animation: assemble 1s forwards ease-out 0.3s; }
+        .piece-br { clip-path: inset(50% 0 0 50%); transform: translate(50px, 50px); animation: assemble 1s forwards ease-out 0.4s; }
+        @keyframes assemble { to { transform: translate(0, 0); opacity: 1; } }
+        .preloader-text {
+            position: absolute;
+            bottom: -40px;
+            width: 100%;
+            font-weight: 700;
+            color: #B22222;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            font-family: 'Poppins', sans-serif;
+            opacity: 0;
+            animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
+        }
+        @keyframes preloader-fade-in { to { opacity: 1; transform: translateY(-5px); } }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="preloader-logo-container">
+                <div class="preloader-piece piece-tl"></div>
+                <div class="preloader-piece piece-tr"></div>
+                <div class="preloader-piece piece-bl"></div>
+                <div class="preloader-piece piece-br"></div>
+            </div>
+            <div class="preloader-text">Blackrose.</div>
+        </div>
+    </div>
+    <div class="bg3d" id="bg3d-skill"></div>
+    <div class="container">
+        <a href="index.html#skills" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Portofolio</a>
+        
+        <div class="skill-icon">
+            <i class="fa-solid fa-brain"></i>
+        </div>
+        <h1>Problem Solving & Kepemimpinan</h1>
+
+        <!-- About Me Section -->
+        <section class="story-section">
+            <span class="badge">Tentang Saya</span>
+            <h2>Mahasiswa & Penggerak Teknologi</h2>
+            <p class="narrative-text">
+                Saya merupakan mahasiswa Pendidikan Teknologi Informasi yang memiliki ketertarikan pada pengembangan teknologi, desain, serta personal branding. Saya mengombinasikan kemampuan teknis seperti pemrograman (Python, C++, dan Java) dengan pendekatan kreatif melalui UI/UX design dan fotografi.
+            </p>
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&auto=format&fit=crop" alt="Student Life and Technology">
+            </div>
+        </section>
+
+        <!-- Organisasi Section -->
+        <section class="story-section">
+            <span class="badge">Pengalaman Organisasi</span>
+            <h2>Membentuk Karakter Melalui Aksi</h2>
+            <p class="narrative-text">
+                Aktif dalam berbagai organisasi kemahasiswaan telah membentuk kemampuan kepemimpinan, komunikasi, serta problem solving saya. Melalui pengalaman tersebut, saya terbiasa bekerja dalam tim, mengelola kegiatan berskala besar, serta menghadapi berbagai tantangan secara langsung di lapangan.
+            </p>
+            <div class="content-card">
+                <ul class="feature-list">
+                    <li><i class="fa-solid fa-users"></i> Sekretaris Umum DPM FT 2026</li>
+                    <li><i class="fa-solid fa-sitemap"></i> Anggota BEM FT (Dept. Dalam Negeri) 2025</li>
+                    <li><i class="fa-solid fa-crown"></i> Ketua Pelaksana PKKMB FT UNESA 2025</li>
+                    <li><i class="fa-solid fa-handshake-angle"></i> Ketua Pelaksana LKMM-TM FT UNESA 2025</li>
+                    <li><i class="fa-solid fa-earth-asia"></i> Forum Mahasiswa Tuban Ronggolawe</li>
+                </ul>
+            </div>
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1000&auto=format&fit=crop" alt="Teamwork and Leadership">
+            </div>
+        </section>
+
+        <!-- Problem Solving Section -->
+        <section class="story-section">
+            <span class="badge">Problem Solving</span>
+            <h2>Analisis Kritis & Solusi Terstruktur</h2>
+            <p class="narrative-text">
+                Kemampuan problem solving saya berkembang melalui pengalaman akademik dan organisasi. Saya terbiasa mengidentifikasi permasalahan, menganalisis situasi secara kritis, serta merumuskan solusi yang efektif dan terstruktur.
+            </p>
+            <div class="content-card">
+                <p class="narrative-text">
+                    Pengalaman sebagai ketua pelaksana dalam kegiatan besar seperti PKKMB dan LKMM-TM melatih saya untuk mengambil keputusan dalam situasi dinamis, mengelola tim, serta menyelesaikan berbagai kendala teknis maupun non-teknis. Selain itu, peran saya di DPM FT dan BEM FT juga membentuk kemampuan koordinasi, komunikasi, dan penyelesaian masalah secara kolaboratif.
+                </p>
+                <p class="narrative-text">
+                    Saya juga mengembangkan kemampuan problem solving melalui berbagai project IT dalam perkuliahan, yang melatih saya untuk berpikir sistematis, logis, dan solutif dalam menyelesaikan permasalahan berbasis teknologi.
+                </p>
+            </div>
+            <div class="image-box">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1000&auto=format&fit=crop" alt="Strategic Problem Solving">
+            </div>
+        </section>
+
+        <!-- Highlight Skills -->
+        <section class="story-section">
+            <span class="badge">Highlight Skills</span>
+            <h2>Keahlian Utama</h2>
+            <div class="highlight-skills">
+                <span class="skill-tag">Problem Solving & Critical Thinking</span>
+                <span class="skill-tag">Leadership & Team Management</span>
+                <span class="skill-tag">Programming (Python, C++, Java)</span>
+                <span class="skill-tag">UI/UX Design</span>
+                <span class="skill-tag">Mobile Photography</span>
+                <span class="skill-tag">Project & Event Management</span>
+            </div>
+        </section>
+
+        <!-- Personal Branding -->
+        <section class="story-section" style="text-align: center; margin-top: 40px;">
+            <div class="content-card" style="background: rgba(178, 34, 34, 0.05); border: 2px dashed #B22222;">
+                <h3 style="color: #B22222; margin-bottom: 15px;">Personal Branding Statement</h3>
+                <p style="font-size: 1.1rem; color: #555; font-weight: 600;">
+                    "Saya adalah individu yang adaptif, kreatif, dan solutif dengan kombinasi kemampuan di bidang teknologi dan organisasi. Saya berkomitmen mengembangkan solusi digital yang fungsional, estetik, dan berorientasi pada pengguna."
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+    <script>
+        (function(){
+            const container=document.getElementById('bg3d-skill');
+            if(!container||!window.THREE) return;
+            const scene=new THREE.Scene();
+            const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+            camera.position.set(0,0,900);
+            const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+            renderer.setPixelRatio(window.devicePixelRatio||1);
+            renderer.setSize(window.innerWidth,window.innerHeight);
+            renderer.setClearColor(0x000000,0);
+            container.appendChild(renderer.domElement);
+            
+            const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+            scene.add(ambient);
+            const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+            dir1.position.set(-400,500,800);
+            scene.add(dir1);
+            
+            const geometry=new THREE.PlaneGeometry(2000,1200,150,100);
+            const material=new THREE.MeshPhongMaterial({
+                color:0x8B0000,
+                emissive:0x220000,
+                shininess:40,
+                transparent:true,
+                opacity:0.45,
+                side:THREE.DoubleSide,
+                wireframe: true
+            });
+            const wave=new THREE.Mesh(geometry,material);
+            wave.rotation.x=-0.3;
+            scene.add(wave);
+            
+            const pos=geometry.attributes.position.array;
+            const base=pos.slice();
+            let t=0;
+            function animate(){
+                requestAnimationFrame(animate);
+                t+=0.005;
+                for(let i=0;i<pos.length;i+=3){
+                    const x=base[i];
+                    const y=base[i+1];
+                    const z=Math.sin(x*0.003+t)*20+Math.cos(y*0.004+t*1.2)*15;
+                    pos[i+2]=z;
+                }
+                geometry.attributes.position.needsUpdate=true;
+                scene.rotation.y+=0.0006;
+                renderer.render(scene,camera);
+            }
+            function onResize(){
+                camera.aspect=window.innerWidth/window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth,window.innerHeight);
+            }
+            window.addEventListener('resize',onResize);
+            animate();
+        })();
+
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => { preloader.remove(); }, 600);
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>
