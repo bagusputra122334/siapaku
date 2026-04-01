@@ -159,6 +159,43 @@ border:0;
 @keyframes preloader-fade-in {
     to { opacity: 1; transform: translateY(-5px); }
 }
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        margin: 20px;
+        padding: 30px;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 25px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+        border-radius: 12px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    p, ul, ol {
+        font-size: 0.95rem;
+    }
+    pre {
+        padding: 15px;
+        font-size: 0.85rem;
+    }
+}
 </style>
 
 </head>

@@ -252,6 +252,48 @@ body{
   .education-content{
     text-align:center !important;
   }
+  
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .separator {
+    display: none;
+  }
+  
+  .profile-info {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  .profile img {
+    width: 180px;
+  }
+  
+  .profile::before {
+    height: 180px;
+    top: 40px;
+  }
+}
+
+@media(max-width: 480px) {
+  .section {
+    padding: 40px 5%;
+  }
+  
+  .profile {
+    padding: 40px 5%;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  .education-photo img {
+    width: 140px;
+  }
 }
 </style>
 </head>

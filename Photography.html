@@ -240,6 +240,56 @@
             animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
         }
         @keyframes preloader-fade-in { to { opacity: 1; transform: translateY(-5px); } }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .container {
+                margin: 20px;
+                padding: 30px;
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                margin: 15px;
+                padding: 25px;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+            .skill-icon {
+                font-size: 4rem;
+            }
+            .feature-list {
+                grid-template-columns: 1fr;
+            }
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+                border-radius: 16px;
+            }
+            h1 {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+            }
+            .back-btn {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            .narrative-text {
+                font-size: 1rem;
+            }
+            .content-card {
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
