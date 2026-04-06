@@ -20,6 +20,8 @@
             color:#222;
             overflow-x:hidden;
         }
+        * { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; display: block; }
         .bg3d{
             position:fixed;
             inset:0;
@@ -184,6 +186,7 @@
         .image-box img:hover {
             transform: scale(1.02);
         }
+        /* Preloader */
         #preloader {
             position: fixed;
             top: 0;
@@ -462,7 +465,7 @@
                 setTimeout(() => {
                     preloader.classList.add('fade-out');
                     setTimeout(() => { preloader.remove(); }, 600);
-                }, 2000);
+                }, 2500);
             }
         });
     </script>

@@ -25,6 +25,8 @@
             --bg: #FDF2F2;
             --transition: all 0.3s ease;
         }
+        * { box-sizing: border-box; }
+        img { max-width: 100%; height: auto; display: block; }
          #about, #skills, #projects, #contact { scroll-margin-top: 100px; }
         .reveal { opacity: 0; transform: translateY(24px); transition: 0.8s ease; }
         .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -42,6 +44,10 @@
             align-items: center;
             z-index: 9999;
             transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #preloader.video-mode {
+            background-color: #000;
         }
 
         #preloader.fade-out {
@@ -104,6 +110,16 @@
 
         @keyframes preloader-fade-in {
             to { opacity: 1; transform: translateY(-5px); }
+        }
+
+        #preloader video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
         }
 
         * {
@@ -371,7 +387,8 @@
         }
 
         .project-card {
-            width: 330px;
+            width: 100%;
+            max-width: 330px;
             background: rgba(255, 255, 255, 0.68);
             border-radius: 15px;
             overflow: hidden;
@@ -480,7 +497,7 @@
         @media (max-width: 768px) {
             #hero h1 { font-size: 2.2rem; }
             #hero p { font-size: 1rem; }
-            .hero-wrapper { text-align: center; justify-content: center; }
+            .hero-wrapper { text-align: center; justify-content: center; flex-direction: column; }
             .hero-image img {
                 width: 260px;
                 height: 260px;
@@ -498,14 +515,18 @@
                 flex-direction: column;
                 position: absolute;
                 top: 80px;
-                right: 5%;
-                background: rgba(255, 255, 255, 0.95);
+                left: 50%;
+                transform: translateX(-50%);
+                width: 90%;
+                background: rgba(255, 255, 255, 0.98);
                 backdrop-filter: blur(10px);
-                padding: 1rem 1.5rem;
+                padding: 1.5rem;
                 border-radius: 12px;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-                gap: 1rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+                gap: 1.2rem;
+                text-align: center;
             }
+            .contact-wrapper { gap: 2rem; }
         }
 
         @media (max-width: 480px) {
@@ -518,7 +539,7 @@
 </head>
 <body>
     <div id="preloader">
-        <div class="preloader-content">
+        <div class="preloader-content" id="preloader-logo-content">
             <div class="preloader-logo-container">
                 <div class="preloader-piece piece-tl"></div>
                 <div class="preloader-piece piece-tr"></div>
@@ -527,6 +548,9 @@
             </div>
             <div class="preloader-text">Blackrose.</div>
         </div>
+        <video playsinline id="preloader-video" loop>
+            <source src="img/br.mp4" type="video/mp4">
+        </video>
     </div>
 
     <nav>
@@ -972,11 +996,44 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
     <script>
     window.addEventListener('load', function () {
         const preloader = document.getElementById('preloader');
-        if (preloader) {
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-                setTimeout(() => { preloader.remove(); }, 600);
-            }, 2500); // 2.5s to show the assembly animation
+        const video = document.getElementById('preloader-video');
+        const logoContent = document.getElementById('preloader-logo-content');
+        
+        if (!sessionStorage.getItem('firstVisit')) {
+            // Jika kunjungan pertama kali dalam sesi ini
+            if (preloader && video) {
+                preloader.classList.add('video-mode');
+                logoContent.style.display = 'none';
+                video.style.display = 'block';
+                video.muted = false; // Unmute
+                video.volume = 1.0;  // Max volume
+                video.play().catch(e => {
+                    // Browsers block autoplay with sound
+                    // Fallback: Play muted if unmuted fails
+                    video.muted = true;
+                    video.play();
+                });
+
+                // Set preloader to fade out after exactly 15 seconds
+                setTimeout(() => {
+                    if (!preloader.classList.contains('fade-out')) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => { 
+                            preloader.remove(); 
+                            sessionStorage.setItem('firstVisit', 'true');
+                        }, 800);
+                    }
+                }, 15000); 
+            }
+        } else {
+            // Jika bukan kunjungan pertama (kembali seperti sedia kala)
+            if (preloader) {
+                video.remove(); // Hapus video agar tidak berat
+                setTimeout(() => {
+                    preloader.classList.add('fade-out');
+                    setTimeout(() => { preloader.remove(); }, 600);
+                }, 2500); // 2.5s animasi logo
+            }
         }
     });
     </script>
