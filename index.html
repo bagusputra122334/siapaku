@@ -122,31 +122,6 @@
             display: none;
         }
 
-        #unmute-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(178, 34, 34, 0.85);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            z-index: 10001;
-            display: none;
-            animation: pulse-button 1.5s infinite;
-            border: none;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        @keyframes pulse-button {
-            0% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.05); }
-            100% { transform: translateX(-50%) scale(1); }
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -576,7 +551,6 @@
         <video playsinline webkit-playsinline id="preloader-video" loop>
             <source src="img/br.mp4" type="video/mp4">
         </video>
-        <button id="unmute-hint"><i class="fas fa-volume-up"></i> Aktifkan Suara</button>
     </div>
 
     <nav>
@@ -1024,7 +998,6 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const preloader = document.getElementById('preloader');
         const video = document.getElementById('preloader-video');
         const logoContent = document.getElementById('preloader-logo-content');
-        const unmuteBtn = document.getElementById('unmute-hint');
         
         // Selalu memutar video setiap kali halaman dibuka (sesuai permintaan user)
         if (preloader && video) {
@@ -1032,37 +1005,33 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
             logoContent.style.display = 'none';
             video.style.display = 'block';
             
-            // Mencoba memutar dengan suara
+            // Mencoba memutar dengan suara penuh
             video.muted = false;
             video.volume = 1.0;
             
             const startPlay = () => {
                 video.play().then(() => {
                     // Berhasil diputar dengan suara
-                    unmuteBtn.style.display = 'none';
                 }).catch(e => {
-                    // Browser memblokir suara otomatis
+                    // Browser memblokir suara otomatis (kebijakan autoplay modern)
                     console.log("Autoplay dengan suara diblokir, memutar tanpa suara.");
                     video.muted = true;
                     video.play();
-                    // Tampilkan tombol untuk aktifkan suara secara manual (interaksi user)
-                    if (unmuteBtn) unmuteBtn.style.display = 'block';
+                    
+                    // Tambahkan listener sekali klik pada preloader untuk mengaktifkan suara secara otomatis saat user berinteraksi
+                    const unmuteOnInteraction = () => {
+                        video.muted = false;
+                        video.volume = 1.0;
+                        document.removeEventListener('click', unmuteOnInteraction);
+                        document.removeEventListener('touchstart', unmuteOnInteraction);
+                    };
+                    document.addEventListener('click', unmuteOnInteraction);
+                    document.addEventListener('touchstart', unmuteOnInteraction);
                 });
             };
 
             // Jalankan fungsi play
             startPlay();
-
-            // Fungsi untuk mengaktifkan suara jika diklik
-            if (unmuteBtn) {
-                unmuteBtn.addEventListener('click', function() {
-                    video.muted = false;
-                    video.volume = 1.0;
-                    this.style.display = 'none';
-                    // Restart play just in case
-                    video.play();
-                });
-            }
 
             // Tetap pastikan preloader menghilang setelah 15 detik penuh
             setTimeout(() => {
