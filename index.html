@@ -548,7 +548,7 @@
             </div>
             <div class="preloader-text">Blackrose.</div>
         </div>
-        <video playsinline webkit-playsinline id="preloader-video" loop>
+        <video autoplay muted playsinline webkit-playsinline preload="auto" id="preloader-video" loop>
             <source src="img/br.mp4" type="video/mp4">
         </video>
     </div>
@@ -1005,33 +1005,25 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
             logoContent.style.display = 'none';
             video.style.display = 'block';
             
-            // Mencoba memutar dengan suara penuh
-            video.muted = false;
-            video.volume = 1.0;
-            
-            const startPlay = () => {
-                video.play().then(() => {
-                    // Berhasil diputar dengan suara
-                }).catch(e => {
-                    // Browser memblokir suara otomatis (kebijakan autoplay modern)
-                    console.log("Autoplay dengan suara diblokir, memutar tanpa suara.");
-                    video.muted = true;
-                    video.play();
-                    
-                    // Tambahkan listener sekali klik pada preloader untuk mengaktifkan suara secara otomatis saat user berinteraksi
-                    const unmuteOnInteraction = () => {
-                        video.muted = false;
-                        video.volume = 1.0;
-                        document.removeEventListener('click', unmuteOnInteraction);
-                        document.removeEventListener('touchstart', unmuteOnInteraction);
-                    };
-                    document.addEventListener('click', unmuteOnInteraction);
-                    document.addEventListener('touchstart', unmuteOnInteraction);
-                });
-            };
+            // Muat ulang video dan mulai putar
+            video.load();
+            video.muted = true;
+            video.play().then(() => {
+                console.log("Autoplay berhasil (muted).");
+            }).catch(e => {
+                console.log("Autoplay gagal, menunggu interaksi.");
+            });
 
-            // Jalankan fungsi play
-            startPlay();
+            // Fungsi untuk mengaktifkan suara dan memastikan video berputar saat interaksi pertama
+            const forceStart = () => {
+                video.muted = false;
+                video.volume = 1.0;
+                video.play();
+                document.removeEventListener('click', forceStart);
+                document.removeEventListener('touchstart', forceStart);
+            };
+            document.addEventListener('click', forceStart);
+            document.addEventListener('touchstart', forceStart);
 
             // Tetap pastikan preloader menghilang setelah 15 detik penuh
             setTimeout(() => {
