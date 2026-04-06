@@ -994,46 +994,36 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
     })();
     </script>
     <script>
-    window.addEventListener('load', function () {
+    document.addEventListener('DOMContentLoaded', function () {
         const preloader = document.getElementById('preloader');
         const video = document.getElementById('preloader-video');
         const logoContent = document.getElementById('preloader-logo-content');
         
-        if (!sessionStorage.getItem('firstVisit')) {
-            // Jika kunjungan pertama kali dalam sesi ini
-            if (preloader && video) {
-                preloader.classList.add('video-mode');
-                logoContent.style.display = 'none';
-                video.style.display = 'block';
-                video.muted = false; // Unmute
-                video.volume = 1.0;  // Max volume
-                video.play().catch(e => {
-                    // Browsers block autoplay with sound
-                    // Fallback: Play muted if unmuted fails
-                    video.muted = true;
-                    video.play();
-                });
+        // Selalu memutar video setiap kali halaman dibuka (sesuai permintaan user)
+        if (preloader && video) {
+            preloader.classList.add('video-mode');
+            logoContent.style.display = 'none';
+            video.style.display = 'block';
+            video.muted = false; // Memastikan suara aktif
+            video.volume = 1.0;  // Volume maksimal
+            
+            video.play().catch(e => {
+                // Browser sering memblokir autoplay dengan suara
+                // Fallback: Putar tanpa suara jika diblokir
+                console.log("Autoplay dengan suara diblokir oleh browser, memutar tanpa suara.");
+                video.muted = true;
+                video.play();
+            });
 
-                // Set preloader to fade out after exactly 15 seconds
-                setTimeout(() => {
-                    if (!preloader.classList.contains('fade-out')) {
-                        preloader.classList.add('fade-out');
-                        setTimeout(() => { 
-                            preloader.remove(); 
-                            sessionStorage.setItem('firstVisit', 'true');
-                        }, 800);
-                    }
-                }, 15000); 
-            }
-        } else {
-            // Jika bukan kunjungan pertama (kembali seperti sedia kala)
-            if (preloader) {
-                video.remove(); // Hapus video agar tidak berat
-                setTimeout(() => {
+            // Set preloader untuk menghilang setelah tepat 15 detik (asumsi 15 menit adalah typo)
+            setTimeout(() => {
+                if (!preloader.classList.contains('fade-out')) {
                     preloader.classList.add('fade-out');
-                    setTimeout(() => { preloader.remove(); }, 600);
-                }, 2500); // 2.5s animasi logo
-            }
+                    setTimeout(() => { 
+                        preloader.remove(); 
+                    }, 800);
+                }
+            }, 15000); 
         }
     });
     </script>
