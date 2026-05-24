@@ -1017,13 +1017,13 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 // Simpan bahwa pengguna sudah pernah berkunjung
                 localStorage.setItem('hasVisited', 'true');
                 
-                // Preloader menghilang setelah 10,5 detik
+                // Preloader menghilang setelah 11 detik
                 setTimeout(() => {
                     if (!preloader.classList.contains('fade-out')) {
                         preloader.classList.add('fade-out');
                         setTimeout(() => preloader.remove(), 800);
                     }
-                }, 10500);
+                }, 11000);
             } else {
                 // Kunjungan selanjutnya: tampilkan animasi logo assemble
                 preloader.classList.remove('video-mode');
