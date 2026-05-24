@@ -999,41 +999,45 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const video = document.getElementById('preloader-video');
         const logoContent = document.getElementById('preloader-logo-content');
         
-        // Selalu memutar video setiap kali halaman dibuka (sesuai permintaan user)
-        if (preloader && video) {
-            preloader.classList.add('video-mode');
-            logoContent.style.display = 'none';
-            video.style.display = 'block';
-            
-            // Muat ulang video dan mulai putar
-            video.load();
-            video.muted = true;
-            video.play().then(() => {
-                console.log("Autoplay berhasil (muted).");
-            }).catch(e => {
-                console.log("Autoplay gagal, menunggu interaksi.");
-            });
-
-            // Fungsi untuk mengaktifkan suara dan memastikan video berputar saat interaksi pertama
-            const forceStart = () => {
-                video.muted = false;
-                video.volume = 1.0;
-                video.play();
-                document.removeEventListener('click', forceStart);
-                document.removeEventListener('touchstart', forceStart);
-            };
-            document.addEventListener('click', forceStart);
-            document.addEventListener('touchstart', forceStart);
-
-            // Tetap pastikan preloader menghilang setelah 15 detik penuh
-            setTimeout(() => {
-                if (!preloader.classList.contains('fade-out')) {
-                    preloader.classList.add('fade-out');
-                    setTimeout(() => { 
-                        preloader.remove(); 
-                    }, 800);
-                }
-            }, 15000); 
+        // Cek apakah ini kunjungan pertama
+        const isFirstVisit = !localStorage.getItem('hasVisited');
+        
+        if (preloader) {
+            if (isFirstVisit) {
+                // Kunjungan pertama: tampilkan video
+                preloader.classList.add('video-mode');
+                logoContent.style.display = 'none';
+                video.style.display = 'block';
+                
+                // Muat dan putar video
+                video.load();
+                video.muted = true;
+                video.play().catch(() => {});
+                
+                // Simpan bahwa pengguna sudah pernah berkunjung
+                localStorage.setItem('hasVisited', 'true');
+                
+                // Preloader menghilang setelah 10,5 detik
+                setTimeout(() => {
+                    if (!preloader.classList.contains('fade-out')) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => preloader.remove(), 800);
+                    }
+                }, 10500);
+            } else {
+                // Kunjungan selanjutnya: tampilkan animasi logo assemble
+                preloader.classList.remove('video-mode');
+                logoContent.style.display = 'flex';
+                video.style.display = 'none';
+                
+                // Preloader menghilang setelah 2.5 detik
+                setTimeout(() => {
+                    if (!preloader.classList.contains('fade-out')) {
+                        preloader.classList.add('fade-out');
+                        setTimeout(() => preloader.remove(), 600);
+                    }
+                }, 2500);
+            }
         }
     });
     </script>

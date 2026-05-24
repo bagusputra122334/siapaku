@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Proyek | Portfolio Bagus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #f5f5f5; }
+        .sidebar {
+            position: fixed; top: 0; left: 0; width: 250px; height: 100vh;
+            background: linear-gradient(180deg, #B22222 0%, #8B0000 100%);
+            padding: 20px; color: white;
+        }
+        .logo { display: flex; align-items: center; gap: 10px; margin-bottom: 30px; }
+        .logo img { width: 40px; }
+        .logo h2 { font-size: 1.2rem; }
+        .nav-item {
+            display: flex; align-items: center; gap: 12px; padding: 12px 15px;
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            border-radius: 10px; margin-bottom: 8px; transition: 0.3s;
+        }
+        .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.15); color: white; }
+        .nav-item i { width: 20px; }
+        .main-content { margin-left: 250px; padding: 30px; }
+        .header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px;
+        }
+        .header h1 { color: #222; font-size: 1.8rem; }
+        .back-btn, .logout-btn {
+            background: #B22222; color: white; padding: 10px 20px;
+            border-radius: 10px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .back-btn:hover, .logout-btn:hover { background: #8B0000; }
+        .project-list {
+            display: grid; gap: 20px;
+        }
+        .project-item {
+            background: white; padding: 25px; border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .project-item img { width: 150px; height: 100px; object-fit: cover; border-radius: 10px; margin-right: 20px;
+        }
+        .project-info h3 { color: #222; margin-bottom: 5px;
+        }
+        .project-info p { color: #666; font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <img src="../img/br.png" alt="Logo">
+            <h2>Blackrose Admin</h2>
+        </div>
+        <a href="dashboard.html" class="nav-item">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+        <a href="proyek.html" class="nav-item active">
+            <i class="fas fa-folder-open"></i> Proyek
+        </a>
+        <a href="tentang.html" class="nav-item">
+            <i class="fas fa-user"></i> Tentang Saya
+        </a>
+        <a href="skills.html" class="nav-item">
+            <i class="fas fa-code"></i> Skills
+        </a>
+        <a href="kontak.html" class="nav-item">
+            <i class="fas fa-envelope"></i> Kontak
+        </a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <h1>Kelola Proyek</h1>
+            <div style="display: flex; gap: 10px;">
+                <a href="dashboard.html" class="back-btn">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                <a href="logout.html" class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i> Keluar
+                </a>
+            </div>
+        </div>
+        <div class="project-list">
+            <div class="project-item">
+                <img src="../img/bam teknik bg.png" alt="Pembuatan aplikasi marketplace">
+                <div class="project-info">
+                    <h3>Pembuatan aplikasi marketplace berbasis java</h3>
+                    <p>Objeck Oriented programming yang berfokus pada pembuatan aplikasi marketplace.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/manajemen.png" alt="Class Management System">
+                <div class="project-info">
+                    <h3>Class Management System</h3>
+                    <p>Sistem informasi berbasis Java untuk mengelola data siswa.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/mobile.png" alt="Android Mobile Solution">
+                <div class="project-info">
+                    <h3>Android Mobile Solution</h3>
+                    <p>Pengembangan aplikasi mobile menggunakan Kotlin dan Java.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/web.png" alt="Personal Branding Web">
+                <div class="project-info">
+                    <h3>Personal Branding Web</h3>
+                    <p>Website portofolio profesional yang Anda lihat saat ini.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/rektorat.png" alt="Visualisasi 2D Rektorat">
+                <div class="project-info">
+                    <h3>Visualisasi 2D Rektorat</h3>
+                    <p>Visualisasi Gedung rektorat sebagai bentuk implementasi Grafika komputer.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/hki.png" alt="HKI">
+                <div class="project-info">
+                    <h3>Hak Kekayaan Intelektual</h3>
+                    <p>HKI Tendang sebuah penelitian bagaimana pengaruh motivasi belajar.</p>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="../img/Smartpest.png" alt="Inovasi Smart Farming">
+                <div class="project-info">
+                    <h3>Inovasi Smart Farming</h3>
+                    <p>SMARTPEST-LANGKAP: Inovasi Pengendalian Hama Padi.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

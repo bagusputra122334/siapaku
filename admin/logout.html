@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keluar | Portfolio Bagus</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #FDF2F2; min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px; }
+        .logout-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); text-align: center; max-width: 400px; width: 100%; }
+        .logout-container i { font-size: 4rem; color: #B22222; margin-bottom: 20px; }
+        .logout-container h1 { color: #222; font-size: 1.5rem; margin-bottom: 10px; }
+        .logout-container p { color: #666; margin-bottom: 30px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 30px; border-radius: 10px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; margin: 5px; }
+        .btn-primary { background: #B22222; color: white; }
+        .btn-primary:hover { background: #8B0000; transform: translateY(-2px); }
+        .btn-outline { border: 2px solid #E0E0E0; color: #222; }
+        .btn-outline:hover { border-color: #B22222; color: #B22222; }
+    </style>
+</head>
+<body>
+    <div class="logout-container">
+        <i class="fas fa-check-circle"></i>
+        <h1>Anda Telah Keluar</h1>
+        <p>Terima kasih telah mengakses panel admin!</p>
+        <a href="login.html" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Login Kembali</a>
+        <a href="../index.html" class="btn btn-outline"><i class="fas fa-home"></i> Kembali ke Beranda</a>
+    </div>
+
+    <script>
+        localStorage.removeItem('admin_logged_in');
+    </script>
+</body>
+</html>
