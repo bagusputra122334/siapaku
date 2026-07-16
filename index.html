@@ -1001,12 +1001,12 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const pieces = document.querySelectorAll('.preloader-piece');
         const text = document.querySelector('.preloader-text');
         
-        // Cek apakah ini kunjungan pertama
-        const isFirstVisit = !localStorage.getItem('hasVisited');
+        // Cek apakah ini kunjungan pertama di sesi ini
+        const isFirstVisit = !sessionStorage.getItem('hasVisited');
         
         if (preloader) {
             if (isFirstVisit) {
-                // Kunjungan pertama: tampilkan video
+                // Kunjungan pertama di sesi ini: tampilkan video
                 preloader.classList.add('video-mode');
                 logoContent.style.display = 'none';
                 video.style.display = 'block';
@@ -1016,8 +1016,8 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 video.muted = true;
                 video.play().catch(() => {});
                 
-                // Simpan bahwa pengguna sudah pernah berkunjung
-                localStorage.setItem('hasVisited', 'true');
+                // Simpan bahwa pengguna sudah berkunjung di sesi ini
+                sessionStorage.setItem('hasVisited', 'true');
                 
                 // Preloader menghilang ketika video selesai diputar
                 video.addEventListener('ended', function () {
@@ -1027,7 +1027,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                     }
                 });
             } else {
-                // Kunjungan selanjutnya: tampilkan animasi logo assemble
+                // Kunjungan selanjutnya di sesi ini: tampilkan animasi logo assemble
                 preloader.classList.remove('video-mode');
                 logoContent.style.display = 'flex';
                 video.style.display = 'none';
