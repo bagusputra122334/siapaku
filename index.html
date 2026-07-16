@@ -998,6 +998,8 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const preloader = document.getElementById('preloader');
         const video = document.getElementById('preloader-video');
         const logoContent = document.getElementById('preloader-logo-content');
+        const pieces = document.querySelectorAll('.preloader-piece');
+        const text = document.querySelector('.preloader-text');
         
         // Cek apakah ini kunjungan pertama
         const isFirstVisit = !localStorage.getItem('hasVisited');
@@ -1029,6 +1031,18 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 preloader.classList.remove('video-mode');
                 logoContent.style.display = 'flex';
                 video.style.display = 'none';
+                
+                // Reset animasi logo untuk memastikan berjalan kembali
+                pieces.forEach(piece => {
+                    piece.style.animation = 'none';
+                    piece.offsetHeight; // Trick untuk merefresh animasi
+                    piece.style.animation = '';
+                });
+                
+                // Reset animasi text
+                text.style.animation = 'none';
+                text.offsetHeight;
+                text.style.animation = '';
                 
                 // Preloader menghilang setelah 2.5 detik
                 setTimeout(() => {
