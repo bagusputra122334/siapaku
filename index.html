@@ -548,7 +548,7 @@
             </div>
             <div class="preloader-text">Blackrose.</div>
         </div>
-        <video autoplay muted playsinline webkit-playsinline preload="auto" id="preloader-video" loop>
+        <video autoplay muted playsinline webkit-playsinline preload="auto" id="preloader-video">
             <source src="img/br.mp4" type="video/mp4">
         </video>
     </div>
@@ -1017,13 +1017,13 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 // Simpan bahwa pengguna sudah pernah berkunjung
                 localStorage.setItem('hasVisited', 'true');
                 
-                // Preloader menghilang setelah 11 detik
-                setTimeout(() => {
+                // Preloader menghilang ketika video selesai diputar
+                video.addEventListener('ended', function () {
                     if (!preloader.classList.contains('fade-out')) {
                         preloader.classList.add('fade-out');
                         setTimeout(() => preloader.remove(), 800);
                     }
-                }, 11000);
+                });
             } else {
                 // Kunjungan selanjutnya: tampilkan animasi logo assemble
                 preloader.classList.remove('video-mode');
