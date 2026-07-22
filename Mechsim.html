@@ -11,6 +11,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
@@ -42,6 +44,29 @@ border-radius:16px;
 box-shadow:0 20px 40px rgba(0,0,0,0.10);
 backdrop-filter:blur(12px) saturate(1.15);
 border:1px solid rgba(255,255,255,0.25);
+}
+
+.back-btn{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #B22222;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 5px 20px rgba(178, 34, 34, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+.back-btn:hover{
+    background: #8B1A1A;
+    transform: translateY(-2px);
 }
 
 h1{
@@ -195,6 +220,12 @@ object-fit:cover;
         margin-left: 15px;
         font-size: 0.95rem;
     }
+    .back-btn {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        top: 10px;
+        left: 10px;
+    }
 }
 </style>
 
@@ -215,6 +246,7 @@ object-fit:cover;
 
 <div class="bg3d" id="bg3d-mechsim"></div>
 <div class="container">
+<a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
 
 <h1>PANDUAN PENGGUNAAN</h1>
 <h1>VIRTUAL MECHSIM LABORATORY</h1>
@@ -222,17 +254,17 @@ object-fit:cover;
 <h2>FITUR-FITUR APLIKASI</h2>
 
 <div class="gallery">
-  <figure><img src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.onerror=null;this.src='img/mc.png'"></figure>
-  <figure><img src="img/mc.1.png" alt="Landing Page Virtual Mechsim" onerror="this.onerror=null;this.src='img/mc.1.png'"></figure>
-  <figure><img src="img/mc.2.png" alt="Kumpulan Materi" onerror="this.onerror=null;this.src='img/mc.2.png'"></figure>
-  <figure><img src="img/mc.3.png" alt="Kumpulan Modul" onerror="this.onerror=null;this.src='img/mc.3.png'"></figure>
-  <figure><img src="img/mc.4.png" alt="Halaman Login" onerror="this.onerror=null;this.src='img/mc.4.png'"></figure>
-  <figure><img src="img/mc.5.png" alt="Tampilan Guru" onerror="this.onerror=null;this.src='img/mc.5.png'"></figure>
-  <figure><img src="img/mc.6.png" alt="Halaman Pengerjaan Siswa" onerror="this.onerror=null;this.src='img/mc.6.png'"></figure>
-  <figure><img src="img/mc.7.png" alt="Tampilan Menunggu" onerror="this.onerror=null;this.src='img/mc.7.png'"></figure>
+  <figure><img src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.1.png" alt="Landing Page Virtual Mechsim" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.2.png" alt="Kumpulan Materi" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.3.png" alt="Kumpulan Modul" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.4.png" alt="Halaman Login" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.5.png" alt="Tampilan Guru" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.6.png" alt="Halaman Pengerjaan Siswa" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop'"></figure>
+  <figure><img src="img/mc.7.png" alt="Tampilan Menunggu" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&h=400&fit=crop'"></figure>
 </div>
 
-<h3>1. MC.1 - Landing Page (Halaman Awal)</h3>
+<h3>1. Halaman Awal (Landing Page)</h3>
 
 <ul>
 <li>Menampilkan halaman pembuka aplikasi dengan nama <b>"Virtual Mechsim Laboratory"</b>.</li>
@@ -240,7 +272,7 @@ object-fit:cover;
 <li>Desain dibuat menarik untuk menyambut pengguna baru.</li>
 </ul>
 
-<h3>2. MC.2 - Kumpulan Materi</h3>
+<h3>2. Kumpulan Materi</h3>
 
 <ul>
 <li>Menampilkan daftar materi pembelajaran mekanika secara terstruktur.</li>
@@ -248,7 +280,7 @@ object-fit:cover;
 <li>Siswa dan guru dapat mengakses materi kapan saja.</li>
 </ul>
 
-<h3>3. MC.3 - Kumpulan Modul</h3>
+<h3>3. Kumpulan Modul</h3>
 
 <ul>
 <li>Berisi modul-modul praktikum virtual yang dapat diunduh atau diakses langsung.</li>
@@ -256,7 +288,7 @@ object-fit:cover;
 <li>Guru dapat menambahkan atau mengedit modul sesuai kebutuhan.</li>
 </ul>
 
-<h3>4. MC.4 - Halaman Login (Guru & Siswa)</h3>
+<h3>4. Halaman Login Guru & Siswa</h3>
 
 <ul>
 <li>Menyediakan dua pilihan login: <b>Guru</b> dan <b>Siswa</b>.</li>
@@ -264,7 +296,7 @@ object-fit:cover;
 <li>Sistem akan memverifikasi username dan password sebelum memasuki dashboard.</li>
 </ul>
 
-<h3>5. MC.5 - Tampilan Guru (Dashboard Monitoring)</h3>
+<h3>5. Dashboard Guru (Monitoring)</h3>
 
 <ul>
 <li>Menampilkan <b>monitoring hasil pengerjaan siswa</b> secara real-time.</li>
@@ -273,7 +305,7 @@ object-fit:cover;
 <li>Guru dapat memberikan respon atau bimbingan langsung melalui aplikasi.</li>
 </ul>
 
-<h3>6. MC.6 - Halaman Pengerjaan Siswa</h3>
+<h3>6. Halaman Pengerjaan Siswa</h3>
 
 <ul>
 <li>Siswa dapat mengerjakan soal atau praktikum virtual di halaman ini.</li>
@@ -281,7 +313,7 @@ object-fit:cover;
 <li>Setelah selesai, siswa dapat mengumpulkan jawaban untuk dinilai oleh guru.</li>
 </ul>
 
-<h3>7. MC.7 - Tampilan Menunggu (Guru Masih Menjelaskan)</h3>
+<h3>7. Tampilan Menunggu (Guru Menjelaskan)</h3>
 
 <ul>
 <li>Menampilkan pesan bahwa <b>"Guru sedang menjelaskan, silakan tunggu"</b>.</li>
