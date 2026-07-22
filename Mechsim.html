@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Virtual Mechsim Laboratory - Panduan Penggunaan</title>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+
+html{scroll-behavior:smooth}
+body{
+font-family:"Times New Roman",serif;
+background:transparent;
+margin:0;
+line-height:1.7;
+color:#111;
+overflow-x:hidden;
+}
+* { box-sizing: border-box; }
+img { max-width: 100%; height: auto; display: block; }
+
+.bg3d{
+position:fixed;
+inset:0;
+z-index:-1;
+pointer-events:none;
+}
+
+.container{
+max-width:980px;
+margin:40px auto;
+background:rgba(255,255,255,0.55);
+padding:28px;
+border-radius:16px;
+box-shadow:0 20px 40px rgba(0,0,0,0.10);
+backdrop-filter:blur(12px) saturate(1.15);
+border:1px solid rgba(255,255,255,0.25);
+}
+
+h1{
+text-align:center;
+margin-bottom:20px;
+}
+
+h2{
+margin-top:40px;
+border-bottom:2px solid #ddd;
+padding-bottom:5px;
+}
+
+h3{
+margin-top:25px;
+}
+
+ul{
+margin-left:25px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:16px;
+margin:16px 0 8px;
+}
+.gallery figure{
+margin:0;
+background:#fff;
+border:1px solid #ddd;
+border-radius:10px;
+box-shadow:0 8px 20px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+.gallery img{
+width:100%;
+height:auto;
+display:block;
+object-fit:cover;
+}
+@media(max-width:640px){
+  .gallery{grid-template-columns:1fr}
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FDF2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+.preloader-content {
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader-logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.preloader-piece {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/br.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    filter: drop-shadow(0 0 10px rgba(178, 34, 34, 0.1));
+}
+
+/* Split logo into 4 pieces using clip-path */
+.piece-tl { clip-path: inset(0 50% 50% 0); transform: translate(-50px, -50px); animation: assemble 1s forwards ease-out 0.1s; }
+.piece-tr { clip-path: inset(0 0 50% 50%); transform: translate(50px, -50px); animation: assemble 1s forwards ease-out 0.2s; }
+.piece-bl { clip-path: inset(50% 50% 0 0); transform: translate(-50px, 50px); animation: assemble 1s forwards ease-out 0.3s; }
+.piece-br { clip-path: inset(50% 0 0 50%); transform: translate(50px, 50px); animation: assemble 1s forwards ease-out 0.4s; }
+
+@keyframes assemble {
+    to { transform: translate(0, 0); opacity: 1; }
+}
+
+.preloader-text {
+    position: absolute;
+    bottom: -40px;
+    width: 100%;
+    font-weight: 700;
+    color: #B22222;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
+}
+
+@keyframes preloader-fade-in {
+    to { opacity: 1; transform: translateY(-5px); }
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .container {
+        margin: 20px;
+        padding: 25px;
+    }
+}
+@media (max-width: 768px) {
+    .container {
+        margin: 15px;
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+        border-radius: 12px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    ul {
+        margin-left: 15px;
+        font-size: 0.95rem;
+    }
+}
+</style>
+
+</head>
+
+<body>
+<div id="preloader">
+     <div class="preloader-content">
+         <div class="preloader-logo-container">
+             <div class="preloader-piece piece-tl"></div>
+             <div class="preloader-piece piece-tr"></div>
+             <div class="preloader-piece piece-bl"></div>
+             <div class="preloader-piece piece-br"></div>
+         </div>
+         <div class="preloader-text">Blackrose.</div>
+     </div>
+ </div>
+
+<div class="bg3d" id="bg3d-mechsim"></div>
+<div class="container">
+
+<h1>PANDUAN PENGGUNAAN</h1>
+<h1>VIRTUAL MECHSIM LABORATORY</h1>
+
+<h2>FITUR-FITUR APLIKASI</h2>
+
+<div class="gallery">
+  <figure><img src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.onerror=null;this.src='img/mc.png'"></figure>
+  <figure><img src="img/mc.1.png" alt="Landing Page Virtual Mechsim" onerror="this.onerror=null;this.src='img/mc.1.png'"></figure>
+  <figure><img src="img/mc.2.png" alt="Kumpulan Materi" onerror="this.onerror=null;this.src='img/mc.2.png'"></figure>
+  <figure><img src="img/mc.3.png" alt="Kumpulan Modul" onerror="this.onerror=null;this.src='img/mc.3.png'"></figure>
+  <figure><img src="img/mc.4.png" alt="Halaman Login" onerror="this.onerror=null;this.src='img/mc.4.png'"></figure>
+  <figure><img src="img/mc.5.png" alt="Tampilan Guru" onerror="this.onerror=null;this.src='img/mc.5.png'"></figure>
+  <figure><img src="img/mc.6.png" alt="Halaman Pengerjaan Siswa" onerror="this.onerror=null;this.src='img/mc.6.png'"></figure>
+  <figure><img src="img/mc.7.png" alt="Tampilan Menunggu" onerror="this.onerror=null;this.src='img/mc.7.png'"></figure>
+</div>
+
+<h3>1. MC.1 - Landing Page (Halaman Awal)</h3>
+
+<ul>
+<li>Menampilkan halaman pembuka aplikasi dengan nama <b>"Virtual Mechsim Laboratory"</b>.</li>
+<li>Terdapat tombol untuk menuju ke halaman login atau melihat materi/modul.</li>
+<li>Desain dibuat menarik untuk menyambut pengguna baru.</li>
+</ul>
+
+<h3>2. MC.2 - Kumpulan Materi</h3>
+
+<ul>
+<li>Menampilkan daftar materi pembelajaran mekanika secara terstruktur.</li>
+<li>Setiap materi dilengkapi dengan penjelasan singkat dan gambar pendukung.</li>
+<li>Siswa dan guru dapat mengakses materi kapan saja.</li>
+</ul>
+
+<h3>3. MC.3 - Kumpulan Modul</h3>
+
+<ul>
+<li>Berisi modul-modul praktikum virtual yang dapat diunduh atau diakses langsung.</li>
+<li>Modul dilengkapi dengan langkah-langkah praktikum yang jelas.</li>
+<li>Guru dapat menambahkan atau mengedit modul sesuai kebutuhan.</li>
+</ul>
+
+<h3>4. MC.4 - Halaman Login (Guru & Siswa)</h3>
+
+<ul>
+<li>Menyediakan dua pilihan login: <b>Guru</b> dan <b>Siswa</b>.</li>
+<li>Setiap role memiliki akses yang berbeda sesuai kebutuhan.</li>
+<li>Sistem akan memverifikasi username dan password sebelum memasuki dashboard.</li>
+</ul>
+
+<h3>5. MC.5 - Tampilan Guru (Dashboard Monitoring)</h3>
+
+<ul>
+<li>Menampilkan <b>monitoring hasil pengerjaan siswa</b> secara real-time.</li>
+<li>Menunjukkan daftar <b>siswa yang sedang online</b>.</li>
+<li>Memiliki fitur untuk melihat <b>siswa yang memerlukan bantuan</b>.</li>
+<li>Guru dapat memberikan respon atau bimbingan langsung melalui aplikasi.</li>
+</ul>
+
+<h3>6. MC.6 - Halaman Pengerjaan Siswa</h3>
+
+<ul>
+<li>Siswa dapat mengerjakan soal atau praktikum virtual di halaman ini.</li>
+<li>Terdapat fitur untuk menyimpan jawaban sementara.</li>
+<li>Setelah selesai, siswa dapat mengumpulkan jawaban untuk dinilai oleh guru.</li>
+</ul>
+
+<h3>7. MC.7 - Tampilan Menunggu (Guru Masih Menjelaskan)</h3>
+
+<ul>
+<li>Menampilkan pesan bahwa <b>"Guru sedang menjelaskan, silakan tunggu"</b>.</li>
+<li>Siswa belum bisa mengakses halaman pengerjaan sampai guru mengizinkan.</li>
+<li>Fitur ini untuk memastikan pembelajaran berjalan terstruktur.</li>
+</ul>
+
+</div>
+
+</body>
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-mechsim');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            setTimeout(() => { preloader.remove(); }, 600);
+        }, 2500);
+    }
+});
+</script>
+</html>
