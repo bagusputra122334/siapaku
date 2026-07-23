@@ -88,30 +88,6 @@ ul{
 margin-left:25px;
 }
 
-.gallery{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:16px;
-margin:16px 0 8px;
-}
-.gallery figure{
-margin:0;
-background:#fff;
-border:1px solid #ddd;
-border-radius:10px;
-box-shadow:0 8px 20px rgba(0,0,0,0.08);
-overflow:hidden;
-}
-.gallery img{
-width:100%;
-height:auto;
-display:block;
-object-fit:cover;
-}
-@media(max-width:640px){
-  .gallery{grid-template-columns:1fr}
-}
-
 /* Preloader */
 #preloader {
     position: fixed;
@@ -253,18 +229,15 @@ object-fit:cover;
 
 <h2>FITUR-FITUR APLIKASI</h2>
 
-<div class="gallery">
-  <figure><img src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.1.png" alt="Landing Page Virtual Mechsim" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.2.png" alt="Kumpulan Materi" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.3.png" alt="Kumpulan Modul" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.4.png" alt="Halaman Login" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.5.png" alt="Tampilan Guru" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.6.png" alt="Halaman Pengerjaan Siswa" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=600&h=400&fit=crop'"></figure>
-  <figure><img src="img/mc.7.png" alt="Tampilan Menunggu" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=600&h=400&fit=crop'"></figure>
+<div style="text-align: center; margin-bottom: 30px;">
+  <img src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" style="max-width: 400px; width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 </div>
 
 <h3>1. Halaman Awal (Landing Page)</h3>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.1.png" alt="Landing Page Virtual Mechsim" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
 
 <ul>
 <li>Menampilkan halaman pembuka aplikasi dengan nama <b>"Virtual Mechsim Laboratory"</b>.</li>
@@ -274,6 +247,10 @@ object-fit:cover;
 
 <h3>2. Kumpulan Materi</h3>
 
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.2.png" alt="Kumpulan Materi" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
+
 <ul>
 <li>Menampilkan daftar materi pembelajaran mekanika secara terstruktur.</li>
 <li>Setiap materi dilengkapi dengan penjelasan singkat dan gambar pendukung.</li>
@@ -281,6 +258,10 @@ object-fit:cover;
 </ul>
 
 <h3>3. Kumpulan Modul</h3>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.3.png" alt="Kumpulan Modul" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
 
 <ul>
 <li>Berisi modul-modul praktikum virtual yang dapat diunduh atau diakses langsung.</li>
@@ -290,6 +271,10 @@ object-fit:cover;
 
 <h3>4. Halaman Login Guru & Siswa</h3>
 
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.4.png" alt="Halaman Login" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
+
 <ul>
 <li>Menyediakan dua pilihan login: <b>Guru</b> dan <b>Siswa</b>.</li>
 <li>Setiap role memiliki akses yang berbeda sesuai kebutuhan.</li>
@@ -297,6 +282,10 @@ object-fit:cover;
 </ul>
 
 <h3>5. Dashboard Guru (Monitoring)</h3>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.5.png" alt="Tampilan Guru" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
 
 <ul>
 <li>Menampilkan <b>monitoring hasil pengerjaan siswa</b> secara real-time.</li>
@@ -307,6 +296,10 @@ object-fit:cover;
 
 <h3>6. Halaman Pengerjaan Siswa</h3>
 
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.6.png" alt="Halaman Pengerjaan Siswa" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
+
 <ul>
 <li>Siswa dapat mengerjakan soal atau praktikum virtual di halaman ini.</li>
 <li>Terdapat fitur untuk menyimpan jawaban sementara.</li>
@@ -314,6 +307,10 @@ object-fit:cover;
 </ul>
 
 <h3>7. Tampilan Menunggu (Guru Menjelaskan)</h3>
+
+<div style="text-align: center; margin-bottom: 20px;">
+  <img src="img/mc.7.png" alt="Tampilan Menunggu" style="max-width: 100%; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
 
 <ul>
 <li>Menampilkan pesan bahwa <b>"Guru sedang menjelaskan, silakan tunggu"</b>.</li>
