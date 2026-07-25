@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LibMitLes – Aplikasi Perpustakaan Digital SMAN 14 Surabaya</title>
+<link rel="icon" type="image/png" href="img/br.png">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+    :root {
+        --primary: #B22222;
+        --primary-dark: #8B0000;
+        --text: #222;
+        --text-light: #444;
+        --radius-sm: clamp(8px, 2vw, 12px);
+        --radius-md: clamp(10px, 2.5vw, 18px);
+        --radius-lg: clamp(14px, 3.5vw, 24px);
+        --space-xs: clamp(0.35rem, 1.2vw, 0.5rem);
+        --space-sm: clamp(0.6rem, 2vw, 0.9rem);
+        --space-md: clamp(0.9rem, 3vw, 1.5rem);
+        --space-lg: clamp(1.4rem, 4.5vw, 2.5rem);
+        --space-xl: clamp(2rem, 7vw, 4rem);
+    }
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{
+        font-family:'Poppins', sans-serif;
+        background:transparent;
+        margin:0;
+        line-height:1.65;
+        color:#222;
+        overflow-x:hidden;
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    * { box-sizing: border-box; }
+    img { max-width: 100%; height: auto; display: block; }
+    .bg3d{
+        position:fixed;
+        inset:0;
+        z-index:-1;
+        pointer-events:none;
+    }
+    .container{
+        max-width:980px;
+        margin: clamp(10px, 2.5vw, 20px) auto;
+        margin-top: clamp(12px, 3vw, 40px);
+        margin-bottom: clamp(12px, 3vw, 40px);
+        background:rgba(255,255,255,0.9);
+        padding: clamp(1rem, 4vw, 2.5rem);
+        border-radius: var(--radius-lg);
+        box-shadow:0 25px 50px rgba(0,0,0,0.12);
+        backdrop-filter:blur(15px);
+        -webkit-backdrop-filter:blur(15px);
+        border:1px solid rgba(255,255,255,0.3);
+        width: min(980px, calc(100% - clamp(0.7rem, 4vw, 2rem)));
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(4px, 1vw, 8px);
+        text-decoration: none;
+        color: #B22222;
+        font-weight: 600;
+        margin-bottom: clamp(1rem, 3.5vw, 2rem);
+        transition: 0.3s;
+        background: rgba(178, 34, 34, 0.1);
+        padding: clamp(0.45rem, 1.8vw, 0.65rem) clamp(0.75rem, 2.8vw, 1.1rem);
+        border-radius: var(--radius-sm);
+        font-size: clamp(0.75rem, 2.3vw, 0.95rem);
+        min-height: 40px;
+    }
+    .back-btn:hover {
+        transform: translateX(-5px);
+        background: rgba(178, 34, 34, 0.2);
+    }
+    h1{
+        text-align:center;
+        margin-bottom: clamp(1rem, 3vw, 2rem);
+        margin-top: clamp(0.5rem, 2vw, 1rem);
+        color: #B22222;
+        font-size: clamp(1.4rem, 5.5vw, 2.5rem);
+        line-height: 1.25;
+    }
+    .subtitle {
+        text-align: center;
+        font-size: clamp(0.85rem, 2.6vw, 1.05rem);
+        color: #666;
+        margin-bottom: clamp(1.5rem, 5vw, 3rem);
+        line-height: 1.55;
+    }
+    .story-section {
+        margin-bottom: clamp(1.5rem, 6vw, 4rem);
+        animation: fadeIn 1s ease-out;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    h2 {
+        color: #8B0000;
+        border-left: clamp(3px, 0.8vw, 5px) solid #B22222;
+        padding-left: clamp(0.6rem, 2.5vw, 1rem);
+        margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
+        margin-top: clamp(1.2rem, 4vw, 2.2rem);
+        font-size: clamp(1.1rem, 4vw, 1.85rem);
+        line-height: 1.3;
+    }
+    h3 {
+        font-size: clamp(0.95rem, 3vw, 1.3rem);
+        line-height: 1.35;
+        margin-top: clamp(1rem, 3vw, 1.6rem);
+        margin-bottom: clamp(0.5rem, 1.8vw, 0.9rem);
+        color: #222;
+    }
+    h4 {
+        font-size: clamp(0.85rem, 2.6vw, 1.08rem);
+        line-height: 1.4;
+        margin-top: clamp(0.7rem, 2.2vw, 1.1rem);
+        margin-bottom: clamp(0.4rem, 1.4vw, 0.7rem);
+        color: #333;
+        font-weight: 600;
+    }
+    .narrative-text {
+        font-size: clamp(0.82rem, 2.6vw, 1.1rem);
+        color: #444;
+        margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
+        line-height: 1.7;
+    }
+    p {
+        font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+        line-height: 1.72;
+        margin-bottom: clamp(0.5rem, 1.8vw, 1rem);
+    }
+    .content-card {
+        background: white;
+        padding: clamp(0.9rem, 3.5vw, 1.8rem);
+        border-radius: var(--radius-md);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        margin-bottom: clamp(1rem, 3.5vw, 2rem);
+        border: 1px solid #eee;
+    }
+    .feature-list {
+        list-style: none;
+        padding: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
+        gap: clamp(0.5rem, 1.8vw, 1rem);
+        margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
+    }
+    .feature-list li {
+        background: #fff6f6;
+        padding: clamp(0.55rem, 2vw, 0.85rem) clamp(0.65rem, 2.3vw, 1.15rem);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        gap: clamp(8px, 1.4vw, 12px);
+        font-weight: 600;
+        font-size: clamp(0.78rem, 2.3vw, 1rem);
+        line-height: 1.3;
+        border: 1px solid rgba(178,34,34,0.1);
+    }
+    .feature-list li i {
+        color: #B22222;
+        font-size: clamp(0.95rem, 2.7vw, 1.2rem);
+        flex-shrink: 0;
+    }
+    .hero-img-box {
+        width: 100%;
+        margin: clamp(1rem, 4vw, 2.5rem) 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 clamp(12px, 3vw, 28px) clamp(20px, 5vw, 48px) rgba(0,0,0,0.14);
+        border: 1px solid rgba(139,0,0,0.15);
+    }
+    .hero-img-box img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.5s ease;
+    }
+    .hero-img-box img:hover { transform: scale(1.015); }
+
+    .live-btn-wrap {
+        text-align: center;
+        margin: clamp(0.5rem, 2vw, 1rem) 0 clamp(1.5rem, 4vw, 2.5rem);
+    }
+    .btn-live {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(6px, 1.3vw, 10px);
+        background: linear-gradient(135deg, #B22222 0%, #8B0000 100%);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        padding: clamp(0.7rem, 2.3vw, 0.95rem) clamp(1.5rem, 4.5vw, 2.4rem);
+        border-radius: 999px;
+        font-size: clamp(0.82rem, 2.5vw, 1rem);
+        min-height: 44px;
+        box-shadow: 0 clamp(8px, 2vw, 16px) rgba(178,34,34,0.35);
+        transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-live:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 clamp(12px, 2.8vw, 22px) rgba(178,34,34,0.45);
+    }
+    .btn-live i { font-size: clamp(0.9rem, 2.6vw, 1.05rem); }
+
+    .video-embed{
+        position:relative;
+        width:100%;
+        padding-top:56.25%;
+        border-radius: var(--radius-md);
+        overflow:hidden;
+        box-shadow: 0 clamp(8px, 2vw, 16px) clamp(14px, 3.5vw, 36px) rgba(0,0,0,0.12);
+        border: 1px solid rgba(139,0,0,0.2);
+        background:#000;
+        margin-top: clamp(0.6rem, 2vw, 1rem);
+        margin-bottom: clamp(1rem, 3.5vw, 2rem);
+    }
+    .video-embed iframe{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        border:0;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+        gap: clamp(0.6rem, 2vw, 1.1rem);
+        margin: clamp(0.8rem, 3vw, 1.6rem) 0 clamp(1.2rem, 4vw, 2rem);
+    }
+    .gallery figure {
+        margin: 0;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 clamp(6px, 1.5vw, 14px) rgba(0,0,0,0.1);
+        border: 1px solid #eee;
+        background: #fff;
+    }
+    .gallery img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.45s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.04); }
+    .gallery figcaption {
+        padding: clamp(0.45rem, 1.6vw, 0.7rem) clamp(0.6rem, 2.2vw, 1rem);
+        font-size: clamp(0.72rem, 2.1vw, 0.88rem);
+        color: #555;
+        font-weight: 600;
+        border-top: 1px solid #f2f2f2;
+        text-align: center;
+    }
+
+    ul, ol {
+        margin-left: clamp(0.9rem, 3vw, 1.6rem);
+        padding-left: 0;
+    }
+    ul li, ol li {
+        font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+        line-height: 1.7;
+        margin-bottom: clamp(0.3rem, 1vw, 0.55rem);
+    }
+    ul li ul, ul li ol, ol li ul, ol li ol {
+        margin-top: clamp(0.25rem, 0.9vw, 0.45rem);
+        margin-bottom: clamp(0.3rem, 1vw, 0.5rem);
+        margin-left: clamp(0.7rem, 2.4vw, 1.2rem);
+    }
+
+    .req-block {
+        background: linear-gradient(180deg, #fffafa 0%, #ffffff 100%);
+        border: 1px solid rgba(178,34,34,0.08);
+        border-radius: var(--radius-md);
+        padding: clamp(0.85rem, 3vw, 1.5rem);
+        margin-bottom: clamp(0.9rem, 3vw, 1.5rem);
+    }
+    .req-tag {
+        display: inline-block;
+        background: #B22222;
+        color: #fff;
+        padding: clamp(0.15rem, 0.8vw, 0.28rem) clamp(0.5rem, 1.6vw, 0.85rem);
+        border-radius: 999px;
+        font-size: clamp(0.68rem, 2vw, 0.82rem);
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        margin-right: clamp(0.35rem, 1vw, 0.6rem);
+    }
+    .req-block > p { margin-top: clamp(0.5rem, 1.6vw, 0.8rem); }
+    .req-block ul li, .req-block ol li { margin-bottom: clamp(0.35rem, 1.2vw, 0.6rem); }
+
+    .badge {
+        display: inline-block;
+        background: #B22222;
+        color: white;
+        padding: clamp(0.2rem, 1vw, 0.35rem) clamp(0.6rem, 2vw, 1rem);
+        border-radius: 999px;
+        font-size: clamp(0.72rem, 2.2vw, 0.9rem);
+        margin-bottom: clamp(0.5rem, 2vw, 1rem);
+        font-weight: 600;
+    }
+
+    #bg3d-libmitless{
+        position:fixed;
+        inset:0;
+        z-index:-1;
+        pointer-events:none;
+        background:
+          radial-gradient(ellipse at 20% 10%, rgba(255,235,238,0.9) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.2) 60%),
+          linear-gradient(135deg, rgba(178,34,34,0.12), rgba(255,77,77,0.08) 60%, rgba(178,34,34,0.12));
+    }
+
+    /* Preloader */
+    #preloader {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #FDF2F2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader.fade-out { opacity: 0; visibility: hidden; }
+    .preloader-content {
+        text-align: center;
+        position: relative;
+        width: clamp(110px, 32vw, 150px);
+        height: clamp(110px, 32vw, 150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .preloader-logo-container { position: relative; width: clamp(90px, 26vw, 120px); height: clamp(90px, 26vw, 120px); }
+    .preloader-piece {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url('img/br.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0;
+        filter: drop-shadow(0 0 10px rgba(178, 34, 34, 0.1));
+    }
+    .piece-tl { clip-path: inset(0 50% 50% 0); transform: translate(-50px, -50px); animation: assemble 1s forwards ease-out 0.1s; }
+    .piece-tr { clip-path: inset(0 0 50% 50%); transform: translate(50px, -50px); animation: assemble 1s forwards ease-out 0.2s; }
+    .piece-bl { clip-path: inset(50% 50% 0 0); transform: translate(-50px, 50px); animation: assemble 1s forwards ease-out 0.3s; }
+    .piece-br { clip-path: inset(50% 0 0 50%); transform: translate(50px, 50px); animation: assemble 1s forwards ease-out 0.4s; }
+    @keyframes assemble { to { transform: translate(0, 0); opacity: 1; } }
+    .preloader-text {
+        position: absolute;
+        bottom: clamp(-28px, -8vw, -40px);
+        width: 100%;
+        font-weight: 700;
+        color: #B22222;
+        letter-spacing: clamp(2px, 0.6vw, 4px);
+        text-transform: uppercase;
+        font-size: clamp(0.65rem, 2vw, 0.8rem);
+        font-family: 'Poppins', sans-serif;
+        opacity: 0;
+        animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
+    }
+    @keyframes preloader-fade-in { to { opacity: 1; transform: translateY(-5px); } }
+
+    .content-card p,
+    .content-card .narrative-text {
+        font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+        line-height: 1.7;
+        margin-bottom: 0;
+    }
+    .content-card p + p {
+        margin-top: clamp(0.5rem, 2vw, 1rem);
+    }
+
+    @media (max-width: 768px) {
+        .feature-list { grid-template-columns: repeat(2, 1fr); }
+        .narrative-text { text-align: left; }
+        p { text-align: left; }
+        ul li, ol li { text-align: left; }
+    }
+    @media (max-width: 560px) {
+        .feature-list { grid-template-columns: 1fr; }
+        .gallery { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+        .container {
+            width: calc(100% - clamp(0.5rem, 3vw, 0.8rem));
+            padding: clamp(0.85rem, 4vw, 1.3rem);
+        }
+    }
+    @media (max-width: 380px) {
+        h1 { font-size: clamp(1.25rem, 6vw, 1.5rem); }
+        h2 { font-size: clamp(1rem, 4.8vw, 1.2rem); }
+    }
+</style>
+<link rel="stylesheet" href="css/responsive.css">
+
+</head>
+
+<body>
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-logo-container">
+            <div class="preloader-piece piece-tl"></div>
+            <div class="preloader-piece piece-tr"></div>
+            <div class="preloader-piece piece-bl"></div>
+            <div class="preloader-piece piece-br"></div>
+        </div>
+        <div class="preloader-text">Blackrose.</div>
+    </div>
+</div>
+
+<div id="bg3d-libmitless"></div>
+<div class="container">
+
+<a href="index.html#projects" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Proyek</a>
+
+<h1>LibMitLes – Aplikasi Perpustakaan Digital</h1>
+<p class="subtitle"><i class="fa-solid fa-school" style="color:#8B0000"></i> SMAN 14 Surabaya &nbsp;•&nbsp; <i class="fa-solid fa-calendar-days" style="color:#8B0000"></i> Proyek Inovasi Teknologi Pendidikan</p>
+
+<span class="badge"><i class="fa-solid fa-book-open-reader"></i>&nbsp; Full-Stack Web App</span> &nbsp;
+<span class="badge" style="background:#8B0000;"><i class="fa-solid fa-robot"></i>&nbsp; AI Integrated</span>
+
+<div class="story-section">
+<h2>Teknologi Unggulan</h2>
+<ul class="feature-list">
+    <li><i class="fa-solid fa-face-smile"></i> Face Recognition</li>
+    <li><i class="fa-solid fa-envelope"></i> Email OTP (EmailJS)</li>
+    <li><i class="fa-solid fa-database"></i> Neon DB PostgreSQL</li>
+    <li><i class="fa-solid fa-credit-card"></i> Midtrans Payment</li>
+    <li><i class="fa-solid fa-brain"></i> BibhoBot (Gemini AI)</li>
+    <li><i class="fa-solid fa-shield-halved"></i> JWT Auth</li>
+    <li><i class="fa-brands fa-css3-alt"></i> Tailwind CSS</li>
+    <li><i class="fa-solid fa-lock"></i> Bcrypt Hashing</li>
+</ul>
+
+<div class="hero-img-box">
+    <img src="img/lm1.png" alt="Tampilan Utama LibMitLes">
+</div>
+
+<div class="live-btn-wrap">
+    <a href="https://libmitlessman14surabaya.my.id/" target="_blank" rel="noopener noreferrer" class="btn-live">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+        Akses Aplikasi Live
+    </a>
+</div>
+</div>
+
+<div class="story-section">
+<h2>Video Presentasi</h2>
+<div class="video-embed">
+<iframe src="https://www.youtube.com/embed/ui5zSNcXNB8?rel=0&controls=1&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+</div>
+
+<div class="story-section">
+<h2>Dokumentasi Tampilan Aplikasi</h2>
+<div class="gallery">
+    <figure>
+        <img src="img/lm2.png" alt="Dokumentasi LibMitLes 1">
+        <figcaption>Antarmuka Modul Autentikasi & Presensi</figcaption>
+    </figure>
+    <figure>
+        <img src="img/lm3.png" alt="Dokumentasi LibMitLes 2">
+        <figcaption>Katalog Digital & Manajemen Sirkulasi</figcaption>
+    </figure>
+    <figure>
+        <img src="img/lm4.png" alt="Dokumentasi LibMitLes 3">
+        <figcaption>Dashboard Analitik AI & BibhoBot</figcaption>
+    </figure>
+</div>
+</div>
+
+<div class="story-section">
+<h2>4. Kebutuhan Fungsional</h2>
+<p class="narrative-text">Bagian ini menguraikan seluruh kebutuhan fungsional dari perangkat lunak LibMitLes yang dikelompokkan berdasarkan fitur-fitur utama sistem (System Features). Kebutuhan fungsional mendefinisikan apa saja yang harus dapat dilakukan oleh sistem untuk memenuhi proses bisnis sirkulasi perpustakaan di SMAN 14 Surabaya.</p>
+
+<h3>4.1 System Feature 1: Modul Autentikasi dan Presensi Biometrik (Face Recognition)</h3>
+<div class="req-block">
+<p>Modul ini merupakan fitur krusial yang membedakan LibMitLes dengan sistem perpustakaan konvensional, di mana sistem memanfaatkan kecerdasan buatan untuk mengenali wajah pengguna sebagai pengganti kartu anggota fisik.</p>
+<ol>
+    <li><strong>SKPL-F-1.1:</strong> Sistem harus mampu meminta dan menerima izin akses perangkat keras kamera (webcam) pada perangkat klien melalui antarmuka peramban (web browser) menggunakan protokol WebRTC.</li>
+    <li><strong>SKPL-F-1.2:</strong> Sistem harus mampu menangkap aliran video (video stream) secara realtime dan memprosesnya menggunakan library Face-api.js untuk mendeteksi keberadaan wajah manusia di dalam frame.</li>
+    <li><strong>SKPL-F-1.3:</strong> Sistem harus mampu mengekstrak titik-titik biometrik wajah yang terdeteksi menjadi array data numerik (Face Descriptor).</li>
+    <li><strong>SKPL-F-1.4:</strong> Sistem harus melakukan komparasi/pencocokan algoritma antara Face Descriptor yang ditangkap oleh kamera dengan data Face Descriptor anggota yang telah tersimpan di dalam database (Neon DB).</li>
+    <li><strong>SKPL-F-1.5:</strong> Apabila tingkat kecocokan berada di atas ambang batas toleransi (valid), sistem harus secara otomatis menghasilkan log presensi yang mencakup ID Pengguna dan stempel waktu (timestamp) waktu kedatangan.</li>
+</ol>
+</div>
+
+<h3>4.2 System Feature 2: Modul Registrasi dan Verifikasi Keanggotaan (OTP)</h3>
+<div class="req-block">
+<p>Modul ini memfasilitasi proses pendaftaran mandiri bagi siswa atau guru yang belum memiliki akses ke dalam sistem perpustakaan.</p>
+<ol>
+    <li><strong>SKPL-F-2.1:</strong> Sistem harus menyediakan formulir pendaftaran yang mewajibkan pengguna untuk menginputkan data diri dasar (Nama, NIS/NIP, dan Alamat Email aktif).</li>
+    <li><strong>SKPL-F-2.2:</strong> Sistem harus mampu mengintegrasikan layanan Third-Party API dari EmailJS untuk men-generate dan mengirimkan kode One-Time Password (OTP) sejumlah 6 digit secara otomatis ke email yang didaftarkan.</li>
+    <li><strong>SKPL-F-2.3:</strong> Sistem harus memvalidasi kode OTP yang diinputkan oleh pengguna. Pendaftaran hanya akan disimpan ke dalam database dan akun akan diaktifkan apabila kode OTP yang dimasukkan valid dan belum kedaluwarsa.</li>
+</ol>
+</div>
+
+<h3>4.3 System Feature 3: Modul Manajemen Katalog dan Transaksi Sirkulasi</h3>
+<div class="req-block">
+<p>Modul ini adalah inti operasional perpustakaan yang menangani pencarian buku, pengajuan peminjaman, serta pembelian buku.</p>
+<ol>
+    <li><strong>SKPL-F-3.1:</strong> Sistem harus menampilkan antarmuka Katalog Digital yang memuat metadata buku (Judul, Pengarang, ISBN, Harga, Kategori) dan melakukan kalkulasi ketersediaan stok secara real-time.</li>
+    <li><strong>SKPL-F-3.2:</strong> Sistem harus memfasilitasi pengguna (Siswa/Guru) untuk mengajukan peminjaman buku secara mandiri melalui katalog digital. Sistem secara otomatis menentukan tanggal jatuh tempo pengembalian berdasarkan aturan durasi peminjaman perpustakaan.</li>
+    <li><strong>SKPL-F-3.3:</strong> Sistem harus memiliki Validation Engine yang menolak pengajuan peminjaman apabila pengguna masih memiliki jumlah pinjaman aktif yang melebihi batas maksimal peminjaman yang ditentukan oleh perpustakaan.</li>
+    <li><strong>SKPL-F-3.4:</strong> Sistem harus mampu menyimpan data pengajuan peminjaman ke dalam tabel book_loans dengan status Pending, serta menyimpan data pembelian buku ke dalam tabel transactions sebelum dilakukan validasi oleh petugas.</li>
+</ol>
+</div>
+
+<h3>4.4 System Feature 4: Modul Manajemen Petugas (Administrator)</h3>
+<div class="req-block">
+<p>Modul ini merupakan panel kendali utama (Dashboard) yang hanya dapat diakses oleh pengguna dengan hak akses "Petugas" untuk mengelola lalu lintas data perpustakaan.</p>
+<ol>
+    <li><strong>SKPL-F-4.1:</strong> Sistem harus menyediakan fitur Create, Read, Update, Delete (CRUD) bagi petugas untuk mengelola master data buku, master data anggota, dan parameter denda.</li>
+    <li><strong>SKPL-F-4.2:</strong> Sistem harus menampilkan antrean transaksi yang berstatus Pending. Petugas diberikan kapabilitas untuk mengeklik tombol persetujuan (Validasi) atau penolakan.</li>
+    <li><strong>SKPL-F-4.3:</strong> Saat petugas memvalidasi transaksi peminjaman atau pembelian, sistem harus secara otomatis memicu pengurangan (dekremen) pada jumlah stok buku terkait di database pusat.</li>
+</ol>
+</div>
+
+<h3>4.5 System Feature 5: Modul Asisten Virtual Cerdas (BibhoBot AI)</h3>
+<div class="req-block">
+<p>Modul ini memfasilitasi interaksi bahasa natural (NLP) antara pengguna dan sistem untuk keperluan rekomendasi literatur dan pengecekan stok cerdas menggunakan API Gemini.</p>
+<ol>
+    <li><strong>SKPL-F-5.1:</strong> Sistem harus menyediakan antarmuka percakapan (chat interface) yang interaktif bagi Siswa dan Guru.</li>
+    <li><strong>SKPL-F-5.2:</strong> Sistem (melalui Controller) harus mampu mengekstrak prompt pengguna, menggabungkannya dengan data ketersediaan buku di database, dan mengirimkan payload tersebut ke entitas Gemini API secara aman.</li>
+    <li><strong>SKPL-F-5.3:</strong> Sistem harus mampu mem-parsing respons berformat JSON dari Gemini API dan menampilkannya sebagai teks bahasa natural kepada pengguna.</li>
+</ol>
+</div>
+
+<h3>4.6 System Feature 6: Modul Dashboard Analitik AI</h3>
+<div class="req-block">
+<p>Modul ini berfungsi untuk membantu petugas perpustakaan dalam memantau aktivitas sirkulasi, tren kunjungan, dan minat literasi pengguna melalui visualisasi data statistik berbasis kecerdasan buatan.</p>
+<ol>
+    <li><strong>SKPL-F-6.1:</strong> Sistem harus mampu mengumpulkan dan mengolah data transaksi, data kunjungan, serta data aktivitas peminjaman dari basis data perpustakaan secara realtime.</li>
+    <li><strong>SKPL-F-6.2:</strong> Sistem harus mampu menghasilkan visualisasi statistik dalam bentuk grafik analitik untuk membantu petugas memahami pola aktivitas perpustakaan.</li>
+    <li><strong>SKPL-F-6.3:</strong> Sistem harus mampu melakukan analisis tren minat literasi pengguna berdasarkan kategori buku, frekuensi kunjungan, dan aktivitas transaksi.</li>
+    <li><strong>SKPL-F-6.4:</strong> Sistem harus mampu menampilkan insight otomatis berbasis AI mengenai peningkatan atau penurunan aktivitas perpustakaan pada dashboard admin.</li>
+</ol>
+</div>
+
+<h3>4.7 System Feature 7: Modul Pembayaran Digital</h3>
+<div class="req-block">
+<p>Modul ini digunakan untuk memfasilitasi transaksi pembayaran digital pada pembelian buku menggunakan layanan Midtrans Payment Gateway.</p>
+<ol>
+    <li><strong>SKPL-F-7.1:</strong> Sistem harus mampu menghasilkan transaksi pembayaran digital menggunakan Midtrans Snap API.</li>
+    <li><strong>SKPL-F-7.2:</strong> Sistem harus mampu menerima notifikasi webhook pembayaran dari Midtrans secara otomatis.</li>
+    <li><strong>SKPL-F-7.3:</strong> Sistem harus memperbarui status transaksi menjadi Paid Pending ACC setelah pembayaran berhasil diverifikasi oleh Midtrans.</li>
+    <li><strong>SKPL-F-7.4:</strong> Sistem harus memungkinkan petugas melakukan validasi akhir transaksi sebelum buku diserahkan kepada pengguna.</li>
+</ol>
+</div>
+</div>
+
+<div class="story-section">
+<h2>5. Kebutuhan Non Fungsional</h2>
+
+<h3>5.1 Performance Requirements (Kebutuhan Kinerja)</h3>
+<div class="req-block">
+<p>Kinerja sistem LibMitLes sangat bergantung pada optimasi pemrosesan di sisi klien maupun efisiensi kueri basis data di sisi cloud.</p>
+<ol>
+    <li>
+        <strong>Latensi Pemrosesan AI</strong><br>
+        Proses ekstraksi Face Descriptor menggunakan Face-api.js harus dieksekusi sepenuhnya di sisi peramban klien (Client-side rendering). Waktu respons dari saat wajah terdeteksi hingga sistem menampilkan notifikasi keberhasilan ditargetkan memiliki waktu respons kurang dari 3 detik pada perangkat standar.
+    </li>
+    <li>
+        <strong>Waktu Muat Halaman</strong><br>
+        Mengingat aplikasi di-deploy menggunakan infrastruktur Shared Web Hosting (AnymHost), waktu muat halaman (Page Load Time) pertama kali tidak boleh lebih dari 2,5 detik pada koneksi internet minimum 2 Mbps.
+    </li>
+    <li>
+        <strong>Throughput Database</strong><br>
+        Operasi penarikan data transaksi dari Neon DB PostgreSQL harus mampu merespons dalam waktu kurang dari 1 detik untuk memastikan Dashboard Petugas memperbarui data secara instan pengalaman pembaruan data secara realtime.
+    </li>
+</ol>
+</div>
+
+<h3>5.2 Safety Requirements (Kebutuhan Keselamatan)</h3>
+<div class="req-block">
+<p>Kebutuhan keselamatan pada sistem informasi berkaitan dengan pencegahan bahaya yang mungkin dialami pengguna atau potensi kerusakan struktur data.</p>
+<ol>
+    <li>
+        <strong>Keselamatan Pengguna (Ergonomi Visual)</strong><br>
+        Karena aplikasi berpotensi digunakan oleh petugas perpustakaan selama jam kerja penuh (8 jam sehari), sistem harus dilengkapi dengan fitur tata letak warna gelap (Dark Mode) bawaan dari Tailwind CSS guna mengurangi intensitas cahaya layar, sehingga meminimalisir kelelahan visual.
+    </li>
+    <li>
+        <strong>Keselamatan Data (Fail-safe Mechanism)</strong><br>
+        Operasi yang memanipulasi lebih dari satu tabel (misalnya, membuat transaksi baru dan mengurangi stok buku) harus dibungkus dalam mekanisme Database Transaction (ACID properties). Apabila terjadi kegagalan sistem di tengah proses, seluruh perubahan harus di-rollback untuk mencegah ketidakkonsistenan data (Data Corruption).
+    </li>
+</ol>
+</div>
+
+<h3>5.3 Security Requirements (Kebutuhan Keamanan)</h3>
+<div class="req-block">
+<p>Keamanan data menjadi aspek penting, terutama menyangkut informasi identitas dan biometrik siswa di SMAN 14 Surabaya.</p>
+<ol>
+    <li>
+        <strong>Privasi Data Biometrik (Compliance)</strong><br>
+        Sistem tidak menyimpan tangkapan layar, foto asli, atau gambar visual wajah pengguna di dalam server maupun database. Sistem hanya diizinkan menyimpan hasil konversi matematis berupa matriks desimal (Face Embeddings/Descriptors), sehingga jika terjadi kebocoran database, data wajah tidak dapat digunakan kembali sebagai gambar wajah asli oleh pihak tidak berwenang.
+    </li>
+    <li>
+        <strong>Enkripsi Kredensial</strong><br>
+        Seluruh kata sandi (password) pengguna harus diproses menggunakan fungsi hashing kriptografi (seperti Bcrypt dengan salt) sebelum dikirim ke basis data.
+    </li>
+    <li>
+        <strong>Autentikasi Lintas Sesi</strong><br>
+        Sistem harus mengimplementasikan pengelolaan sesi menggunakan token (JSON Web Token / JWT). Token ini akan mengamankan perpindahan antar halaman (routing), dan jika terdeteksi akses ke halaman Petugas tanpa token admin yang sah, sistem harus secara paksa mengalihkan (redirect) pengguna kembali ke halaman Login.
+    </li>
+</ol>
+</div>
+
+<h3>5.4 Software Quality Attributes (Atribut Kualitas Perangkat Lunak)</h3>
+<div class="req-block">
+<p>Atribut ini mendefinisikan seberapa "baik" perangkat lunak dibangun dari sudut pandang rekayasa perangkat lunak.</p>
+<ol>
+    <li>
+        <strong>Usability (Kebergunaan)</strong><br>
+        Antarmuka pengguna harus bersifat intuitif dan responsif. Penggunaan komponen grafis harus konsisten sehingga siswa atau guru baru dapat mengoperasikan fitur peminjaman atau penelusuran katalog tanpa memerlukan buku panduan (kurva pembelajaran rendah).
+    </li>
+    <li>
+        <strong>Maintainability (Kemudahan Pemeliharaan)</strong><br>
+        Kode sumber aplikasi harus mengadopsi prinsip pemrograman modular. Pemisahan komponen UI (Front-end) dan logika basis data (Back-end) harus didefinisikan dengan jelas untuk memudahkan pengembang generasi berikutnya dalam memperbaiki kesalahan sistem (bugs) atau memperbarui library kecerdasan buatan.
+    </li>
+    <li>
+        <strong>Availability (Ketersediaan)</strong><br>
+        Dengan menggunakan infrastruktur komputasi awan Serverless, sistem ditargetkan memiliki ketersediaan layanan (uptime) sebesar 99.9%. Sistem harus dapat diakses selama 24 jam penuh di luar jam pemeliharaan terjadwal.
+    </li>
+</ol>
+</div>
+
+<h3>5.5 Business Rules (Aturan Bisnis)</h3>
+<div class="req-block">
+<p>Aturan bisnis mendefinisikan regulasi dan batasan operasional yang berlaku khusus di lingkungan SMAN 14 Surabaya, yang kemudian diterjemahkan menjadi alur logika dalam sistem.</p>
+<ol>
+    <li>
+        <strong>BR-01 (Otorisasi Transaksi)</strong><br>
+        Tidak ada transaksi (pinjam/beli/kembali) yang dianggap "Sah" tanpa melalui klik tombol validasi oleh pengguna yang memiliki peran "Petugas". Sistem tidak boleh memotong stok buku hanya berdasarkan permintaan dari siswa.
+    </li>
+    <li>
+        <strong>BR-02 (Batas Pinjam Maksimal)</strong><br>
+        Entitas Siswa memiliki batasan kuota peminjaman aktif sebanyak maksimum 3 (tiga) judul buku secara bersamaan. Jika kuota telah terpenuhi, seluruh tombol pengajuan peminjaman untuk siswa tersebut akan dinonaktifkan (disabled) oleh sistem.
+    </li>
+    <li>
+        <strong>BR-03 (Kalkulasi Denda)</strong><br>
+        Keterlambatan pengembalian buku dari tanggal due date yang telah disepakati akan dikenakan sanksi finansial (denda) yang secara otomatis akan diakumulasikan oleh sistem dengan tarif konstan (misal: Rp1.000 per hari keterlambatan) yang parameternya dapat diatur oleh Petugas.
+    </li>
+    <li>
+        <strong>BR-04 (Analisis Aktivitas Perpustakaan)</strong><br>
+        Sistem harus mampu merekap data kunjungan, transaksi, dan aktivitas peminjaman pengguna secara otomatis untuk ditampilkan pada Dashboard Analitik AI sebagai bahan monitoring aktivitas literasi perpustakaan.
+    </li>
+</ol>
+</div>
+</div>
+
+<div class="story-section">
+<h2>6. Other Requirements</h2>
+
+<h3>6.1 Kebutuhan Internasionalisasi</h3>
+<div class="req-block">
+<p>Sistem LibMitLes dikembangkan dengan menggunakan Bahasa Indonesia sebagai bahasa utama pada seluruh antarmuka pengguna (User Interface). Penggunaan Bahasa Indonesia bertujuan untuk menyesuaikan kebutuhan operasional dan karakteristik pengguna di lingkungan SMAN 14 Surabaya, sehingga sistem dapat digunakan dengan mudah oleh siswa, guru, maupun petugas perpustakaan tanpa memerlukan kemampuan bahasa asing.</p>
+<p>Meskipun demikian, dokumentasi teknis perangkat lunak, penamaan variabel pada source code, struktur basis data, serta integrasi API eksternal tetap menggunakan Bahasa Inggris sebagai standar umum dalam pengembangan perangkat lunak modern. Pendekatan ini bertujuan untuk menjaga kompatibilitas teknologi, mempermudah proses pengembangan lanjutan, serta mendukung maintainability sistem di masa mendatang.</p>
+</div>
+
+<h3>6.2 Kebutuhan Privasi Data Biometrik</h3>
+<div class="req-block">
+<p>Sistem wajib menjaga kerahasiaan data biometrik wajah pengguna yang tersimpan di dalam basis data. Data Face Descriptor hanya digunakan untuk keperluan autentikasi dan presensi perpustakaan serta tidak diperkenankan untuk didistribusikan kepada pihak ketiga tanpa izin resmi dari pihak sekolah.</p>
+</div>
+</div>
+
+</div>
+
+<script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+<script>
+(function(){
+  const container=document.getElementById('bg3d-libmitless');
+  if(!container||!window.THREE) return;
+  const scene=new THREE.Scene();
+  const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
+  camera.position.set(0,0,900);
+  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio||1);
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  renderer.setClearColor(0x000000,0);
+  container.appendChild(renderer.domElement);
+  const ambient=new THREE.AmbientLight(0xffe6e6,0.6);
+  scene.add(ambient);
+  const dir1=new THREE.DirectionalLight(0xff8a80,0.75);
+  dir1.position.set(-400,500,800);
+  scene.add(dir1);
+  const dir2=new THREE.DirectionalLight(0xff1744,0.55);
+  dir2.position.set(500,-300,600);
+  scene.add(dir2);
+  const geometry=new THREE.PlaneGeometry(1800,1100,120,80);
+  const material=new THREE.MeshPhongMaterial({
+    color:0x3a0000,
+    emissive:0x1a0000,
+    shininess:40,
+    transparent:true,
+    opacity:0.45,
+    side:THREE.DoubleSide
+  });
+  const wave=new THREE.Mesh(geometry,material);
+  wave.rotation.x=-0.25;
+  scene.add(wave);
+  const pos=geometry.attributes.position.array;
+  const base=pos.slice();
+  let t=0;
+  function animate(){
+    requestAnimationFrame(animate);
+    t+=0.005;
+    for(let i=0;i<pos.length;i+=3){
+      const x=base[i];
+      const y=base[i+1];
+      const z=Math.sin(x*0.003+t)*18+Math.cos(y*0.004+t*1.2)*14;
+      pos[i+2]=z;
+    }
+    geometry.attributes.position.needsUpdate=true;
+    scene.rotation.y+=0.0006;
+    renderer.render(scene,camera);
+  }
+  function onResize(){
+    camera.aspect=window.innerWidth/window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth,window.innerHeight);
+  }
+  window.addEventListener('resize',onResize);
+  animate();
+})();
+
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            setTimeout(() => { preloader.remove(); }, 600);
+        }, 2500);
+    }
+});
+</script>
+</body>
+</html>
