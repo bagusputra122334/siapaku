@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curriculum Vitae | Bagus Dwi Cahya Putra</title>
+<link rel="icon" type="image/png" href="img/br.png">
+<meta name="description" content="Unduh Curriculum Vitae (CV) Bagus Dwi Cahya Putra.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+    :root {
+        --primary: #B22222;
+        --primary-dark: #8B0000;
+        --text: #222;
+        --text-light: #444;
+        --radius-sm: clamp(8px, 2vw, 12px);
+        --radius-md: clamp(10px, 2.5vw, 18px);
+        --radius-lg: clamp(14px, 3.5vw, 24px);
+        --space-xs: clamp(0.35rem, 1.2vw, 0.5rem);
+        --space-sm: clamp(0.6rem, 2vw, 0.9rem);
+        --space-md: clamp(0.9rem, 3vw, 1.5rem);
+        --space-lg: clamp(1.4rem, 4.5vw, 2.5rem);
+        --space-xl: clamp(2rem, 7vw, 4rem);
+    }
+    html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    body{
+        font-family:'Poppins', sans-serif;
+        background:transparent;
+        margin:0;
+        line-height:1.65;
+        color:#222;
+        overflow-x:hidden;
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    * { box-sizing: border-box; }
+    img { max-width: 100%; height: auto; display: block; }
+    .bg3d{
+        position:fixed;
+        inset:0;
+        z-index:-1;
+        pointer-events:none;
+        background:
+          radial-gradient(ellipse at 20% 10%, rgba(255,235,238,0.9) 0%, rgba(255,255,255,0.7) 40%, rgba(255,255,255,0.2) 60%),
+          linear-gradient(135deg, rgba(178,34,34,0.12), rgba(255,77,77,0.08) 60%, rgba(178,34,34,0.12));
+    }
+    .container{
+        max-width:1100px;
+        margin: clamp(10px, 2.5vw, 20px) auto;
+        margin-top: clamp(12px, 3vw, 40px);
+        margin-bottom: clamp(12px, 3vw, 40px);
+        background:rgba(255,255,255,0.92);
+        padding: clamp(1rem, 4vw, 2.5rem);
+        border-radius: var(--radius-lg);
+        box-shadow:0 25px 50px rgba(0,0,0,0.12);
+        backdrop-filter:blur(15px);
+        -webkit-backdrop-filter:blur(15px);
+        border:1px solid rgba(255,255,255,0.3);
+        width: min(1100px, calc(100% - clamp(0.7rem, 4vw, 2rem)));
+    }
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(4px, 1vw, 8px);
+        text-decoration: none;
+        color: #B22222;
+        font-weight: 600;
+        margin-bottom: clamp(1rem, 3.5vw, 2rem);
+        transition: 0.3s;
+        background: rgba(178, 34, 34, 0.1);
+        padding: clamp(0.45rem, 1.8vw, 0.65rem) clamp(0.75rem, 2.8vw, 1.1rem);
+        border-radius: var(--radius-sm);
+        font-size: clamp(0.75rem, 2.3vw, 0.95rem);
+        min-height: 40px;
+    }
+    .back-btn:hover {
+        transform: translateX(-5px);
+        background: rgba(178, 34, 34, 0.2);
+    }
+    h1{
+        text-align:center;
+        margin-bottom: clamp(0.8rem, 2.8vw, 1.6rem);
+        margin-top: clamp(0.5rem, 2vw, 1rem);
+        color: #B22222;
+        font-size: clamp(1.5rem, 5.8vw, 2.6rem);
+        line-height: 1.2;
+    }
+    .cv-subtitle {
+        text-align: center;
+        color: #666;
+        font-size: clamp(0.82rem, 2.5vw, 1rem);
+        margin-bottom: clamp(1.2rem, 4vw, 2.2rem);
+    }
+    .cv-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: clamp(0.6rem, 2vw, 1rem);
+        margin-bottom: clamp(1.2rem, 4vw, 2.2rem);
+    }
+    .btn-cv {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(6px, 1.3vw, 10px);
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        padding: clamp(0.7rem, 2.3vw, 0.95rem) clamp(1.3rem, 4vw, 2.2rem);
+        border-radius: 999px;
+        font-size: clamp(0.82rem, 2.5vw, 1rem);
+        min-height: 44px;
+        box-shadow: 0 clamp(6px, 1.5vw, 14px) rgba(178,34,34,0.32);
+        transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .btn-cv:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 clamp(10px, 2.5vw, 20px) rgba(178,34,34,0.42);
+    }
+    .btn-download {
+        background: linear-gradient(135deg, #B22222 0%, #8B0000 100%);
+    }
+    .btn-open {
+        background: linear-gradient(135deg, #1e88e5 0%, #0d47a1 100%);
+        box-shadow: 0 clamp(6px, 1.5vw, 14px) rgba(13, 71, 161, 0.32);
+    }
+    .btn-open:hover {
+        box-shadow: 0 clamp(10px, 2.5vw, 20px) rgba(13, 71, 161, 0.42);
+    }
+    .btn-cv i { font-size: clamp(0.9rem, 2.6vw, 1.05rem); }
+
+    .cv-embed-wrap {
+        width: 100%;
+        border-radius: var(--radius-md);
+        overflow: hidden;
+        box-shadow: 0 clamp(10px, 2.5vw, 22px) rgba(0,0,0,0.12);
+        border: 1px solid rgba(139,0,0,0.2);
+        background: #fafafa;
+        margin-top: clamp(0.6rem, 2vw, 1rem);
+    }
+    .cv-iframe {
+        width: 100%;
+        height: clamp(560px, 120vw, 100vh);
+        max-height: 90vh;
+        min-height: 480px;
+        border: 0;
+        display: block;
+    }
+    .cv-hint {
+        text-align: center;
+        margin-top: clamp(1rem, 3vw, 1.8rem);
+        font-size: clamp(0.75rem, 2.2vw, 0.92rem);
+        color: #666;
+    }
+    .cv-hint i { color: #B22222; }
+
+    /* Preloader */
+    #preloader {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-color: #FDF2F2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #preloader.fade-out { opacity: 0; visibility: hidden; }
+    .preloader-content {
+        text-align: center;
+        position: relative;
+        width: clamp(110px, 32vw, 150px);
+        height: clamp(110px, 32vw, 150px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .preloader-logo-container { position: relative; width: clamp(90px, 26vw, 120px); height: clamp(90px, 26vw, 120px); }
+    .preloader-piece {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background-image: url('img/br.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0;
+        filter: drop-shadow(0 0 10px rgba(178, 34, 34, 0.1));
+    }
+    .piece-tl { clip-path: inset(0 50% 50% 0); transform: translate(-50px, -50px); animation: assemble 1s forwards ease-out 0.1s; }
+    .piece-tr { clip-path: inset(0 0 50% 50%); transform: translate(50px, -50px); animation: assemble 1s forwards ease-out 0.2s; }
+    .piece-bl { clip-path: inset(50% 50% 0 0); transform: translate(-50px, 50px); animation: assemble 1s forwards ease-out 0.3s; }
+    .piece-br { clip-path: inset(50% 0 0 50%); transform: translate(50px, 50px); animation: assemble 1s forwards ease-out 0.4s; }
+    @keyframes assemble { to { transform: translate(0, 0); opacity: 1; } }
+    .preloader-text {
+        position: absolute;
+        bottom: clamp(-28px, -8vw, -40px);
+        width: 100%;
+        font-weight: 700;
+        color: #B22222;
+        letter-spacing: clamp(2px, 0.6vw, 4px);
+        text-transform: uppercase;
+        font-size: clamp(0.65rem, 2vw, 0.8rem);
+        font-family: 'Poppins', sans-serif;
+        opacity: 0;
+        animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
+    }
+    @keyframes preloader-fade-in { to { opacity: 1; transform: translateY(-5px); } }
+
+    @media (max-width: 480px) {
+        .container {
+            width: calc(100% - clamp(0.5rem, 3vw, 0.8rem));
+            padding: clamp(0.85rem, 4vw, 1.3rem);
+        }
+        .cv-iframe { min-height: 420px; }
+    }
+    @media (max-width: 380px) {
+        h1 { font-size: clamp(1.3rem, 6.2vw, 1.6rem); }
+    }
+</style>
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<div id="preloader">
+    <div class="preloader-content">
+        <div class="preloader-logo-container">
+            <div class="preloader-piece piece-tl"></div>
+            <div class="preloader-piece piece-tr"></div>
+            <div class="preloader-piece piece-bl"></div>
+            <div class="preloader-piece piece-br"></div>
+        </div>
+        <div class="preloader-text">Blackrose.</div>
+    </div>
+</div>
+
+<div class="bg3d"></div>
+<div class="container">
+
+<a href="index.html" class="back-btn"><i class="fa-solid fa-house"></i> Kembali ke Beranda</a>
+
+<h1>Curriculum Vitae</h1>
+<p class="cv-subtitle"><i class="fa-solid fa-user-tie" style="color:#8B0000"></i> Bagus Dwi Cahya Putra &nbsp;•&nbsp; Portofolio Profesional</p>
+
+<div class="cv-actions">
+    <a class="btn-cv btn-download" href="https://drive.google.com/uc?export=download&id=1S9n00EIHwBYHh5x3LoFRUCt_lGQv94wD" download target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-file-arrow-down"></i>
+        Unduh CV (PDF)
+    </a>
+    <a class="btn-cv btn-open" href="https://drive.google.com/file/d/1S9n00EIHwBYHh5x3LoFRUCt_lGQv94wD/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-up-right-from-square"></i>
+        Buka di Google Drive
+    </a>
+</div>
+
+<div class="cv-embed-wrap">
+    <iframe
+        class="cv-iframe"
+        src="https://drive.google.com/file/d/1S9n00EIHwBYHh5x3LoFRUCt_lGQv94wD/preview?usp=sharing"
+        title="Curriculum Vitae Bagus Dwi Cahya Putra"
+        allow="autoplay"
+        loading="lazy">
+    </iframe>
+</div>
+
+<p class="cv-hint">
+    <i class="fa-solid fa-lightbulb"></i>
+    Siapapun bisa mengunduh CV-ku dengan menekan tombol
+    <strong>"Unduh CV (PDF)"</strong> di atas atau menggunakan tombol unduh
+    pada preview Google Drive.
+</p>
+
+</div>
+
+<script>
+window.addEventListener('load', function() {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            setTimeout(() => { preloader.remove(); }, 600);
+        }, 2500);
+    }
+});
+</script>
+</body>
+</html>
