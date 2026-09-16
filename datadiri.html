@@ -9,7 +9,9 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 
 <style>
 :root{
@@ -426,7 +428,7 @@ body{
 
 <!-- PROFILE -->
 <div class="profile">
-  <img src="img/datadiri.png" alt="Foto Profil Bagus">
+  <picture><source srcset="img/datadiri.webp" type="image/webp"><img src="img/datadiri.png" alt="Foto Profil Bagus" decoding="async" loading="lazy"></picture>
 
   <div class="profile-info">
     <h1>Bagus Dwi Cahya Putra</h1>
@@ -564,7 +566,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="img/unesa.png" alt="Universitas Negeri Surabaya">
+      <picture><source srcset="img/unesa.webp" type="image/webp"><img src="img/unesa.png" alt="Universitas Negeri Surabaya" decoding="async" loading="lazy"></picture>
     </div>
     <div class="education-content">
       <h3>Universitas Negeri Surabaya</h3>
@@ -575,7 +577,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="img/sma.png" alt="SMAN 1 Rengel">
+      <picture><source srcset="img/sma.webp" type="image/webp"><img src="img/sma.png" alt="SMAN 1 Rengel" decoding="async" loading="lazy"></picture>
     </div>
     <div class="education-content">
       <h3>SMAN 1 Rengel</h3>
@@ -586,7 +588,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="img/smp.png" alt="SMPN 2 Rengel">
+      <picture><source srcset="img/smp.webp" type="image/webp"><img src="img/smp.png" alt="SMPN 2 Rengel" decoding="async" loading="lazy"></picture>
     </div>
     <div class="education-content">
       <h3>SMPN 2 Rengel</h3>
@@ -597,7 +599,7 @@ body{
 
   <div class="education-item">
     <div class="education-photo">
-      <img src="img/sd.png" alt="SDN Punggulrejo">
+      <picture><source srcset="img/sd.webp" type="image/webp"><img src="img/sd.png" alt="SDN Punggulrejo" decoding="async" loading="lazy"></picture>
     </div>
     <div class="education-content">
       <h3>SDN Punggulrejo</h3>
@@ -608,7 +610,7 @@ body{
 
    <div class="education-item">
     <div class="education-photo">
-      <img src="img/tk.png" alt="TK PGRI Punggulrejo">
+      <picture><source srcset="img/tk.webp" type="image/webp"><img src="img/tk.png" alt="TK PGRI Punggulrejo" decoding="async" loading="lazy"></picture>
     </div>
     <div class="education-content">
       <h3>TK PGRI Punggulrejo</h3>

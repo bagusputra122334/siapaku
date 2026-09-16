@@ -8,7 +8,9 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 
     <style>
         :root {
@@ -426,7 +428,7 @@ Nilai RGB berada pada rentang <b>0 – 1</b>.
 </p>
 
 <h2>Tampilan Visualisasi</h2>
-<img src="img/visualisasi.png" alt="Visualisasi Rektorat" style="width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12)" onerror="this.src='img/rektorat.png'">
+<picture><source srcset="img/rektorat.webp" type="image/webp"><img src="img/visualisasi.png" alt="Visualisasi Rektorat" style="width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 12px 28px rgba(0,0,0,0.12)" onerror="this.src='img/rektorat.png'" decoding="async" loading="lazy"></picture>
 
 <h2>3. Implementasi Program</h2>
 

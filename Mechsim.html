@@ -10,401 +10,317 @@
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
 <!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
-    <style>
-        :root {
-            --primary: #B22222;
-            --primary-dark: #8B0000;
-            --text: #222;
-            --text-light: #444;
-            --radius-sm: clamp(8px, 2vw, 12px);
-            --radius-md: clamp(10px, 2.5vw, 18px);
-            --radius-lg: clamp(14px, 3.5vw, 24px);
-            --space-xs: clamp(0.35rem, 1.2vw, 0.5rem);
-            --space-sm: clamp(0.6rem, 2vw, 0.9rem);
-            --space-md: clamp(0.9rem, 3vw, 1.5rem);
-            --space-lg: clamp(1.4rem, 4.5vw, 2.5rem);
-            --space-xl: clamp(2rem, 7vw, 4rem);
-        }
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;text-size-adjust:100%;font-size:clamp(14px,2.8vw,16px)}
-        body{
-            font-family:'Poppins', sans-serif;
-            background:transparent;
-            margin:0;
-            line-height:1.55;
-            color:#2d2d2d;
-            overflow-x:hidden;
-            padding-left: env(safe-area-inset-left);
-            padding-right: env(safe-area-inset-right);
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-wrap: break-word;
-        }
-        * { box-sizing: border-box; }
-        img { max-width: 100%; height: auto; display: block; }
-        .bg3d{
-            position:fixed;
-            inset:0;
-            z-index:-1;
-            pointer-events:none;
-        }
-        .container{
-            max-width:980px;
-            margin: clamp(10px, 2.5vw, 20px) auto;
-            margin-top: clamp(12px, 3vw, 40px);
-            margin-bottom: clamp(12px, 3vw, 40px);
-            background:rgba(255,255,255,0.85);
-            padding: clamp(1rem, 4vw, 2.5rem);
-            border-radius: var(--radius-lg);
-            box-shadow:0 25px 50px rgba(0,0,0,0.12);
-            backdrop-filter:blur(15px) saturate(1.2);
-            -webkit-backdrop-filter:blur(15px) saturate(1.2);
-            border:1px solid rgba(255,255,255,0.35);
-            width: min(900px, calc(100% - clamp(0.7rem, 4vw, 2rem)));
-        }
-        .back-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: clamp(4px, 1vw, 8px);
-            text-decoration: none;
-            color: #B22222;
-            font-weight: 600;
-            margin-bottom: clamp(1rem, 3.5vw, 2rem);
-            transition: 0.3s;
-            background: rgba(178, 34, 34, 0.1);
-            padding: clamp(0.45rem, 1.8vw, 0.65rem) clamp(0.75rem, 2.8vw, 1.1rem);
-            border-radius: var(--radius-sm);
-            font-size: clamp(0.75rem, 2.3vw, 0.95rem);
-            min-height: 40px;
-        }
-        .back-btn:hover {
-            transform: translateX(-5px);
-            background: rgba(178, 34, 34, 0.2);
-        }
-        h1{
-            text-align:center;
-            margin-bottom: clamp(1.2rem, 4.5vw, 2.8rem);
-            margin-top: clamp(0.5rem, 2vw, 1rem);
-            color: #B22222;
-            font-size: clamp(1.4rem, 5.5vw, 2.5rem);
-            line-height: 1.25;
-        }
-        .skill-icon {
-            display: block;
-            text-align: center;
-            font-size: clamp(2.8rem, 10vw, 5rem);
-            color: #B22222;
-            margin-bottom: clamp(0.25rem, 1.5vw, 0.75rem);
-            line-height: 1;
-        }
-        .story-section {
-            margin-bottom: clamp(1.5rem, 6vw, 4rem);
-            animation: fadeIn 1s ease-out;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        h2 {
-            color: #8B0000;
-            border-left: clamp(3px, 0.8vw, 5px) solid #B22222;
-            padding-left: clamp(0.6rem, 2.5vw, 1rem);
-            margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
-            margin-top: clamp(0.5rem, 2vw, 1rem);
-            font-size: clamp(1.1rem, 4vw, 1.85rem);
-            line-height: 1.3;
-        }
-        h3 {
-            font-size: clamp(0.95rem, 3vw, 1.3rem);
-            line-height: 1.3;
-            margin-top: clamp(0.5rem, 2vw, 1rem);
-            margin-bottom: clamp(0.4rem, 1.5vw, 0.8rem);
-        }
-        .narrative-text {
-            font-size: clamp(0.82rem, 2.6vw, 1.1rem);
-            color: #444;
-            margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
-            line-height: 1.7;
-        }
-        p {
-            font-size: clamp(0.82rem, 2.5vw, 1.05rem);
-            line-height: 1.68;
-        }
-        .content-card {
-            background: white;
-            padding: clamp(0.9rem, 3.5vw, 1.8rem);
-            border-radius: var(--radius-md);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            margin-bottom: clamp(1rem, 3.5vw, 2rem);
-            border: 1px solid #eee;
-        }
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr));
-            gap: clamp(0.5rem, 1.8vw, 1rem);
-            margin-bottom: clamp(0.8rem, 3vw, 1.8rem);
-        }
-        .feature-list li {
-            background: #f9f9f9;
-            padding: clamp(0.5rem, 2vw, 0.8rem) clamp(0.6rem, 2.2vw, 1.1rem);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            gap: clamp(6px, 1.2vw, 10px);
-            font-weight: 500;
-            font-size: clamp(0.78rem, 2.3vw, 1rem);
-            line-height: 1.3;
-        }
-        .feature-list li i {
-            color: #B22222;
-            font-size: clamp(0.9rem, 2.6vw, 1.1rem);
-            flex-shrink: 0;
-        }
-        pre {
-            background: #2d3436;
-            color: #fab1a0;
-            padding: clamp(0.7rem, 2.8vw, 1.4rem);
-            border-radius: var(--radius-sm);
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            font-family: 'Courier New', Courier, monospace;
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.3);
-            margin-bottom: clamp(0.7rem, 2.8vw, 1.4rem);
-            font-size: clamp(0.72rem, 2.2vw, 0.95rem);
-            line-height: 1.55;
-        }
-        code {
-            color: #fab1a0;
-            font-size: inherit;
-        }
-        .image-box {
-            width: 100%;
-            margin: clamp(0.8rem, 3vw, 2rem) 0;
-            border-radius: var(--radius-md);
-            overflow: hidden;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
-        .image-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: 0.5s;
-        }
-        .image-box img:hover {
-            transform: scale(1.02);
-        }
-        .badge {
-            display: inline-block;
-            background: #B22222;
-            color: white;
-            padding: clamp(0.2rem, 1vw, 0.35rem) clamp(0.6rem, 2vw, 1rem);
-            border-radius: 999px;
-            font-size: clamp(0.72rem, 2.2vw, 0.9rem);
-            margin-bottom: clamp(0.5rem, 2vw, 1rem);
-            font-weight: 600;
-        }
+<style>
 
-        /* === SELECTOR TAMBAHAN DARI FILE ASLI === */
-        .back-btn {
-            position: fixed;
-            top: max(0.75rem, env(safe-area-inset-top));
-            left: max(0.75rem, env(safe-area-inset-left));
-            background: linear-gradient(135deg, #B22222, #d33f3f);
-            color: white;
-            padding: clamp(0.45rem, 1.8vw, 0.55rem) clamp(0.75rem, 2.8vw, 1rem);
-            border-radius: var(--radius-sm);
-            font-family: 'Poppins', sans-serif;
-            gap: clamp(6px, 1.2vw, 0.45rem);
-            min-height: 44px;
-            box-shadow: 0 clamp(4px, 1vw, 8px) clamp(10px, 2.5vw, 25px) rgba(178, 34, 34, 0.35);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            -webkit-backdrop-filter: blur(5px);
-            backdrop-filter: blur(5px);
-            margin-bottom: 0;
-        }
-        .back-btn:hover {
-            background: linear-gradient(135deg, #8B1A1A, #a82a2a);
-            transform: translateY(-3px);
-            box-shadow: 0 clamp(6px, 1.5vw, 12px) clamp(14px, 3.5vw, 35px) rgba(178, 34, 34, 0.45);
-        }
-        .page-header {
-            text-align: center;
-            margin-bottom: clamp(0.2rem, 0.8vw, 0.25rem);
-        }
-        h1 {
-            margin-bottom: clamp(0.4rem, 1.5vw, 0.5rem);
-            font-size: clamp(1.1rem, 4.2vw, 2.2rem);
-            color: #1a1a1a;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-        }
-        h1:first-of-type {
-            margin-bottom: clamp(0.2rem, 0.8vw, 0.25rem);
-            font-size: clamp(0.95rem, 3.5vw, 1.8rem);
-            color: #666;
-            font-weight: 600;
-        }
-        h2 {
-            margin: clamp(1.25rem, 4vw, 2.5rem) 0 clamp(0.5rem, 2vw, 1.2rem);
-            padding-bottom: clamp(0.4rem, 1.5vw, 0.8rem);
-            border-bottom: 2px solid #eee;
-            border-left: none;
-            padding-left: 0;
-            font-size: clamp(1.05rem, 3.2vw, 1.6rem);
-            color: #333;
-            font-weight: 700;
-            line-height: 1.3;
-        }
-        h3 {
-            margin: clamp(0.85rem, 3vw, 2rem) 0 clamp(0.4rem, 1.5vw, 1rem);
-            font-size: clamp(0.9rem, 2.6vw, 1.25rem);
-            color: #444;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-        ul {
-            margin-left: clamp(1rem, 3vw, 1.5rem);
-            margin-bottom: clamp(0.5rem, 2vw, 1rem);
-            font-size: clamp(0.8125rem, 2.4vw, 1rem);
-            color: #555;
-        }
-        li {
-            margin-bottom: clamp(0.35rem, 1.5vw, 0.6rem);
-            line-height: 1.55;
-        }
-        .img-container {
-            text-align: center;
-            margin: clamp(0.65rem, 2.5vw, 1.5rem) 0;
-        }
-        .img-container img {
-            width: 100%;
-            max-width: min(700px, 100%);
-            border-radius: clamp(8px, 2vw, 16px);
-            box-shadow: 0 clamp(5px, 1.5vw, 10px) clamp(12px, 3vw, 30px) rgba(0, 0, 0, 0.1);
-            margin: 0 auto;
-        }
-        .img-container img.img-feature {
-            max-width: min(400px, 100%);
-        }
-        .img-error {
-            display: none;
-            padding: clamp(0.75rem, 2.5vw, 1.5rem);
-            background: #fff3f3;
-            border-radius: var(--radius-sm);
-            color: #c0392b;
-            font-size: clamp(0.8rem, 2.2vw, 0.95rem);
-            margin-top: clamp(0.4rem, 1.5vw, 0.5rem);
-            border: 1px solid #fad0d0;
-        }
+/* Base & Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        /* Preloader */
-        #preloader {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: #FDF2F2;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.7s ease, visibility 0.7s ease;
-        }
-        #preloader.fade-out { opacity: 0; visibility: hidden; }
-        .preloader-content {
-            text-align: center;
-            position: relative;
-            width: clamp(110px, 32vw, 150px);
-            height: clamp(110px, 32vw, 150px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .preloader-logo-container { position: relative; width: clamp(90px, 26vw, 120px); height: clamp(90px, 26vw, 120px); }
-        .preloader-piece {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-image: url('img/br.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: center;
-            opacity: 0;
-            filter: drop-shadow(0 0 12px rgba(178, 34, 34, 0.15));
-        }
-        .piece-tl { clip-path: inset(0 50% 50% 0); transform: translate(-50px, -50px); animation: assemble 1s forwards ease-out 0.1s; }
-        .piece-tr { clip-path: inset(0 0 50% 50%); transform: translate(50px, -50px); animation: assemble 1s forwards ease-out 0.2s; }
-        .piece-bl { clip-path: inset(50% 50% 0 0); transform: translate(-50px, 50px); animation: assemble 1s forwards ease-out 0.3s; }
-        .piece-br { clip-path: inset(50% 0 0 50%); transform: translate(50px, 50px); animation: assemble 1s forwards ease-out 0.4s; }
-        @keyframes assemble { to { transform: translate(0, 0); opacity: 1; } }
-        .preloader-text {
-            position: absolute;
-            bottom: clamp(-30px, -9vw, -45px);
-            width: 100%;
-            font-weight: 700;
-            color: #B22222;
-            letter-spacing: clamp(2px, 0.6vw, 4px);
-            text-transform: uppercase;
-            font-size: clamp(0.65rem, 2vw, 0.8rem);
-            font-family: 'Poppins', sans-serif;
-            opacity: 0;
-            animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
-        }
-        @keyframes preloader-fade-in { to { opacity: 1; transform: translateY(-5px); } }
+html {
+    scroll-behavior: smooth;
+    font-size: clamp(14px, 2.8vw, 16px);
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
 
-        .content-card p,
-        .content-card .narrative-text {
-            font-size: clamp(0.82rem, 2.5vw, 1.05rem);
-            line-height: 1.7;
-            margin-bottom: 0;
-        }
-        .content-card p + p {
-            margin-top: clamp(0.5rem, 2vw, 1rem);
-        }
+body {
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: transparent;
+    margin: 0;
+    line-height: 1.55;
+    color: #2d2d2d;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-wrap: break-word;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+}
 
-        @media (max-width: 768px) {
-            body { line-height: 1.5; }
-            .back-btn {
-                position: static;
-                margin-bottom: clamp(0.6rem, 2vw, 0.75rem);
-                width: fit-content;
-                min-height: 40px;
-                box-shadow: 0 clamp(2px, 0.8vw, 4px) clamp(8px, 2vw, 15px) rgba(178, 34, 34, 0.25);
-            }
-            .container {
-                box-shadow: 0 clamp(8px, 2vw, 15px) clamp(18px, 4vw, 35px) rgba(0, 0, 0, 0.1);
-            }
-            .feature-list { grid-template-columns: 1fr; }
-            .narrative-text { text-align: left; }
-            .gallery[style], .gallery { grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)) !important; }
-        }
-        @media (max-width: 480px) {
-            .container {
-                width: calc(100% - clamp(0.5rem, 3vw, 0.8rem));
-                padding: clamp(0.85rem, 4vw, 1.3rem);
-            }
-            .img-container img {
-                box-shadow: 0 clamp(3px, 1vw, 6px) clamp(10px, 2.5vw, 18px) rgba(0, 0, 0, 0.08);
-            }
-        }
-        @media (max-width: 380px) {
-            h1 { font-size: clamp(1.25rem, 6vw, 1.5rem); }
-            h2 { font-size: clamp(1rem, 4.8vw, 1.2rem); }
-            .gallery[style], .gallery { grid-template-columns: 1fr 1fr !important; }
-        }
-    </style>
-<link rel="stylesheet" href="css/responsive.css">
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Background 3D */
+.bg3d {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Container */
+.container {
+    width: min(900px, calc(100% - clamp(1rem, 4vw, 3rem)));
+    max-width: 900px;
+    margin: clamp(0.75rem, 3vw, 3rem) auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: clamp(1rem, 4vw, 2.5rem);
+    border-radius: clamp(12px, 3vw, 20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(15px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Back Button */
+.back-btn {
+    position: fixed;
+    top: max(0.75rem, env(safe-area-inset-top));
+    left: max(0.75rem, env(safe-area-inset-left));
+    background: linear-gradient(135deg, #B22222, #d33f3f);
+    color: white;
+    padding: 0.55rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: clamp(0.75rem, 2.5vw, 0.95rem);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 44px;
+    box-shadow: 0 8px 25px rgba(178, 34, 34, 0.35);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.back-btn:hover {
+    background: linear-gradient(135deg, #8B1A1A, #a82a2a);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(178, 34, 34, 0.45);
+}
+
+/* Typography */
+.page-header {
+    text-align: center;
+    padding-top: clamp(2.75rem, 9vw, 0.5rem);
+    margin-bottom: 0.25rem;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: clamp(1.1rem, 4.2vw, 2.2rem);
+    color: #1a1a1a;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+}
+
+h1:first-of-type {
+    margin-bottom: 0.25rem;
+    font-size: clamp(0.95rem, 3.5vw, 1.8rem);
+    color: #666;
+    font-weight: 600;
+}
+
+h2 {
+    margin: clamp(1.25rem, 4vw, 2.5rem) 0 clamp(0.5rem, 2vw, 1.2rem);
+    padding-bottom: clamp(0.4rem, 1.5vw, 0.8rem);
+    border-bottom: 2px solid #eee;
+    font-size: clamp(1.05rem, 3.2vw, 1.6rem);
+    color: #333;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+h3 {
+    margin: clamp(0.85rem, 3vw, 2rem) 0 clamp(0.4rem, 1.5vw, 1rem);
+    font-size: clamp(0.9rem, 2.6vw, 1.25rem);
+    color: #444;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+ul {
+    margin-left: clamp(1rem, 3vw, 1.5rem);
+    margin-bottom: clamp(0.5rem, 2vw, 1rem);
+    font-size: clamp(0.8125rem, 2.4vw, 1rem);
+    color: #555;
+}
+
+li {
+    margin-bottom: clamp(0.35rem, 1.5vw, 0.6rem);
+    line-height: 1.55;
+}
+
+/* Image Sections */
+.img-container {
+    text-align: center;
+    margin: clamp(0.65rem, 2.5vw, 1.5rem) 0;
+}
+
+.img-container img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: clamp(8px, 2vw, 16px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+.img-container img.img-feature {
+    max-width: min(400px, 100%);
+}
+
+.img-error {
+    display: none;
+    padding: clamp(0.75rem, 2.5vw, 1.5rem);
+    background: #fff3f3;
+    border-radius: 10px;
+    color: #c0392b;
+    font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+    margin-top: 0.5rem;
+    border: 1px solid #fad0d0;
+}
+
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FDF2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.preloader-content {
+    text-align: center;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader-logo-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
+.preloader-piece {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/br.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0;
+    filter: drop-shadow(0 0 12px rgba(178, 34, 34, 0.15));
+}
+
+.piece-tl {
+    clip-path: inset(0 50% 50% 0);
+    transform: translate(-50px, -50px);
+    animation: assemble 1s forwards ease-out 0.1s;
+}
+
+.piece-tr {
+    clip-path: inset(0 0 50% 50%);
+    transform: translate(50px, -50px);
+    animation: assemble 1s forwards ease-out 0.2s;
+}
+
+.piece-bl {
+    clip-path: inset(50% 50% 0 0);
+    transform: translate(-50px, 50px);
+    animation: assemble 1s forwards ease-out 0.3s;
+}
+
+.piece-br {
+    clip-path: inset(50% 0 0 50%);
+    transform: translate(50px, 50px);
+    animation: assemble 1s forwards ease-out 0.4s;
+}
+
+@keyframes assemble {
+    to {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+}
+
+.preloader-text {
+    position: absolute;
+    bottom: -45px;
+    width: 100%;
+    font-weight: 700;
+    color: #B22222;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0;
+    animation: preloader-fade-in 0.8s forwards ease-out 1.2s;
+}
+
+@keyframes preloader-fade-in {
+    to {
+        opacity: 1;
+        transform: translateY(-5px);
+    }
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+    body {
+        line-height: 1.5;
+    }
+
+    .back-btn {
+        position: static;
+        margin-bottom: 0.75rem;
+        width: fit-content;
+        min-height: 40px;
+        box-shadow: 0 4px 15px rgba(178, 34, 34, 0.25);
+    }
+
+    .page-header {
+        padding-top: 0;
+    }
+
+    .container {
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: calc(100% - 0.75rem);
+    }
+
+    .img-container img {
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    }
+}
+</style>
 
 </head>
 
@@ -423,7 +339,7 @@
 
 <div class="bg3d" id="bg3d-mechsim"></div>
 <div class="container">
-<a href="index.html#projects" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda</a>
+<a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Kembali</a>
 
 <header class="page-header">
 <h1>PANDUAN PENGGUNAAN</h1>
@@ -433,14 +349,14 @@
 <h2>FITUR-FITUR APLIKASI</h2>
 
 <div class="img-container">
-  <img class="img-feature" src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc.webp" type="image/webp"><img class="img-feature" src="img/mc.png" alt="Ikon Virtual Mechsim Laboratory" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc.png ada di folder img/</div>
 </div>
 
 <h3>1. Halaman Awal (Landing Page)</h3>
 
 <div class="img-container">
-  <img src="img/mc1.png" alt="Landing Page Virtual Mechsim" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc1.webp" type="image/webp"><img src="img/mc1.png" alt="Landing Page Virtual Mechsim" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc1.png ada di folder img/</div>
 </div>
 
@@ -453,7 +369,7 @@
 <h3>2. Kumpulan Materi</h3>
 
 <div class="img-container">
-  <img src="img/mc2.png" alt="Kumpulan Materi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc2.webp" type="image/webp"><img src="img/mc2.png" alt="Kumpulan Materi" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc2.png ada di folder img/</div>
 </div>
 
@@ -466,7 +382,7 @@
 <h3>3. Kumpulan Modul</h3>
 
 <div class="img-container">
-  <img src="img/mc3.png" alt="Kumpulan Modul" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc3.webp" type="image/webp"><img src="img/mc3.png" alt="Kumpulan Modul" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc3.png ada di folder img/</div>
 </div>
 
@@ -479,7 +395,7 @@
 <h3>4. Halaman Login Guru & Siswa</h3>
 
 <div class="img-container">
-  <img src="img/mc4.png" alt="Halaman Login" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc4.webp" type="image/webp"><img src="img/mc4.png" alt="Halaman Login" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc4.png ada di folder img/</div>
 </div>
 
@@ -492,7 +408,7 @@
 <h3>5. Dashboard Guru (Monitoring)</h3>
 
 <div class="img-container">
-  <img src="img/mc5.png" alt="Tampilan Guru" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc5.webp" type="image/webp"><img src="img/mc5.png" alt="Tampilan Guru" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc5.png ada di folder img/</div>
 </div>
 
@@ -506,7 +422,7 @@
 <h3>6. Halaman Pengerjaan Siswa</h3>
 
 <div class="img-container">
-  <img src="img/mc6.png" alt="Halaman Pengerjaan Siswa" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc6.webp" type="image/webp"><img src="img/mc6.png" alt="Halaman Pengerjaan Siswa" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc6.png ada di folder img/</div>
 </div>
 
@@ -519,7 +435,7 @@
 <h3>7. Tampilan Menunggu (Guru Menjelaskan)</h3>
 
 <div class="img-container">
-  <img src="img/mc7.png" alt="Tampilan Menunggu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <picture><source srcset="img/mc7.webp" type="image/webp"><img src="img/mc7.png" alt="Tampilan Menunggu" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" decoding="async" loading="lazy"></picture>
   <div class="img-error">Gambar tidak ditemukan. Pastikan file mc7.png ada di folder img/</div>
 </div>
 
