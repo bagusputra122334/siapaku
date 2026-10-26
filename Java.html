@@ -481,7 +481,7 @@
             const camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,1,3000);
             camera.position.set(0,0,900);
             const renderer=new THREE.WebGLRenderer({antialias:true,alpha:true});
-            renderer.setPixelRatio(window.devicePixelRatio||1);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
             renderer.setSize(window.innerWidth,window.innerHeight);
             renderer.setClearColor(0x000000,0);
             container.appendChild(renderer.domElement);
@@ -492,7 +492,7 @@
             dir1.position.set(-400,500,800);
             scene.add(dir1);
             
-            const geometry=new THREE.PlaneGeometry(2000,1200,150,100);
+            const geometry=new THREE.PlaneGeometry(2000,1200,60,40);
             const material=new THREE.MeshPhongMaterial({
                 color:0x8B0000,
                 emissive:0x220000,
@@ -537,7 +537,7 @@
                 setTimeout(() => {
                     preloader.classList.add('fade-out');
                     setTimeout(() => { preloader.remove(); }, 600);
-                }, 2500);
+                }, 700);
             }
         });
     </script>

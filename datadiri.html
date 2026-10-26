@@ -636,7 +636,7 @@ body{
   camera.position.z = 650;
 
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-  renderer.setPixelRatio(window.devicePixelRatio || 1);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x020816, 0);
   container.appendChild(renderer.domElement);
@@ -763,7 +763,7 @@ window.addEventListener('load', function() {
         setTimeout(() => {
             preloader.classList.add('fade-out');
             setTimeout(() => { preloader.remove(); }, 600);
-        }, 2500);
+        }, 700);
     }
 });
 </script>

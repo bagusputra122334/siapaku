@@ -550,7 +550,7 @@
             </div>
             <div class="preloader-text">Blackrose.</div>
         </div>
-        <video autoplay muted playsinline webkit-playsinline preload="auto" id="preloader-video">
+        <video muted playsinline webkit-playsinline preload="none" id="preloader-video">
             <source src="img/br.mp4" type="video/mp4">
         </video>
     </div>
@@ -830,9 +830,11 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         renderer.setClearColor(0x000000, 0);
         container.appendChild(renderer.domElement);
 
-        const PARTICLE_COUNT = 260;
-        const MAX_DISTANCE = 150;
+        const isMobile = window.innerWidth <= 768;
+        const PARTICLE_COUNT = isMobile ? 80 : 150;
+        const MAX_DISTANCE = isMobile ? 120 : 140;
         const space = 800;
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
         const half = space / 2;
 
         const particleGeometry = new THREE.BufferGeometry();
@@ -1026,57 +1028,37 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const pieces = document.querySelectorAll('.preloader-piece');
         const text = document.querySelector('.preloader-text');
         
-        // Cek apakah ini kunjungan pertama di sesi ini
-        const isFirstVisit = !sessionStorage.getItem('hasVisited');
-        
-        if (preloader) {
-            if (isFirstVisit) {
-                // Kunjungan pertama di sesi ini: tampilkan video
-                preloader.classList.add('video-mode');
-                logoContent.style.display = 'none';
-                video.style.display = 'block';
-                
-                // Muat dan putar video
-                video.load();
-                video.muted = true;
-                video.play().catch(() => {});
-                
-                // Simpan bahwa pengguna sudah berkunjung di sesi ini
-                sessionStorage.setItem('hasVisited', 'true');
-                
-                // Preloader menghilang ketika video selesai diputar
-                video.addEventListener('ended', function () {
-                    if (!preloader.classList.contains('fade-out')) {
-                        preloader.classList.add('fade-out');
-                        setTimeout(() => preloader.remove(), 800);
-                    }
-                });
-            } else {
-                // Kunjungan selanjutnya di sesi ini: tampilkan animasi logo assemble
-                preloader.classList.remove('video-mode');
-                logoContent.style.display = 'flex';
-                video.style.display = 'none';
-                
-                // Reset animasi logo untuk memastikan berjalan kembali
-                pieces.forEach(piece => {
-                    piece.style.animation = 'none';
-                    piece.offsetHeight; // Trick untuk merefresh animasi
-                    piece.style.animation = '';
-                });
-                
-                // Reset animasi text
-                text.style.animation = 'none';
-                text.offsetHeight;
-                text.style.animation = '';
-                
-                // Preloader menghilang setelah 2.5 detik
-                setTimeout(() => {
-                    if (!preloader.classList.contains('fade-out')) {
-                        preloader.classList.add('fade-out');
-                        setTimeout(() => preloader.remove(), 600);
-                    }
-                }, 2500);
+        // Preloader cepat & efisien
+        function hidePreloader() {
+            if (!preloader.classList.contains('fade-out')) {
+                preloader.classList.add('fade-out');
+                setTimeout(() => { try { preloader.remove(); } catch(e){} }, 500);
             }
+        }
+
+        const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|3g/.test(navigator.connection.effectiveType));
+        const isMobileScreen = window.innerWidth <= 640;
+
+        if (isFirstVisit && !isSlowConn && !isMobileScreen) {
+            preloader.classList.add('video-mode');
+            logoContent.style.display = 'none';
+            video.style.display = 'block';
+            sessionStorage.setItem('hasVisited', 'true');
+
+            video.muted = true;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => hidePreloader());
+            }
+            video.addEventListener('ended', hidePreloader);
+            setTimeout(hidePreloader, 2500);
+        } else {
+            preloader.classList.remove('video-mode');
+            logoContent.style.display = 'flex';
+            video.style.display = 'none';
+            sessionStorage.setItem('hasVisited', 'true');
+            setTimeout(hidePreloader, 800);
+        }
         }
     });
     </script>
