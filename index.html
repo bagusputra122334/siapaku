@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bagus Dwi Cahya Putra | Portfolio</title>
     <link rel="icon" type="image/png" href="img/br.png">
+    <link rel="preload" href="img/br.mp4" as="video" type="video/mp4">
         <meta name="description" content="Portofolio Bagus Dwi Cahya Putra: pengembangan web, desain UI/UX, dan proyek teknologi.">
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -550,7 +551,7 @@
             </div>
             <div class="preloader-text">Blackrose.</div>
         </div>
-        <video muted playsinline webkit-playsinline preload="none" id="preloader-video">
+        <video autoplay muted playsinline webkit-playsinline preload="auto" id="preloader-video">
             <source src="img/br.mp4" type="video/mp4">
         </video>
     </div>
@@ -1025,41 +1026,52 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         const preloader = document.getElementById('preloader');
         const video = document.getElementById('preloader-video');
         const logoContent = document.getElementById('preloader-logo-content');
-        const pieces = document.querySelectorAll('.preloader-piece');
-        const text = document.querySelector('.preloader-text');
         
-        // Preloader cepat & efisien
+        let preloaderHidden = false;
         function hidePreloader() {
-            if (!preloader.classList.contains('fade-out')) {
-                preloader.classList.add('fade-out');
-                setTimeout(() => { try { preloader.remove(); } catch(e){} }, 500);
-            }
+            if (preloaderHidden || !preloader) return;
+            preloaderHidden = true;
+            preloader.classList.add('fade-out');
+            setTimeout(() => {
+                try { preloader.remove(); } catch(e) {}
+            }, 600);
         }
 
-        const isSlowConn = navigator.connection && (navigator.connection.saveData || /2g|3g/.test(navigator.connection.effectiveType));
-        const isMobileScreen = window.innerWidth <= 640;
+        const isFirstVisit = !sessionStorage.getItem('hasVisited');
 
-        if (isFirstVisit && !isSlowConn && !isMobileScreen) {
-            preloader.classList.add('video-mode');
-            logoContent.style.display = 'none';
-            video.style.display = 'block';
+        if (isFirstVisit && video) {
             sessionStorage.setItem('hasVisited', 'true');
+            preloader.classList.add('video-mode');
+            if (logoContent) logoContent.style.display = 'none';
+            video.style.display = 'block';
 
+            // Khusus iOS / Safari / Instagram in-app browser
             video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute('playsinline', '');
+            video.setAttribute('webkit-playsinline', '');
+
+            video.addEventListener('ended', hidePreloader, { once: true });
+            video.addEventListener('error', hidePreloader, { once: true });
+
             const playPromise = video.play();
             if (playPromise !== undefined) {
-                playPromise.catch(() => hidePreloader());
+                playPromise.catch(function () {
+                    hidePreloader();
+                });
             }
-            video.addEventListener('ended', hidePreloader);
-            setTimeout(hidePreloader, 2500);
+            // Batas timer video jika buffering lambat
+            setTimeout(hidePreloader, 3200);
         } else {
-            preloader.classList.remove('video-mode');
-            logoContent.style.display = 'flex';
-            video.style.display = 'none';
+            if (logoContent) logoContent.style.display = 'flex';
+            if (video) video.style.display = 'none';
             sessionStorage.setItem('hasVisited', 'true');
-            setTimeout(hidePreloader, 800);
+            setTimeout(hidePreloader, 600);
         }
-        }
+
+        // Failsafe cadangan agar tidak stuck
+        setTimeout(hidePreloader, 3800);
     });
     </script>
 </body>
