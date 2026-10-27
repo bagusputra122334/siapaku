@@ -1062,7 +1062,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
                 });
             }
             // Batas timer video jika buffering lambat
-            setTimeout(hidePreloader, 3200);
+            // Biarkan video berputar sampai tuntas via event ended
         } else {
             if (logoContent) logoContent.style.display = 'flex';
             if (video) video.style.display = 'none';
@@ -1071,7 +1071,7 @@ menjadi prinsip saya dalam mengembangkan ilmu sekaligus berkontribusi secara nya
         }
 
         // Failsafe cadangan agar tidak stuck
-        setTimeout(hidePreloader, 3800);
+        setTimeout(hidePreloader, 12000);
     });
     </script>
 </body>
